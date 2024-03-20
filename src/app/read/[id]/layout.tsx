@@ -1,4 +1,7 @@
 "use client"
+
+import { useEffect } from "react";
+
 export default function Layout(props: { children: React.ReactNode; }) {
     
     function fetchToServer() : void{
@@ -9,6 +12,10 @@ export default function Layout(props: { children: React.ReactNode; }) {
         })
     }
 
+    useEffect(()=>{
+        fetchToServer();
+    },[])
+
     /**  Next.js Treat Components as Server Side Component firstly! */
 
     // If you want to use Client Side API Like UseState or UseEffect hook OR onClick Toggle
@@ -16,7 +23,6 @@ export default function Layout(props: { children: React.ReactNode; }) {
 
     return (
         <>
-            <button onClick={fetchToServer}>fetch</button>
             <br></br>
             <>props.children =  {props.children}</>
         </>
