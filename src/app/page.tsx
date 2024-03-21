@@ -3,7 +3,7 @@ import Link from "next/link";
 import Form from "./components/Form";
 
 export default async function Home() {
-  const serverData = await fetch(`http://localhost:9999/posts`);
+  const serverData = await fetch(`http://localhost:9999/posts`,{cache:'no-store'});
   const data : [{id:string,value:string}] = await serverData.json();
   console.log(data);
   return (
