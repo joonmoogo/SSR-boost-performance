@@ -1,57 +1,20 @@
 {
   "posts": [
     {
-      "id": 0,
-      "title": "안녕하세요"
-    },
-    {
-      "id": 1,
-      "title": "반갑습니다"
-    },
-    {
-      "id": "8b8a",
-      "value": ""
+      "id": "test",
+      "value": "hello"
     },
     {
       "id": "test",
-      "value": {
-        "value": "asd"
-      }
+      "value": "hi"
     },
     {
       "id": "test",
-      "value": "asd"
+      "value": "hi"
     },
     {
       "id": "test",
-      "value": "하이요"
-    },
-    {
-      "id": "test",
-      "value": "안녕하셈"
-    },
-    {
-      "id": "test",
-      "value": "asdㅁㄴㅇ"
-    },
-    {
-      "id": "test"
-    },
-    {
-      "id": "test",
-      "value": "asdㅁㅁㄴㅇㄴㅇㄴㄴ"
-    },
-    {
-      "id": "test",
-      "value": "asdㅁㅁㄴㅇㄴㅇㄴㄴ"
-    },
-    {
-      "id": "test",
-      "value": "ㅇ"
-    },
-    {
-      "id": "test",
-      "value": "ㅇㅇ"
+      "value": "hello"
     }
   ]
 }

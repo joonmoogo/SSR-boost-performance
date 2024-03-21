@@ -1,17 +1,19 @@
+import url from "@/app/config/config";
 import React from "react";
 
-export default async function read1(props: { params: { id: number; }; }) {
-
-    const serverData = await fetch(`http://localhost:9999/posts`);
+export default async function read1(props: { params: { id: string; }; }) {
+    console.log(props.params.id)
+    const serverData = await fetch(`${url}/posts`,{cache:'no-cache'});
     const posts = await serverData.json();
-    const post = posts[props.params.id]
+    console.log(posts)
+    const post = posts.find((e:{id:string,value:string})=>{e.value === props.params.id})
     console.log(post)
 
     return (
         <>
             <br></br>
             <>
-            <div>{post?post.title:null}</div>
+            {/* <div>{post?post.value:null}</div> */}
             </>
             parameter = {props.params.id}
         </>

@@ -1,10 +1,11 @@
 "use client"
 
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import url from "../config/config";
 
 export default function Form() {
 
-    const router = useRouter
+    const router = useRouter();
 
     function handleSubmit(event:React.FormEvent<HTMLFormElement>){
         event.preventDefault();
@@ -16,9 +17,10 @@ export default function Form() {
             },
             body:JSON.stringify({id:'test',value:value})
         }
-        fetch('http://localhost:9999/posts',option).then(async(res)=>{
+        fetch(`${url}/posts`,option).then(async(res)=>{
             return res.json().then((result)=>{
                 console.log(result);
+                
             })
         })
     }

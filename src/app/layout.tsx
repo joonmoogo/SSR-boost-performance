@@ -12,7 +12,6 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
     <html>
       <body>
         <h1><Link href='/'>Main Page</Link></h1>
-        <img src="/ssepcat.png" style={{width:'100%',height:'100%'}}></img>
         {children}
       </body>
     </html>

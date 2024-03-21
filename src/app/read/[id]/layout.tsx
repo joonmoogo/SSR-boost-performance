@@ -7,10 +7,10 @@ export default function Layout(props: { children: React.ReactNode; }) {
 
     return (
         <>
-            IM LAYOUT
+            <p>IM LAYOUT</p>
             {props.children}
             <br></br>
-            IM LAYOUT
+            <p>IM LAYOUT</p>
         </>
     )
 }
