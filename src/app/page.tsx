@@ -1,16 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import Form from "./components/Form";
 
-export default function Home() {
+export default async function Home() {
+  const serverData = await fetch(`http://localhost:9999/posts`);
+  const data : [{id:string,value:string}] = await serverData.json();
+  console.log(data);
   return (
     <>
     <Link href={'/'}>Home</Link>
-      <li><Link href={'/read/1'}>read1</Link></li>
-      <li><Link href={'/read/2'}>read2</Link></li>
-      <li><Link href={'/read/3'}>read3</Link></li>
-      <li><Link href={'/read/4'}>read4</Link></li>
-      <li><Link href={'/read/5'}>read5</Link></li>
-      <li><Link href={'/read/6'}>read6</Link></li>
+      <Form/>
+      {data.map((element,i)=>{
+        return(
+          <li id={`${i}`}><Link id={`${i}`} href={`/read/${element.id}`}>read {element.id}</Link></li>
+        )
+      })}
     </>
   );
 }
