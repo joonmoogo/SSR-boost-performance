@@ -8,7 +8,7 @@ export default function Form() {
 
     function handleSubmit(event:React.FormEvent<HTMLFormElement>){
         event.preventDefault();
-        const value = ((event.target as HTMLFormElement).value);
+        const value = ((event.target as HTMLFormElement).input.value);
         const option = {
             method:"POST",
             headers:{
