@@ -2,14 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Form from "./components/Form";
 import { useQuery } from "react-query";
-import url from "./config/config";
-
+import { getMemos } from "./call/memo";
 
 export default async function Home() {
-  const serverData = await fetch(`${url}/api/memo`, { cache: 'no-store' });
-  const data: [{ id: string, value: string }] = await serverData.json();
+  const data = await getMemos();
   console.log(data);
-
 
   return (
     <>
