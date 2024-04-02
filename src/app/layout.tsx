@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Link from "next/link";
+import React from "react";
+import Appbar from "./components/Appbar";
+import config from "./config/config";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
-  title: "SSR My Blog",
-  description: "boost_performance_practice",
+  title: config.name,
+  description: config.description,
 };
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html>
-      <body>
-        <h1><Link href='/'>Main Page</Link></h1>
-        {children}
-      </body>
-    </html>
+    <>
+      <html>
+        <body>
+          <Appbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </>
   );
 }

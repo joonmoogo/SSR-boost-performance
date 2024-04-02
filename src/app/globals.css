@@ -1,0 +1,22 @@
+body {
+    background-color: black;
+    color: white;
+    /* backdrop-filter: blur(10px); */
+}
+
+.main-page {
+    margin-top: 80px;
+}
+
+.design-page {
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.8);
+    color: transparent;
+
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
