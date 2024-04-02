@@ -3,8 +3,8 @@ import "./globals.css";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "SSR Tutorial",
-  description: "boost performance practice",
+  title: "SSR My Blog",
+  description: "boost_performance_practice",
 };
 
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
