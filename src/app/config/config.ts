@@ -1,5 +1,6 @@
 const config = {
     name: 'Joon\'s blog',
+    username:'joonmoogo',
     description: 'Let\'s make Next.js blog from scratch?',
     localPort: '3000',
     localUrl: 'http://localhost:3000',
@@ -25,8 +26,8 @@ const config = {
                 ]
         },
         {
-            label: "Portfolio",
-            href: "/portfolio",
+            label: "Reels",
+            href: "/reels",
             icon_class: "bi bi-clipboard-data",
             icon_path:
                 [

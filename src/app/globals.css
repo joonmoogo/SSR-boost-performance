@@ -1,11 +1,18 @@
 body {
     background-color: black;
     color: white;
-    /* backdrop-filter: blur(10px); */
 }
 
 .main-page {
     margin-top: 80px;
+    margin-bottom:100px;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+.video-page{
+    height: fit-content;
+    width: 100%;
 }
 
 .design-page {
@@ -13,7 +20,10 @@ body {
         0 0 5px rgba(255, 255, 255, 0.8),
         0 0 10px rgba(255, 255, 255, 0.8);
     color: transparent;
+    position: absolute;
+    z-index: 0;
 }
+
 
 a {
     color: inherit;

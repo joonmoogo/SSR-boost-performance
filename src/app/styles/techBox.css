@@ -1,0 +1,39 @@
+.box{
+    width: 100%;
+    display: flex;
+    
+    margin-bottom:20px;
+    border-bottom: 1px solid white;
+}
+
+.tech-box{
+    margin-bottom: 20px;
+}
+
+.box-title{
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.box-header{
+    margin-bottom: 10px;
+    color: whitesmoke;
+}
+
+img{
+    width:40%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.box-content{
+    display: flex;
+}
+.box-description{
+    width:100%;
+}
+
+.box-header{
+    display: flex;
+}
