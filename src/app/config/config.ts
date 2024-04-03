@@ -2,7 +2,7 @@ const config = {
     name: 'Joon\'s blog',
     description: 'Let\'s make Next.js blog from scratch?',
     localPort: '3000',
-    localUrl: 'localhost:3000/',
+    localUrl: 'http://localhost:3000',
     websiteUrl: 'joonmoogo.com',
     navItem: [
         {
