@@ -51,7 +51,7 @@ function WriteContent() {
             onTouchEnd={handleTouchEnd}
         >
             <ButtonGroup />
-
+{/*  */}
             <div className="slideshow"
                 ref={slideshow}
                 style={{

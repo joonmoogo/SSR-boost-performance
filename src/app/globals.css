@@ -11,7 +11,8 @@ body {
 }
 
 .video-page {
-    height: fit-content;
+    overflow: hidden;
+    height: 100%;
     width: 100%;
 }
 
