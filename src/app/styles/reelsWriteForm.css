@@ -1,0 +1,27 @@
+.reels-form{
+    margin-top:30px;
+    width: 100vw;
+}
+
+.reels-name input{
+    margin-bottom: 10px;
+    background-color: black;
+    height: 35px;
+    color: white;
+    width: 100%;
+}
+
+.reels-caption input{
+    margin-bottom:10px;
+    background-color: black;
+    height: 35px;
+    color: white;
+    width: 100%;
+}
+
+.reels-video input{
+    margin-bottom:10px;
+    background-color: black;
+    color: white;
+    width: 100%;
+}

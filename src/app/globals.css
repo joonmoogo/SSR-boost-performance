@@ -24,6 +24,13 @@ body {
     z-index: 0;
 }
 
+.form-page{
+    margin-top: 80px;
+    margin-bottom:100px;
+    width:100%;
+    overflow: hidden;
+}
+
 
 a {
     color: inherit;

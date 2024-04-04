@@ -1,0 +1,23 @@
+.personal-form {
+    margin-top: 30px;
+    width: 100vw;
+}
+
+.personal-title input {
+    width: 100%;
+    height:35px;
+    background-color: black;
+    color: white;
+}
+
+.personal-caption input {
+    margin-top: 10px;
+    height: 35px;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.personal-images{
+    margin-top: 10px;
+}

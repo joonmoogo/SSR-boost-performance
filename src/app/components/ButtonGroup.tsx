@@ -9,11 +9,11 @@ export default function ButtonGroup() {
                 <button type="button" onClick={() => { changeWriteState('tech') }}>
                     tech
                 </button>
-                <button type="button" onClick={() => { changeWriteState('personal') }}>
-                    personal
-                </button>
                 <button type="button" onClick={() => { changeWriteState('reels') }}>
                     reels
+                </button>
+                <button type="button" onClick={() => { changeWriteState('personal') }}>
+                    personal
                 </button>
             </div>
         </>
