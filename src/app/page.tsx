@@ -6,7 +6,7 @@ import { postDTO } from '@/types/postsDTO';
 import config from './config/config';
 export default async function Home() {
 
-  const serverData = await fetch(`${config.localUrl}/api/post`, { cache: 'no-store' });
+  const serverData = await fetch(`${config.localUrl}/api/personal`, { cache: 'no-store' });
   const data: postDTO[] = await serverData.json();
   return (
     <>
