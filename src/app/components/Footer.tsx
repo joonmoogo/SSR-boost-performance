@@ -1,12 +1,12 @@
-'use client'
-
+"use client"
 import React, { useEffect, useState } from "react";
 import "../styles/footer.css";
 import config from "../config/config";
 import { useRouter } from "next/router";
+import { useParams, usePathname } from "next/navigation";
 
 export default function Footer() {
-
+    const path = usePathname();
     return (
         <div className="footer">
             {config.navItem.map((item, index) => {
@@ -30,7 +30,7 @@ export default function Footer() {
                             </svg>
                         </div>
                         <div  className="footer-content">
-                            <p>{item.label}</p>
+                            <p style={path==`${item.href}`?{borderBottom:'2px solid white'}:{}}>{item.label}</p>
                         </div>
                     </div>
                 )
