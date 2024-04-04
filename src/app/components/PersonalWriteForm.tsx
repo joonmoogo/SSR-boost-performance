@@ -4,7 +4,6 @@ export default function PersonalWriteForm() {
     return (
         <>
         <div className="personal-form">
-            <p>personal</p>
             <div className="author">
                 <img src="ssepcat.png"></img>
                 <p>{config.username}</p>

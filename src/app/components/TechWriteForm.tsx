@@ -5,7 +5,6 @@ export default function TechWriteForm() {
     return (
         <>
             <div className="tech-form">
-                <p>tech</p>
                 <div className="author">
                     <img src="ssepcat.png"></img>
                     <p>{config.username}</p>

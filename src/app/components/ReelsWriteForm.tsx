@@ -5,7 +5,6 @@ export default function ReelsWriteForm() {
     return (
         <>
             <div className="reels-form">
-                <p>reels</p>
                 <div className="author">
                     <img src="ssepcat.png"></img>
                     <p>{config.username}</p>

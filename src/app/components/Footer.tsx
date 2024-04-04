@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/footer.css";
 import config from "../config/config";
 import { useRouter } from "next/router";
@@ -29,7 +29,7 @@ export default function Footer() {
                                 })}
                             </svg>
                         </div>
-                        <div className="footer-content">
+                        <div  className="footer-content">
                             <p>{item.label}</p>
                         </div>
                     </div>

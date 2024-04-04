@@ -64,7 +64,6 @@ function WriteContent() {
                 <ReelsWriteForm />
                 <PersonalWriteForm />
             </div>
-            <p>{writeState}</p>
         </div>
     )
 }
