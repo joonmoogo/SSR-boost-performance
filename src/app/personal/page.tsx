@@ -4,14 +4,23 @@ import { postDTO } from '@/types/postsDTO';
 import PersonalBox from '../components/PersonalBox';
 
 export default async function Personal() {
-    const serverData = await fetch(`${config.localUrl}/api/personal`, { cache: 'no-store' });
-    const data: postDTO[] | any = await serverData.json();
-    console.log(data);
+    // const serverData = await fetch(`${config.localUrl}/api/personal`, { cache: 'no-store' });
+    // const data: postDTO[] | any = await serverData.json();
+    const fakeData: postDTO[] = [];
+
+    for (let i = 0; i < 10; i++) {
+        fakeData.push({
+            id: i,
+            title: `Fake Title ${i}`,
+            created_at: `Fake Date ${i}`,
+            content: `Fake Content ${i}`
+        });
+    }
     return (
         <div className="main-page">
-            {data.map((post:postDTO,index:number) => {
+            {fakeData.map((post: postDTO, index: number) => {
                 return (
-                    <PersonalBox key={index} item={post}/>
+                    <PersonalBox key={index} item={post} />
                 )
             })}
         </div>
