@@ -6,12 +6,19 @@ import PersonalWriteForm from '../components/PersonalWriteForm';
 import ReelsWriteForm from '../components/ReelsWriteForm';
 import TechWriteForm from '../components/TechWriteForm';
 import { WriteStateProvider, useWriteState } from '../util/writeContext';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryCleint = new QueryClient();
+
+
 export default function Write() {
 
     return (
-        <WriteStateProvider>
-            <WriteContent />
-        </WriteStateProvider>
+        <QueryClientProvider client={queryCleint}>
+            <WriteStateProvider>
+                <WriteContent />
+            </WriteStateProvider>
+        </QueryClientProvider>
     )
 }
 
@@ -19,39 +26,22 @@ function WriteContent() {
     const { writeState } = useWriteState();
     const slideshow = useRef<any>(null);
 
-    useEffect(()=>{
-        if(writeState==='personal'){
-            slideshow.current.style.transform=`translate(-200vw)`;
+    useEffect(() => {
+        if (writeState === 'personal') {
+            slideshow.current.style.transform = `translate(-200vw)`;
         }
-        else if(writeState==='reels'){
-            slideshow.current.style.transform=`translate(-100vw)`;
+        else if (writeState === 'reels') {
+            slideshow.current.style.transform = `translate(-100vw)`;
         }
-        else{
-            slideshow.current.style.transform=`translate(00vw)`;
+        else {
+            slideshow.current.style.transform = `translate(00vw)`;
         }
-    },[writeState])
-
-    function handleTouchStart(event: any) {
-        console.log(`touch Start!${event.touches[0].clientX}`);
-    }
-
-    function handleTouchMove(event: any) {
-        const value = (event.touches[0].clientX);
-        // slideshow.current.style.transform = `translate(${value}vw)`;
-    }
-
-    function handleTouchEnd(event: any) {
-        console.log(`touch End!${event.changedTouches[0].clientX}`);
-    }
+    }, [writeState])
 
     return (
-        <div className="form-page"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-        >
+        <div className="form-page">
             <ButtonGroup />
-{/*  */}
+
             <div className="slideshow"
                 ref={slideshow}
                 style={{

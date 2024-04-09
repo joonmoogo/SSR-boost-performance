@@ -18,6 +18,8 @@ export default function ReelsWriteForm() {
                 <div className="reels-video">
                     <input type="file" />
                 </div>
+                <button>submit</button>
+
             </div>
         </>
     )

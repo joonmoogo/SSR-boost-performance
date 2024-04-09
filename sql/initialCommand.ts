@@ -1,21 +1,22 @@
 export const createReelsTable = `
     CREATE TABLE IF NOT EXISTS reels (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
+    created_At DATETIME DEFAULT (DATETIME('now', 'localtime')),
     videoURL VARCHAR(255)
 );`
 
 export const createPersonalTable = `
     CREATE TABLE IF NOT EXISTS personal(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    author VARCHAR(255),
-    createdAt DATETIME,
+    id INTEGER PRIMARY KEY,
+    title VARCHAR(255),
     content TEXT,
+    created_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
     CONSTRAINT fk_personal_images FOREIGN KEY (id) REFERENCES personal_images(personal_id)
 );`
 
 export const createPersonalImages = `
     CREATE TABLE IF NOT EXISTS personal_images(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     personal_id INT,
     image_url VARCHAR(255),
     CONSTRAINT fk_personal FOREIGN KEY (personal_id) REFERENCES personal(id)
@@ -23,9 +24,9 @@ export const createPersonalImages = `
 
 export const createTechTable = `
     CREATE TABLE IF NOT EXISTS tech (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    author VARCHAR(255),
-    createdAt DATETIME,
+    id INTEGER PRIMARY KEY,
+    title VARCHAR(255),
+    created_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
     content TEXT,
     CONSTRAINT fk_tech_images FOREIGN KEY (id) REFERENCES tech_images(tech_id)
 );`

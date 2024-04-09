@@ -1,5 +1,9 @@
 export const personalSQL ={
-    getAllPosts(){
+    getAllPersonals(){
         return `SELECT * FROM personal`;
+    },
+
+    postOnePersonal(){
+        return ``
     }
 }

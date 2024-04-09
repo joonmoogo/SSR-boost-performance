@@ -4,6 +4,7 @@ import React from "react";
 import Appbar from "./components/Appbar";
 import config from "./config/config";
 import Footer from "./components/Footer";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 export const metadata: Metadata = {
   title: config.name,

@@ -12,6 +12,8 @@ export default function TechWriteForm() {
                 <div className="form-content">
                     
                 </div>
+                <button>submit</button>
+
             </div>
 
         </>

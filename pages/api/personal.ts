@@ -5,13 +5,13 @@ export default async function posts(req: NextApiRequest, res: NextApiResponse) {
     const method = req.method;
     switch (method) {
         case "GET":
-            const selectedData = db.prepare(personalSQL.getAllPosts());
+            const selectedData = db.prepare(personalSQL.getAllPersonals());
             const data = selectedData.all();
             res.json(data);
             break;
 
         case "POST":
-            res.json("POST");
+            const query = db.prepare(personalSQL.postOnePersonal());
             break;
 
         case "DELETE":

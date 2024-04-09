@@ -4,9 +4,14 @@
 }
 
 .personal-images-preview img{
-    width:95%;
+    width:80%;
+    height:80%;
     /* border:1px solid white; */
     border-radius: 70px;
+}
+
+.personal-images-preview{
+    display: flex;
 }
 
 .personal-title input {
@@ -27,6 +32,7 @@
 .personal-images{
     margin-top: 10px;
 }
+
 
 .author {
     display: flex;
