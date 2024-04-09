@@ -13,7 +13,9 @@ export default async function Personal() {
             id: i,
             title: `Fake Title ${i}`,
             created_at: `Fake Date ${i}`,
-            content: `Fake Content ${i}`
+            content: `Fake Content ${i}`,
+            image_url:`wetcat.png`,
+            personal_id:i,
         });
     }
     return (

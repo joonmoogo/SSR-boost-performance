@@ -11,7 +11,7 @@ export const config = {
     },
 };
 
-export default async function posts(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const method = req.method;
     switch (method) {
         case "GET":
@@ -37,13 +37,26 @@ export default async function posts(req: NextApiRequest, res: NextApiResponse) {
                     resolve({ fields, files });
                 });
             });
-
-            if(postdata.files.images){
-                for(let i=0; i<postdata.files.images?.length;i++){
+            if (postdata.files.images) {
+                for (let i = 0; i < postdata.files.images?.length; i++) {
                     const oldPath = postdata.files.images[i].filepath;
                     const newPath = `${imageStoragePath}/${postdata.files.images[i].originalFilename}`
-                    await fs.rename(oldPath, newPath)
+                    await fs.rename(oldPath, newPath);
                 }
+                if(postdata.fields.title&&postdata.fields.content){
+                    const title = postdata.fields.title[0];
+                    const content = postdata.fields.content[0];
+                    const image_url = postdata.files.images[0].originalFilename;
+                    // console.log(typeof title,typeof content,typeof image_url);
+                    const onePersonalSQL = db.prepare(personalSQL.postOnePersonal());
+                    const onePersonalImageSQL = db.prepare(personalSQL.postOnePersonalImage());
+                    
+                    onePersonalSQL.run({title:title,content:content});
+                    onePersonalImageSQL.run({image_url:image_url})
+                }
+                // const stmt = db.prepare(`INSERT INTO personal (title, content) VALUES (?, ?)`);
+                // stmt.run(title,content);
+                // db.prepare(personalSQL.postOnePersonalImage(image_url)).run();
                 res.status(200).json('Server Image uploaded');
             }
             break;

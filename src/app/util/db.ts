@@ -4,12 +4,14 @@ import {
     createPersonalTable,
     createTechTable,
     createPersonalImages,
-    createTechImages
+    createTechImages,
+    foerignkeyOn
 } from "../../../sql/initialCommand";
 
 const db = new Database('mydata.sqlite')
 db.pragma("journal_mode = WAL");
-db.exec(createReelsTable)
+db.exec(foerignkeyOn);
+db.exec(createReelsTable);
 db.exec(createPersonalTable);
 db.exec(createTechTable)
 db.exec(createPersonalImages);

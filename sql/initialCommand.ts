@@ -1,3 +1,5 @@
+export const foerignkeyOn = `PRAGMA foreign_keys = ON;`
+
 export const createReelsTable = `
     CREATE TABLE IF NOT EXISTS reels (
     id INTEGER PRIMARY KEY,
@@ -10,14 +12,13 @@ export const createPersonalTable = `
     id INTEGER PRIMARY KEY,
     title VARCHAR(255),
     content TEXT,
-    created_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
-    CONSTRAINT fk_personal_images FOREIGN KEY (id) REFERENCES personal_images(personal_id)
+    created_at DATETIME DEFAULT (DATETIME('now', 'localtime'))
 );`
 
 export const createPersonalImages = `
     CREATE TABLE IF NOT EXISTS personal_images(
     id INTEGER PRIMARY KEY,
-    personal_id INT,
+    personal_id INTEGER,
     image_url VARCHAR(255),
     CONSTRAINT fk_personal FOREIGN KEY (personal_id) REFERENCES personal(id)
 );`
