@@ -15,7 +15,6 @@ export default async function posts(req: NextApiRequest, res: NextApiResponse) {
     const method = req.method;
     switch (method) {
         case "GET":
-            // 
             const selectedData = db.prepare(personalSQL.getAllPersonals());
             const data = selectedData.all();
             res.json(data);
@@ -25,7 +24,6 @@ export default async function posts(req: NextApiRequest, res: NextApiResponse) {
             const imageStoragePath = path.join(process.cwd() + "/public/server_images");
             try {
                 await fs.readdir(imageStoragePath);
-
             } catch {
                 await fs.mkdir(imageStoragePath, { recursive: true });
             }
@@ -40,16 +38,14 @@ export default async function posts(req: NextApiRequest, res: NextApiResponse) {
                 });
             });
 
-            const files = postdata.files;
-            const oldPath = files.images ? files.images[0].filepath : null;
-            const newPath = (imageStoragePath);
-            const filename = files.images ? files.images[0].originalFilename : null;
-            if (oldPath) {
-                fs.rename(oldPath, `${newPath}/${filename}`).then(() => {
-                    res.json('post good');
-                })
+            if(postdata.files.images){
+                for(let i=0; i<postdata.files.images?.length;i++){
+                    const oldPath = postdata.files.images[i].filepath;
+                    const newPath = `${imageStoragePath}/${postdata.files.images[i].originalFilename}`
+                    await fs.rename(oldPath, newPath)
+                }
+                res.status(200).json('Server Image uploaded');
             }
-
             break;
 
         case "DELETE":

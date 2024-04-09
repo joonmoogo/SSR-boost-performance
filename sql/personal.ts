@@ -14,5 +14,6 @@ export const personalSQL = {
         INSERT INTO personal_images (personal_id, image_url) VALUES (last_insert_rowid(), '${image_url}');
         COMMIT;
         `
-    }
+    },
+
 }

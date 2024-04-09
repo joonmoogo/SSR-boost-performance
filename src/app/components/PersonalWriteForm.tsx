@@ -6,14 +6,17 @@ export default function PersonalWriteForm() {
 
     const [current, setCurrent] = useState<number>(0);
     const [imagesArray, setImagesArray] = useState<any[]>([])
-
+    const [serverImagesArray,setServerImagesArray] = useState<File[]>([]);
+    
     const slideshow = useRef<any>(null);
     const imgRef = useRef<any>(null);
     const titleRef = useRef<any>(null);
     const contentRef = useRef<any>(null);
+    
 
     const encodeFileToBase64 = (fileBlob: any): Promise<string> | undefined => {
         if (!fileBlob) return undefined
+        console.log(fileBlob);
         const reader = new FileReader();
         reader.readAsDataURL(fileBlob);
         return new Promise((resolve) => {
@@ -21,6 +24,7 @@ export default function PersonalWriteForm() {
                 if (reader.result) {
                     const csv: string = reader.result as string;
                     setImagesArray([...imagesArray, csv]);
+                    setServerImagesArray([...serverImagesArray, fileBlob]);
                     resolve(csv);
                 }
             };
@@ -38,18 +42,19 @@ export default function PersonalWriteForm() {
 
     const onTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
         console.log(e.changedTouches[0].clientX);
-        setCurrent(0);
     }
 
     const onSubmit = async () => {
         const title = titleRef.current.value;
         const content = contentRef.current.value;
-        const image = imgRef.current.files[0];
+        const image = serverImagesArray;
         
         const formdata = new FormData();
         formdata.append('title',title);
         formdata.append('content',content);
-        formdata.append('images',image);
+        for(let i=0; i<image.length; i++){
+            formdata.append('images',image[i]);
+        }
 
         const serverData = await fetch(`${config.localUrl}/api/personal`, {
             cache: 'no-store',
@@ -63,7 +68,6 @@ export default function PersonalWriteForm() {
             content,
             image,
         });
-
     }
 
 
