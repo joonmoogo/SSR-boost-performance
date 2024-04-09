@@ -20,7 +20,7 @@ export const personalSQL = {
         return `INSERT INTO personal (title, content) VALUES (@title, @content);`
     },
     postOnePersonalImage(){
-        return `INSERT INTO personal_images (personal_id, image_url) VALUES (last_insert_rowid(), @image_url);`
+        return `INSERT INTO personal_images (personal_id, image_url) VALUES (@lastRowId, @image_url);`
     },
     getLastInsertedId(){
         return `SELECT last_insert_rowid();`

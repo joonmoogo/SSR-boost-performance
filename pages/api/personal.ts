@@ -43,16 +43,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     const newPath = `${imageStoragePath}/${postdata.files.images[i].originalFilename}`
                     await fs.rename(oldPath, newPath);
                 }
-                if(postdata.fields.title&&postdata.fields.content){
+                if (postdata.fields.title && postdata.fields.content) {
                     const title = postdata.fields.title[0];
                     const content = postdata.fields.content[0];
-                    const image_url = postdata.files.images[0].originalFilename;
                     // console.log(typeof title,typeof content,typeof image_url);
                     const onePersonalSQL = db.prepare(personalSQL.postOnePersonal());
                     const onePersonalImageSQL = db.prepare(personalSQL.postOnePersonalImage());
-                    
-                    onePersonalSQL.run({title:title,content:content});
-                    onePersonalImageSQL.run({image_url:image_url})
+                    const lastidSQL = db.prepare(personalSQL.getLastInsertedId());
+                    onePersonalSQL.run({ title: title, content: content });
+                    const lastRowId = lastidSQL.run().lastInsertRowid;
+                    for (let i = 0; i < postdata.files.images?.length; i++) {
+                        const image_url = postdata.files.images[i].originalFilename;
+                        onePersonalImageSQL.run({ lastRowId: lastRowId, image_url: image_url });
+                    }
                 }
                 // const stmt = db.prepare(`INSERT INTO personal (title, content) VALUES (?, ?)`);
                 // stmt.run(title,content);
