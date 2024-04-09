@@ -55,9 +55,6 @@ export default function PersonalWriteForm() {
             cache: 'no-store',
             method: 'POST',
             body:formdata,
-            headers:{
-                'Content-Type': 'multipart/form-data',
-            }
         });
         const data: any = await serverData.json();
         console.log(data);
