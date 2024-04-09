@@ -11,7 +11,13 @@ export default async function posts(req: NextApiRequest, res: NextApiResponse) {
             break;
 
         case "POST":
-            const query = db.prepare(personalSQL.postOnePersonal());
+            console.log(req);
+            res.json('post');
+            // const title = ''
+            // const content = ''
+            // const image_url = ''
+            // console.log(title,content,image_url);
+            // const query = db.prepare(personalSQL.postOnePersonal(title,content,image_url));
             break;
 
         case "DELETE":
