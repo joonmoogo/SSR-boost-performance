@@ -65,6 +65,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break;
 
         case "DELETE":
+            console.log(req);
             res.json("DELETE");
             break;
 

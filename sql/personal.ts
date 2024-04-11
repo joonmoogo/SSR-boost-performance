@@ -4,7 +4,8 @@ export const personalSQL = {
         SELECT * 
         FROM personal 
         INNER JOIN personal_images 
-        ON personal.id = personal_images.personal_id `;
+        ON personal.id = personal_images.personal_id
+        ORDER BY personal.id DESC;`
     },
 
     postOnePersonal(){
@@ -23,5 +24,11 @@ export const personalSQL = {
 
     getLastInsertedId(){
         return `SELECT last_insert_rowid();`
+    },
+    deleteOnePersonalById(){
+        return `DELETE FROM personal WHERE id = (@id)`
+    },
+    deletePersonalImagesById(){
+        return `DELETE FROM personal WHERE personal_id = (@personal_id)`
     }
 }

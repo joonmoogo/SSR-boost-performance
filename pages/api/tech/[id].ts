@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import db from "@/app/util/db";
-import { reelslSQL } from "../../sql/reels";
+import { techSQL } from "../../../sql/tech";
 import formidable, { IncomingForm } from 'formidable';
 import fs from "fs/promises";
 import path from "path";
@@ -19,14 +19,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break;
 
         case "POST":
-           res.json('POST');
-           const imageStoragePath = path.join(process.cwd() + "/public/static/tech_videos");
+            // res.json('POST');
+            const imageStoragePath = path.join(process.cwd() + "/public/static/tech_images");
             try {
                 await fs.readdir(imageStoragePath);
             } catch {
                 await fs.mkdir(imageStoragePath, { recursive: true });
             }
-           break;
+            
+            break;
 
         case "DELETE":
             res.json("DELETE");
