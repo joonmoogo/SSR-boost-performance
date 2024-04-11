@@ -18,7 +18,7 @@ export default function PersonalBox(props: { item: postDTO }) {
                 {props.item.content}
             </div>
             <div className="box-image">
-                <img src={`server_images/${props.item.image_url}`} alt="" />
+                <img src={`static/personal_images/${props.item.image_url}`} alt="" />
             </div>
         </div>
     )

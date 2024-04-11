@@ -20,6 +20,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case "POST":
            res.json('POST');
+           const imageStoragePath = path.join(process.cwd() + "/public/static/tech_videos");
+            try {
+                await fs.readdir(imageStoragePath);
+            } catch {
+                await fs.mkdir(imageStoragePath, { recursive: true });
+            }
            break;
 
         case "DELETE":

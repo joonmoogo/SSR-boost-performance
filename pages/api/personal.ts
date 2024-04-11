@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break;
 
         case "POST":
-            const imageStoragePath = path.join(process.cwd() + "/public/server_images");
+            const imageStoragePath = path.join(process.cwd() + "/public/static/personal_images");
             try {
                 await fs.readdir(imageStoragePath);
             } catch {
@@ -54,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     const lastRowId = lastidSQL.run().lastInsertRowid;
                     for (let i = 0; i < postdata.files.images?.length; i++) {
                         const image_url = postdata.files.images[i].originalFilename;
-                        onePersonalImageSQL.run({ lastRowId: lastRowId, image_url: image_url });
+                        onePersonalImageSQL.run({ personal_id: lastRowId, image_url: image_url });
                     }
                 }
                 // const stmt = db.prepare(`INSERT INTO personal (title, content) VALUES (?, ?)`);
