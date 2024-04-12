@@ -28,8 +28,7 @@ export const createTechTable = `
     id INTEGER PRIMARY KEY,
     title VARCHAR(255),
     created_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
-    content TEXT,
-    CONSTRAINT fk_tech_images FOREIGN KEY (id) REFERENCES tech_images(tech_id)
+    content TEXT
 );`
 
 export const createTechImages = `

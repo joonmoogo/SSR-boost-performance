@@ -12,6 +12,13 @@ export const techSQL = {
         tech (title, content)
         VALUES (@title, @content);`
     },
+    postOnePersonal(){
+        return `
+        INSERT INTO 
+        personal (title, content)
+        VALUES (@title, @content);`
+    },
+
     postOneTechImage(){
         return `
         INSERT INTO 

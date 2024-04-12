@@ -5,12 +5,6 @@ import formidable, { IncomingForm } from 'formidable';
 import fs from "fs/promises";
 import path from "path";
 
-export const config = {
-    api: {
-        bodyParser: false,
-    },
-};
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const method = req.method;
     switch (method) {
@@ -19,14 +13,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break;
 
         case "POST":
-            // res.json('POST');
-            const imageStoragePath = path.join(process.cwd() + "/public/static/tech_images");
-            try {
-                await fs.readdir(imageStoragePath);
-            } catch {
-                await fs.mkdir(imageStoragePath, { recursive: true });
-            }
-            
+            const body = JSON.parse(req.body);
+            const oneTechSQL = db.prepare(techSQL.postOneTech());
+            oneTechSQL.run({title:body.title,content:body.content});
+            res.status(200).json('good');
             break;
 
         case "DELETE":
