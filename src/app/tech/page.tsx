@@ -1,13 +1,18 @@
 import TechBox from "../components/TechBox"
+import config from "../config/config"
 
-export default function Tech() {
+export default async function Tech() {
+    const serverData = await fetch(`${config.localUrl}/api/tech`, { cache: 'no-store' });
+    const data: techDTO[] = await serverData.json();
     return (
         <div className="main-page">
-            {[1,2,3,4,5].map((e,index)=>{
-                return(
-                    <TechBox key={index}/>
-                )
-            })}
+            {
+                data.map((e, index) => {
+                    return (
+                        <TechBox item={e} key={index} />
+                    )
+                })
+            }
         </div>
     )
 }

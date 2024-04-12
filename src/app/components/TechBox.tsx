@@ -1,25 +1,56 @@
+"use client"
 import React from "react";
 import '../styles/techBox.css'
-export default function TechBox() {
+export default function TechBox(props:{item:techDTO}) {
+    
+    function getFirstImg(content:string) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, 'text/html');
+
+        const firstImg = doc.querySelector('img');
+        if (firstImg)
+            return firstImg.src;
+        else
+            return null;
+    }
+
+    function getFirstDiv(content:string){
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, 'text/html');
+
+        const firstDiv = doc.querySelector('div');
+        if (firstDiv)
+            if(firstDiv.innerHTML.length>30){
+                return firstDiv.innerHTML.slice(0,40) + '...';
+            }else{
+                return firstDiv.innerHTML;
+            }  
+        else
+            return null;
+    }
+
+    console.log(getFirstImg(props.item.content))
+
     return (
         <>
             <div className="box">
                 <div className="tech-box">
                     <div className="box-title">
-                        강남구청역 맛집 줄서는 식당입니다. 소개
+                        {props.item.title}
                     </div>
                     <div className="box-header">
                         <div className="box-createdat">
-                            7시간 전
+                            {props.item.created_at}
                         </div>
                     </div>
                     <div className="box-content">
                         <div className="box-description">
-                            대구 미분양주택수의 감소 = 상승의 신호인...
+                            {getFirstDiv(props.item.content)}
                         </div>
                     </div>
                 </div>
-                <img src="wetcat.png" />
+                {/* <img src="wetcat.png" /> */}
+                {getFirstImg(props.item.content)?<img src={getFirstImg(props.item.content)}></img>:null}
             </div>
         </>
     )
