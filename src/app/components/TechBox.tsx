@@ -1,10 +1,13 @@
 "use client"
 import React from "react";
 import '../styles/techBox.css'
-export default function TechBox(props:{item:techDTO}) {
-    
-    function getFirstImg(content:string) {
-        const parser = new DOMParser();
+export default function TechBox(props: { item: techDTO }) {
+
+    const firstImgSrc = getFirstImg(props.item.content);
+    const firstDivContent = getFirstDiv(props.item.content);
+
+    function getFirstImg(content: string): string | null {
+        const parser = new DOMParser()
         const doc = parser.parseFromString(content, 'text/html');
 
         const firstImg = doc.querySelector('img');
@@ -14,22 +17,20 @@ export default function TechBox(props:{item:techDTO}) {
             return null;
     }
 
-    function getFirstDiv(content:string){
+    function getFirstDiv(content: string) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(content, 'text/html');
 
         const firstDiv = doc.querySelector('div');
         if (firstDiv)
-            if(firstDiv.innerHTML.length>30){
-                return firstDiv.innerHTML.slice(0,40) + '...';
-            }else{
+            if (firstDiv.innerHTML.length > 30) {
+                return firstDiv.innerHTML.slice(0, 40) + '...';
+            } else {
                 return firstDiv.innerHTML;
-            }  
+            }
         else
             return null;
     }
-
-    console.log(getFirstImg(props.item.content))
 
     return (
         <>
@@ -45,12 +46,11 @@ export default function TechBox(props:{item:techDTO}) {
                     </div>
                     <div className="box-content">
                         <div className="box-description">
-                            {getFirstDiv(props.item.content)}
+                            {firstDivContent}
                         </div>
                     </div>
                 </div>
-                {/* <img src="wetcat.png" /> */}
-                {getFirstImg(props.item.content)?<img src={getFirstImg(props.item.content)}></img>:null}
+                {firstImgSrc && <img src={firstImgSrc} alt="First Image" />}
             </div>
         </>
     )
