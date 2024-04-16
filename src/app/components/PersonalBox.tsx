@@ -15,6 +15,29 @@ export default function PersonalBox(props: { item: personalDTO }) {
     const slideCount = imageArray.length
     console.log(imageArray);
 
+    function timeTune(time: string) {
+        const givenDate: any = new Date(time);
+        const currentDate: any = new Date();
+        const differenceMs = currentDate - givenDate;
+        const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
+        const differenceHours = Math.floor((differenceMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let result;
+        if (differenceDays === 0) {
+            if (differenceHours === 0) {
+              const differenceMinutes = Math.floor((differenceMs % (1000 * 60 * 60)) / (1000 * 60));
+              result = `${differenceMinutes}분 전`;
+            } else {
+              result = `${differenceHours}h`;
+            }
+          } else if (differenceDays < 7) {
+            result = `${differenceDays}d`;
+          } else {
+            const differenceWeeks = Math.floor(differenceDays / 7);
+            result = `${differenceWeeks}w`;
+          }
+        return result;
+    }
+
     // IMAGE SLIDESHOW : n * -45
     // ex) slideCount == 2 ? max = -90 
     // ex) slideCount == 3 ? max = -130
@@ -32,11 +55,11 @@ export default function PersonalBox(props: { item: personalDTO }) {
         }
     }
     useEffect(() => {
-        if(currentSlide ===slideCount+1){
+        if (currentSlide === slideCount + 1) {
             setCurrentSlide(0);
         }
-        else if(currentSlide === -1){
-            setCurrentSlide(slideCount-1)
+        else if (currentSlide === -1) {
+            setCurrentSlide(slideCount - 1)
         }
 
         slideshow.current.style.transform = `translate(${-45 * currentSlide + 1}vw)`
@@ -49,11 +72,10 @@ export default function PersonalBox(props: { item: personalDTO }) {
     return (
         <div className="image-box">
             <div className="box-header">
-                <div className="box-title">
-                    {props.item.title}
-                </div>
-                <div className="box-createdat">
-                    {props.item.created_at}
+                <div className="author">
+                    <img src="ssepcat.png"></img>
+                    <p>{config.username}</p>
+                    <p>{timeTune(props.item.created_at)}</p>
                 </div>
             </div>
             <div className="box-content">

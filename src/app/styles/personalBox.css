@@ -5,13 +5,33 @@
     /* color: black; */
     overflow: hidden;
     border-bottom: 1px solid white;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
+
+.author {
+    display: flex;
+}
+.author img {
+    border-radius: 100px;
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    margin-top: 5px;
+}
+
+.author p {
+    margin-right:10px;
+}
+
 
 .box-image{
     display: flex;
     position: relative;
     /* transform: translate(-45vw); */
+}
+
+.box-content{
+    padding-bottom: 10px;
 }
 
 img{
@@ -22,7 +42,6 @@ img{
 
 .box-header{
     display: flex;
-    margin-bottom: 10px;
 }
 
 .box-title{

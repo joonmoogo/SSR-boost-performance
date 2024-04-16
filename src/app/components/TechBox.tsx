@@ -2,6 +2,7 @@
 import React from "react";
 import '../styles/techBox.css'
 import { techDTO } from "@/types/DTO";
+import config from "../config/config";
 export default function TechBox(props: { item: techDTO }) {
     console.log(props.item);
 
@@ -33,10 +34,10 @@ export default function TechBox(props: { item: techDTO }) {
         else
             return null;
     }
-
     return (
         <>
             <div className="box">
+
                 <div className="tech-box">
                     <div className="box-title">
                         {props.item.title}
