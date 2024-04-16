@@ -1,7 +1,9 @@
 "use client"
 import React from "react";
 import '../styles/techBox.css'
+import { techDTO } from "@/types/DTO";
 export default function TechBox(props: { item: techDTO }) {
+    console.log(props.item);
 
     const firstImgSrc = getFirstImg(props.item.content);
     const firstDivContent = getFirstDiv(props.item.content);

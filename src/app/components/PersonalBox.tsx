@@ -1,20 +1,12 @@
 "use client"
 import React from "react";
 import config from "../config/config";
-import { postDTO } from "@/types/postsDTO";
+import { personalDTO } from "@/types/DTO";
 import '../styles/personalBox.css'
+import { deleteOnerPersonal } from "../util/customFetch";
 
-export default function PersonalBox(props: { item: postDTO }) {
+export default function PersonalBox(props: { item: personalDTO }) {
 
-    async function delete_ask (){
-        const serverData = await fetch(`${config.localUrl}/api/personal`, {
-            cache: 'no-store',
-            method: 'DELETE',
-            body:JSON.stringify('hello')
-        });
-        const data: any = await serverData.json();
-        console.log(data);
-    }
     return (
         <div className="image-box">
             <div className="box-header">
@@ -29,7 +21,7 @@ export default function PersonalBox(props: { item: postDTO }) {
                 {props.item.content}
             </div>
             <div className="box-image">
-                <img onClick={delete_ask} src={`static/personal_images/${props.item.image_url}`} alt="" />
+                <img onClick={deleteOnerPersonal} src={`static/personal_images/${props.item.image_url}`} alt="" />
             </div>
         </div>
     )

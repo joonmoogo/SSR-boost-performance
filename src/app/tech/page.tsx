@@ -1,9 +1,9 @@
 import TechBox from "../components/TechBox"
 import config from "../config/config"
-
+import { techDTO } from "@/types/DTO"
+import { getAllTech } from "../util/customFetch"
 export default async function Tech() {
-    const serverData = await fetch(`${config.localUrl}/api/tech`, { cache: 'no-store' });
-    const data: techDTO[] = await serverData.json();
+    const data = await getAllTech();
     return (
         <div className="main-page">
             {

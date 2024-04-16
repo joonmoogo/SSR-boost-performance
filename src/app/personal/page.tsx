@@ -1,26 +1,14 @@
 import '../globals.css'
 import config from '../config/config';
-import { postDTO } from '@/types/postsDTO';
 import PersonalBox from '../components/PersonalBox';
-
+import { personalDTO } from '@/types/DTO';
+import { getAllPersonal } from '../util/customFetch';
 export default async function Personal() {
-    const serverData = await fetch(`${config.localUrl}/api/personal`, { cache: 'no-store' });
-    const data: postDTO[] | any = await serverData.json();
-    const fakeData: postDTO[] = [];
+    const data: personalDTO[] = await getAllPersonal();
 
-    for (let i = 0; i < 10; i++) {
-        fakeData.push({
-            id: i,
-            title: `Fake Title ${i}`,
-            created_at: `Fake Date ${i}`,
-            content: `Fake Content ${i}`,
-            image_url:`wetcat.png`,
-            personal_id:i,
-        });
-    }
     return (
         <div className="main-page">
-            {fakeData.map((post: postDTO, index: number) => {
+            {data.map((post: personalDTO, index: number) => {
                 return (
                     <PersonalBox key={index} item={post} />
                 )
