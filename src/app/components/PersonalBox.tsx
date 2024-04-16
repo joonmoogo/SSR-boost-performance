@@ -4,6 +4,7 @@ import config from "../config/config";
 import { personalDTO } from "@/types/DTO";
 import '../styles/personalBox.css'
 import { deleteOnerPersonal } from "../util/customFetch";
+import { timeTune } from "../util/util";
 
 
 export default function PersonalBox(props: { item: personalDTO }) {
@@ -14,29 +15,6 @@ export default function PersonalBox(props: { item: personalDTO }) {
     const imageArray = props.item.image_url.split(',');
     const slideCount = imageArray.length
     console.log(imageArray);
-
-    function timeTune(time: string) {
-        const givenDate: any = new Date(time);
-        const currentDate: any = new Date();
-        const differenceMs = currentDate - givenDate;
-        const differenceDays = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
-        const differenceHours = Math.floor((differenceMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let result;
-        if (differenceDays === 0) {
-            if (differenceHours === 0) {
-              const differenceMinutes = Math.floor((differenceMs % (1000 * 60 * 60)) / (1000 * 60));
-              result = `${differenceMinutes}분 전`;
-            } else {
-              result = `${differenceHours}h`;
-            }
-          } else if (differenceDays < 7) {
-            result = `${differenceDays}d`;
-          } else {
-            const differenceWeeks = Math.floor(differenceDays / 7);
-            result = `${differenceWeeks}w`;
-          }
-        return result;
-    }
 
     // IMAGE SLIDESHOW : n * -45
     // ex) slideCount == 2 ? max = -90 
