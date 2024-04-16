@@ -5,7 +5,7 @@ import { personalDTO } from '@/types/DTO';
 import { getAllPersonal } from '../util/customFetch';
 export default async function Personal() {
     const data: personalDTO[] = await getAllPersonal();
-
+    console.log(data);
     return (
         <div className="main-page">
             {data.map((post: personalDTO, index: number) => {
