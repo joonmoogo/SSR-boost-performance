@@ -6,13 +6,16 @@ body {
 .main-page {
     margin-top: 80px;
     margin-bottom: 100px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 .video-page {
     overflow: hidden;
     height: 100%;
+    width: 100%;
+}
+.server-html img{
     width: 100%;
 }
 

@@ -15,7 +15,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const method = req.method;
     switch (method) {
         case "GET":
-            res.json('GET');
+            const id = req.query.id
+            const oneTechSQL = db.prepare(techSQL.getOneTech());
+            const data = oneTechSQL.get(id)
+            res.json(data);
             break;
 
         case "POST":
@@ -26,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             } catch {
                 await fs.mkdir(imageStoragePath, { recursive: true });
             }
-            
+
             break;
 
         case "DELETE":

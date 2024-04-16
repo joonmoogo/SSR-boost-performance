@@ -5,6 +5,12 @@ export const techSQL = {
         FROM tech
         ORDER BY tech.id DESC;`
     },
+    getOneTech(){
+        return`
+        SELECT *
+        FROM tech
+        WHERE tech.id = ?`
+    },
     postOneTech(){
         return `
         INSERT INTO 

@@ -1,19 +1,22 @@
+"use client"
+
 import React from "react";
 import '../styles/techBox.css'
 import { techDTO } from "@/types/DTO";
 import config from "../config/config";
 import jsdom from "jsdom";
 
-
-
 export default function TechBox(props: { item: techDTO }) {
-    
+
     const firstImgSrc = getFirstImg(props.item.content);
     const firstDivContent = getFirstDiv(props.item.content);
 
     function getFirstImg(content: string): string | null {
-        const doc = new jsdom.JSDOM(content);
-        const firstImg = doc.window.document.querySelector('img');
+        // const doc = new jsdom.JSDOM(content);
+        // const firstImg = doc.window.document.querySelector('img');
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, 'text/html')
+        const firstImg = doc.querySelector('img');
         if (firstImg)
             return firstImg.src;
         else
@@ -21,8 +24,12 @@ export default function TechBox(props: { item: techDTO }) {
     }
 
     function getFirstDiv(content: string) {
-        const doc = new jsdom.JSDOM(content);
-        const firstDiv = doc.window.document.querySelector('div');
+        // const doc = new jsdom.JSDOM(content);
+        // const firstDiv = doc.window.document.querySelector('div');
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, 'text/html')
+        const firstDiv = doc.querySelector('div');
+
         if (firstDiv)
             if (firstDiv.innerHTML.length > 30) {
                 return firstDiv.innerHTML.slice(0, 40) + '...';
@@ -32,26 +39,37 @@ export default function TechBox(props: { item: techDTO }) {
         else
             return null;
     }
+    const onClick = (e:any) =>{
+        window.location.href=`/tech/${props.item.id}`
+    }
     return (
         <>
-            <div className="box">
 
-                <div className="tech-box">
-                    <div className="box-title">
-                        {props.item.title}
-                    </div>
-                    <div className="box-header">
-                        <div className="box-createdat">
-                            {props.item.created_at}
+            <div className="container">
+                <div className="box" onClick={onClick}>
+                    <div className="tech-box">
+                        <div className="box-author">
+                            <img src="ssepcat.png"></img>
+                            <p>{config.username}</p>
                         </div>
-                    </div>
-                    <div className="box-content">
-                        <div className="box-description">
-                            {firstDivContent}
+                        <div className="box-title">
+                            {props.item.title}
+                        </div>
+                        <div className="box-header">
+                            <div className="box-createdat">
+                                {props.item.created_at}
+                            </div>
+                        </div>
+                        <div className="box-content">
+                            <div className="box-description">
+                                {firstDivContent}
+                            </div>
                         </div>
                     </div>
                 </div>
-                {firstImgSrc && <img src={firstImgSrc} alt="First Image" />}
+                <div className="box-image">
+                    {firstImgSrc && <img src={firstImgSrc} alt="First Image" />}
+                </div>
             </div>
         </>
     )

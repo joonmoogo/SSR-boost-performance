@@ -29,11 +29,18 @@ const deleteOnerPersonal = async () => {
     console.log(data);
 }
 
+const getOneTech =  async(id:any) =>{
+    const serverData = await fetch(`${config.localUrl}/api/tech/${id}`,{cache: 'no-store'});
+    const data : any = await serverData.json();
+    return data;
+}
+
 export {
     getAllPersonal,
     getAllTech,
     getAllReels,
-    deleteOnerPersonal
+    deleteOnerPersonal,
+    getOneTech
 }
 
 
