@@ -19,14 +19,44 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break;
 
         case "POST":
-           res.json('POST');
-           const imageStoragePath = path.join(process.cwd() + "/public/static/tech_videos");
+            const videoStoragePath = path.join(process.cwd() + "/public/static/tech_videos");
             try {
-                await fs.readdir(imageStoragePath);
+                await fs.readdir(videoStoragePath);
             } catch {
-                await fs.mkdir(imageStoragePath, { recursive: true });
+                await fs.mkdir(videoStoragePath, { recursive: true });
             }
-           break;
+
+            const postdata: { fields: formidable.Fields; files: formidable.Files; } = await new Promise((resolve, reject) => {
+                const form = new IncomingForm();
+                form.parse(req, (err, fields, files) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve({ fields, files });
+                });
+            });
+
+            if (postdata.files.video) {
+                const oldPath = postdata.files.video[0].filepath;
+                const newPath = `${videoStoragePath}/${postdata.files.video[0].originalFilename}`
+                await fs.rename(oldPath, newPath);
+
+                if (postdata.fields.title && postdata.fields.caption) {
+                    const title = postdata.fields.title[0];
+                    const caption = postdata.fields.caption[0];
+                    const oneReelsSQL = db.prepare(reelslSQL.postOneReels());
+                    const oneReelsVideoSQL = db.prepare(reelslSQL.postOneReelsVideo());
+                    const lastidSQL = db.prepare(reelslSQL.getLastInsertedId());
+                    oneReelsSQL.run({ title: title, caption: caption });
+                    const lastRowId = lastidSQL.run().lastInsertRowid;
+                    const video_url = postdata.files.video[0].originalFilename;
+                    oneReelsVideoSQL.run({ reels_id: lastRowId, video_url: video_url });
+                }
+
+                res.status(200).json('Server Image uploaded');
+            }
+
+            break;
 
         case "DELETE":
             res.json("DELETE");

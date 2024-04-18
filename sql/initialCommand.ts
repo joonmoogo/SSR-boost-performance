@@ -3,8 +3,18 @@ export const foerignkeyOn = `PRAGMA foreign_keys = ON;`
 export const createReelsTable = `
     CREATE TABLE IF NOT EXISTS reels (
     id INTEGER PRIMARY KEY,
+    title VARCHAR(255),
+    caption TEXT,
     created_At DATETIME DEFAULT (DATETIME('now', 'localtime')),
     videoURL VARCHAR(255)
+);`
+
+export const createReelsVideo = `
+    CREATE TABLE IF NOT EXISTS reels_videos(
+    id INTEGER PRIMARY KEY,
+    reels_id INTEGER,
+    video_url VARCHAR(255),
+    CONSTRAINT fk_reels FOREIGN KEY (reels_id) REFERENCES reels(id)
 );`
 
 export const createPersonalTable = `
