@@ -1,20 +1,23 @@
-.video-form video{
+.video-form video {
     margin-top: 10px;
-    width: 95vw;
+}
+
+video {
+    width: 100vw;
     height: 200vw;
 }
 
-.video-option{
+.video-option {
     margin-left: 20px;
-    position: absolute;
-    top:30rem;
+    position: relative;
+    top: 30rem;
 }
 
-.video-name{
+.video-name {
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-.video-description{
-    margin-bottom:10px;
+.video-description {
+    margin-bottom: 10px;
 }

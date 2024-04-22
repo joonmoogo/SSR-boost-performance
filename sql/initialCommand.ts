@@ -5,8 +5,7 @@ export const createReelsTable = `
     id INTEGER PRIMARY KEY,
     title VARCHAR(255),
     caption TEXT,
-    created_At DATETIME DEFAULT (DATETIME('now', 'localtime')),
-    videoURL VARCHAR(255)
+    created_At DATETIME DEFAULT (DATETIME('now', 'localtime'))
 );`
 
 export const createReelsVideo = `

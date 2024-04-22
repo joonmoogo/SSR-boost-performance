@@ -15,11 +15,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const method = req.method;
     switch (method) {
         case "GET":
-            res.json('GET');
+            const selectedData = db.prepare(reelslSQL.getAllReels());
+            const data = selectedData.all();
+            res.json(data);
             break;
 
         case "POST":
-            const videoStoragePath = path.join(process.cwd() + "/public/static/tech_videos");
+            const videoStoragePath = path.join(process.cwd() + "/public/static/reels_videos");
             try {
                 await fs.readdir(videoStoragePath);
             } catch {

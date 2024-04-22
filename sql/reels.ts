@@ -3,8 +3,19 @@ export const reelslSQL = {
         return `
         SELECT * 
         FROM reels 
-        INNER JOIN reels_video 
-        ON reels.id = reels_video.reels_id `;
+        INNER JOIN reels_videos
+        ON reels.id = reels_videos.reels_id 
+        ORDER BY reels.id DESC;`;
+    },
+
+    getReelsByCount() {
+        return `
+        SELECT * 
+        FROM reels 
+        INNER JOIN reels_videos
+        ON reels.id = reels_videos.reels_id 
+        WHERE reels.id BETWEEN ? AND ?
+        ORDER BY reels.id DESC;`;
     },
 
     postOneReels() {

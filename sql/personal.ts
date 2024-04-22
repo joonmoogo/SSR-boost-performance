@@ -15,6 +15,17 @@ export const personalSQL = {
         ORDER BY personal.id DESC;`
     },
 
+    getPersonalsByCount() {
+        return `
+        SELECT * 
+        FROM personal 
+        INNER JOIN personal_images
+        ON personal.id = personal_images.personal_id 
+        WHERE personal.id BETWEEN ? AND ?
+        GROUP BY personal.id
+        ORDER BY personal.id DESC;`;
+    },
+
     postOnePersonal() {
         return `
         INSERT INTO 

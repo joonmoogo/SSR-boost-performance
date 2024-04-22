@@ -11,6 +11,15 @@ export const techSQL = {
         FROM tech
         WHERE tech.id = ?`
     },
+
+    getTechsByCount() {
+        return `
+        SELECT * 
+        FROM tech 
+        WHERE tech.id BETWEEN ? AND ?
+        ORDER BY tech.id DESC;`;
+    },
+    
     postOneTech(){
         return `
         INSERT INTO 
