@@ -3,18 +3,14 @@ import config from '../config/config';
 import PersonalBox from '../components/PersonalBox';
 import { personalDTO } from '@/types/DTO';
 import { getAllPersonal } from '../util/customFetch';
-import { useMemo } from 'react';
-export default async function Personal() {
+import { ReactNode, useMemo } from 'react';
+
+async function PersonalServerComponents() {
     // const data: personalDTO[] = await getAllPersonal();
-    const data  = useMemo(async () => {
-        const fetchData: personalDTO[] = await getAllPersonal();
-        console.log(fetchData);
-        return fetchData;
-    }, [])
-    
+    const data: personalDTO[] = await getAllPersonal();
     return (
         <div className="main-page">
-            {(await data).map((post: personalDTO, index: number) => {
+            {data.map((post: personalDTO, index: number) => {
                 return (
                     <PersonalBox key={index} item={post} />
                 )
@@ -22,3 +18,23 @@ export default async function Personal() {
         </div>
     )
 }
+
+function PersonalClientComponents({ children }: { children: ReactNode }) {
+    "use client"
+    return (
+        <>
+            <div className='main-page'
+                onClick={() => { console.log('asdf') }}>
+                asdf
+            </div>
+            {children}
+        </>
+    )
+}
+
+export default function wrapper() {
+    <PersonalClientComponents>
+        <PersonalServerComponents />
+    </PersonalClientComponents>
+}
+

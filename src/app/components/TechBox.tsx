@@ -1,10 +1,9 @@
-"use client"
-
 import React from "react";
 import '../styles/techBox.css'
 import { techDTO } from "@/types/DTO";
 import config from "../config/config";
 import jsdom from "jsdom";
+import Link from "next/link";
 
 export default function TechBox(props: { item: techDTO }) {
 
@@ -12,11 +11,11 @@ export default function TechBox(props: { item: techDTO }) {
     const firstDivContent = getFirstDiv(props.item.content);
 
     function getFirstImg(content: string): string | null {
-        // const doc = new jsdom.JSDOM(content);
-        // const firstImg = doc.window.document.querySelector('img');
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(content, 'text/html')
-        const firstImg = doc.querySelector('img');
+        const doc = new jsdom.JSDOM(content);
+        const firstImg = doc.window.document.querySelector('img');
+        // const parser = new DOMParser();
+        // const doc = parser.parseFromString(content, 'text/html')
+        // const firstImg = doc.querySelector('img');
         if (firstImg)
             return firstImg.src;
         else
@@ -24,11 +23,11 @@ export default function TechBox(props: { item: techDTO }) {
     }
 
     function getFirstDiv(content: string) {
-        // const doc = new jsdom.JSDOM(content);
-        // const firstDiv = doc.window.document.querySelector('div');
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(content, 'text/html')
-        const firstDiv = doc.querySelector('div');
+        const doc = new jsdom.JSDOM(content);
+        const firstDiv = doc.window.document.querySelector('div');
+        // const parser = new DOMParser();
+        // const doc = parser.parseFromString(content, 'text/html')
+        // const firstDiv = doc.querySelector('div');
 
         if (firstDiv)
             if (firstDiv.innerHTML.length > 30) {
@@ -39,14 +38,11 @@ export default function TechBox(props: { item: techDTO }) {
         else
             return null;
     }
-    const onClick = (e:any) =>{
-        window.location.href=`/tech/${props.item.id}`
-    }
     return (
         <>
 
             <div className="container">
-                <div className="box" onClick={onClick}>
+                <Link className="box" href={`/tech${props.item.id}`}>
                     <div className="tech-box">
                         <div className="box-author">
                             <img src="ssepcat.png"></img>
@@ -66,7 +62,7 @@ export default function TechBox(props: { item: techDTO }) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Link>
                 <div className="box-image">
                     {firstImgSrc && <img src={firstImgSrc} alt="First Image" />}
                 </div>
