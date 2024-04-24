@@ -10,7 +10,7 @@ export default function PersonalClientComponents({ children }: { children: React
     const [ref, inView] = useInView({
         threshold: 1
     })
-    const [count, setCount] = useState<number>(0);
+    const [count, setCount] = useState<number>(10);
     const [addedDocuments, setAddedDocument] = useState<personalDTO[]>([]);
     const [isDocumentsEnd, setIsDocumentsEnd] = useState<boolean>(false);
 
@@ -29,16 +29,16 @@ export default function PersonalClientComponents({ children }: { children: React
     }, [inView])
 
     return (
-        <div >
+        <>
             {children}
             {addedDocuments ?
-                addedDocuments.map((post: personalDTO, index: number) =>
+                addedDocuments.map((post: personalDTO, i: number) =>
                     <div className="main-page">
-                        <PersonalBox key={index} item={post} />
+                        <PersonalBox key={post.id} item={post} />
                     </div>
                 )
                 : null}
             <div id="loading" ref={ref}>.</div>
-        </div>
+        </>
     )
 }

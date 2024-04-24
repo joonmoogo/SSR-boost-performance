@@ -1,4 +1,3 @@
-import './styles/home-content.css'
 import './globals.css'
 import Link from 'next/link';
 import ImageBox from './components/PersonalBox';

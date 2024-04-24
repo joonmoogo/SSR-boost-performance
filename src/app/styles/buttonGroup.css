@@ -1,9 +1,12 @@
-.button-group{
-    display: flex;
-}
+@media(pointer:coarse) {
 
-.button-group button{
-    background-color: transparent;
-    color:white;
-    border:0;
+    .button-group {
+        display: flex;
+    }
+
+    .button-group button {
+        background-color: transparent;
+        color: white;
+        border: 0;
+    }
 }

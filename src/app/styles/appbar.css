@@ -1,25 +1,33 @@
-.appbar{
-    width: 100%;
-    height: 60px;
-    display: flex;
-    position: fixed;
-    top: 0; 
-    z-index: 999;
-    margin-top:10px;
-    backdrop-filter: blur(2px);
+@media (pointer: coarse) {
+    .appbar {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        margin-top: 10px;
+        backdrop-filter: blur(2px);
+
+    }
+
+    .appbar-icon img {
+        display: flex;
+        border-radius: 100px;
+        margin-right: 30px;
+        width: 50px;
+        height: 50px;
+        margin-top: 5px;
+    }
+
+    .appbar-content {
+        border-bottom: 1px solid white;
+        font-size: 40px;
+        margin-right: auto;
+    }
+
 }
 
-.appbar-icon img{
-    display: flex;
-    border-radius: 100px;
-    margin-right:30px;
-    width:50px;
-    height: 50px;
-    margin-top:5px;
-}
-
-.appbar-content{
-    border-bottom: 1px solid white;    
-    font-size: 40px;
-    margin-right: auto;
+@media (pointer: fine) {
+    /* 포인팅 장치가 있음(마우스, 터치패드, 타블렛 펜) */
 }

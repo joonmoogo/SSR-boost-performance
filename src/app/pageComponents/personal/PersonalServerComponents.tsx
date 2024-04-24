@@ -1,14 +1,14 @@
 import PersonalBox from "@/app/components/PersonalBox";
-import { getAllPersonal } from "@/app/util/customFetch";
+import { getAllPersonal, getPersonalsByCount } from "@/app/util/customFetch";
 import { personalDTO } from "@/types/DTO";
 
 export default async function PersonalServerComponents() {
-    const data: personalDTO[] = await getAllPersonal();
+    const data: personalDTO[] = await getPersonalsByCount('personal',1,10);
     return (
         <div className="main-page">
-            {data.map((post: personalDTO, index: number) => {
+            {data.map((post: personalDTO) => {
                 return (
-                    <PersonalBox key={index} item={post} />
+                    <PersonalBox key={post.id} item={post} />
                 )
             })}
         </div>
