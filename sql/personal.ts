@@ -17,7 +17,13 @@ export const personalSQL = {
 
     getPersonalsByCount() {
         return `
-        SELECT * 
+        SELECT 
+            personal.id,
+            personal.title,
+            personal.content,
+            personal.created_at,
+            personal_images.personal_id,
+            GROUP_CONCAT(personal_images.image_url) AS image_url
         FROM personal 
         INNER JOIN personal_images
         ON personal.id = personal_images.personal_id 

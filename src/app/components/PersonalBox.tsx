@@ -14,7 +14,6 @@ export default function PersonalBox(props: { item: personalDTO }) {
     const [currentValue, setCurrentValue] = useState<number>(0);
     const imageArray = props.item.image_url.split(',');
     const slideCount = imageArray.length
-    console.log(imageArray);
 
     // IMAGE SLIDESHOW : n * -45
     // ex) slideCount == 2 ? max = -90 

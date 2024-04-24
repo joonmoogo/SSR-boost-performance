@@ -11,6 +11,8 @@ const getAllTech = async () => {
     return data;
 }
 
+
+
 const getAllPersonal = async () => {
     const serverData = await fetch(`${config.localUrl}/api/personal`,
         {
@@ -20,6 +22,16 @@ const getAllPersonal = async () => {
     );
     const data: personalDTO[] = await serverData.json();
     return data;
+}
+
+const getPersonalsByCount = async (type: string, startIndex: number, endIndex: number) => {
+    const serverData = await fetch(`${config.localUrl}/api/infiniteScroll/${type}/${startIndex}/${endIndex}`,
+        {
+            cache: 'no-store'
+        }
+    )
+    const data : personalDTO[] = await serverData.json();
+    return data; 
 }
 
 const getAllReels = async () => {
@@ -55,12 +67,14 @@ const getOneTech = async (id: any) => {
     return data;
 }
 
+
 export {
     getAllPersonal,
     getAllTech,
     getAllReels,
     deleteOnerPersonal,
-    getOneTech
+    getOneTech,
+    getPersonalsByCount,
 }
 
 
