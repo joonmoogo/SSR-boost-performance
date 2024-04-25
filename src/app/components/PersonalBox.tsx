@@ -2,7 +2,7 @@
 import { ChangeEvent, FormEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import config from "../config/config";
 import { personalDTO } from "@/types/DTO";
-import '../styles/personalBox.css'
+import '../styles/personalBox.scss'
 import { deleteOnerPersonal } from "../util/customFetch";
 import { timeTune } from "../util/util";
 

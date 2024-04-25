@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import config from "../config/config"
-import "../styles/reelsWriteForm.css"
+import "../styles/reelsWriteForm.scss"
 
 export default function ReelsWriteForm() {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/techBox.css'
+import '../styles/techBox.scss'
 import { techDTO } from "@/types/DTO";
 import config from "../config/config";
 import jsdom from "jsdom";

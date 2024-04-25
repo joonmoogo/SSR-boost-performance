@@ -1,6 +1,6 @@
 import config from "../config/config";
 import { WriteStateProvider, useWriteState } from "../util/writeContext";
-import '../styles/buttonGroup.css'
+import '../styles/buttonGroup.scss'
 import { useEffect, useState } from "react";
 
 export default function ButtonGroup() {

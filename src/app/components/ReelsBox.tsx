@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/reelsBox.css'
+import '../styles/reelsBox.scss'
 import { reelsDTO } from "@/types/DTO";
 
 export default function ReelsBox(props: { item: reelsDTO }) {

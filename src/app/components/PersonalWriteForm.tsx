@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import config from "../config/config"
-import '../styles/personalWriteForm.css'
+import '../styles/personalWriteForm.scss'
 import { useMutation } from "react-query";
 export default function PersonalWriteForm() {
 

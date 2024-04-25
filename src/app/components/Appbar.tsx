@@ -2,7 +2,7 @@
 
 import React from "react";
 import config from "../config/config";
-import "../styles/appbar.css"
+import "../styles/appbar.scss"
 
 export default function Appbar() {
     return (
@@ -13,7 +13,7 @@ export default function Appbar() {
             <div className="appbar-icon" onClick={()=>{
                 window.location.href='/write';
             }}>
-                <img src="/ssepcat.png"></img>
+                <img src="/ssepcat.png"/>
             </div>
         </div>
     )
