@@ -1,3 +1,4 @@
+/* Mobile UI */
 @media(pointer:coarse) {
     .image-box {
         width: 100%;
@@ -5,8 +6,9 @@
         /* background-color: white; */
         /* color: black; */
         overflow: hidden;
-        border-bottom: 1px solid white;
+        padding: 10px;
         padding-bottom: 10px;
+        border-bottom: 1px solid white;
     }
 
     .author {
@@ -51,4 +53,51 @@
     }
 }
 
-@media(pointer:fine) {}
+/* PC UI */
+@media(pointer:fine) {
+    .image-box {
+        width: 100%;
+        margin-bottom: 20px;
+        display: inline-block;
+
+        .box-image {
+            position: relative;
+            /* transform: translate(-45vw); */
+            img {
+                width: 100%;
+                border-radius: 20px;
+                transition: 0.5s;
+
+                &:hover {
+                    cursor: pointer;
+                    scale: 1.05;
+                    transition: 0.5s;
+                }
+            }
+        }
+
+        .box-header {
+            display: flex;
+
+            .author {
+                display: flex;
+            }
+
+            .author img {
+                border-radius: 100px;
+                margin-right: 5px;
+                width: 35px;
+                height: 35px;
+                margin-top: 5px;
+            }
+
+            .author p {
+                margin-right: 10px;
+            }
+        }
+        .box-content {
+            padding-bottom: 10px;
+        }
+    }
+
+}

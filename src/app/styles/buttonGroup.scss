@@ -10,3 +10,15 @@
         border: 0;
     }
 }
+
+@media(pointer:fine) {
+    .button-group {
+        display: flex;
+    }
+
+    .button-group button {
+        background-color: transparent;
+        color: white;
+        border: 0;
+    }
+}
