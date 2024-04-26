@@ -1,8 +1,8 @@
-import TechBox from "../../components/TechBox"
-import config from "../../config/config"
+import TechBox from "../../../_components/TechBox"
+import config from "../../../_config/config"
 import '@/app/globals.css'
 import { techDTO } from "@/types/DTO"
-import { getAllTech, getOneTech } from "../../util/customFetch"
+import { getAllTech, getOneTech } from "../../../_util/customFetch"
 
 export default async function Tech({ params }: any) {
     const data: techDTO = await getOneTech(params.id)

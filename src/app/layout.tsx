@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import React from "react";
-import Appbar from "./components/Appbar";
-import config from "./config/config";
-import Footer from "./components/Footer";
+import Appbar from "./_components/Appbar";
+import config from "./_config/config";
+import Footer from "./_components/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: config.description,
 };
 
-export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <>
       <html>

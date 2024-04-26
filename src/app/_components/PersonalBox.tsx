@@ -1,10 +1,10 @@
 "use client"
 import { ChangeEvent, FormEvent, TouchEvent, useEffect, useRef, useState } from "react";
-import config from "../config/config";
+import config from "../_config/config";
 import { personalDTO } from "@/types/DTO";
-import '../styles/personalBox.scss'
-import { deleteOnerPersonal } from "../util/customFetch";
-import { timeTune } from "../util/util";
+import '../_styles/personalBox.scss'
+import { deleteOnerPersonal } from "../_util/customFetch";
+import { timeTune } from "../_util/util";
 
 
 export default function PersonalBox(props: { item: personalDTO, viewport: any }) {

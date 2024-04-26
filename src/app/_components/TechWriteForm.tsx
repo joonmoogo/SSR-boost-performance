@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import config from '../config/config'
-import '../styles/techWriteForm.scss'
+import config from '../_config/config'
+import '../_styles/techWriteForm.scss'
 
 export default function TechWriteForm() {
     const textareaRef = useRef<any>(null);

@@ -1,8 +1,8 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
-import ReelsBox from "../components/ReelsBox";
-import '../globals.css'
-import { getAllReels } from "../util/customFetch";
+import ReelsBox from "../../_components/ReelsBox";
+import '../../globals.css'
+import { getAllReels } from "../../_util/customFetch";
 import { reelsDTO } from "@/types/DTO";
 export default function Reels() {
 

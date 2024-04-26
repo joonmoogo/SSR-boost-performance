@@ -37,6 +37,8 @@
         z-index: 999;
         margin-top: 10px;
         backdrop-filter: blur(2px);
+        margin-left: 10%;
+        margin-right: 10%;
     }
 
     .appbar-icon img {
@@ -46,10 +48,10 @@
         width: 50px;
         height: 50px;
         margin-top: 5px;
+        display:none
     }
 
     .appbar-content {
-        border-bottom: 1px solid white;
         font-size: 40px;
         margin-right: auto;
     }

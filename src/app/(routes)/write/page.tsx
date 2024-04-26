@@ -1,11 +1,11 @@
 "use client"
 import { useEffect, useRef, useState } from 'react'
-import ButtonGroup from '../components/ButtonGroup'
+import ButtonGroup from '../../_components/ButtonGroup'
 import '../globals.css'
-import PersonalWriteForm from '../components/PersonalWriteForm';
-import ReelsWriteForm from '../components/ReelsWriteForm';
-import TechWriteForm from '../components/TechWriteForm';
-import { WriteStateProvider, useWriteState } from '../util/writeContext';
+import PersonalWriteForm from '../../_components/PersonalWriteForm';
+import ReelsWriteForm from '../../_components/ReelsWriteForm';
+import TechWriteForm from '../../_components/TechWriteForm';
+import { WriteStateProvider, useWriteState } from '../../_util/writeContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 const queryCleint = new QueryClient();

@@ -1,20 +1,19 @@
-"use client"
-
 import React from "react";
-import config from "../config/config";
-import "../styles/appbar.scss"
+import config from "../_config/config";
+import "../_styles/appbar.scss"
+import Link from "next/link";
+import { NextRequest } from "next/server";
 
 export default function Appbar() {
+    
     return (
         <div className="appbar">
             <div className="appbar-content">
                 {config.name}
             </div>
-            <div className="appbar-icon" onClick={()=>{
-                window.location.href='/write';
-            }}>
+            <Link className="appbar-icon" href={'/write'}>
                 <img src="/ssepcat.png"/>
-            </div>
+            </Link>
         </div>
     )
 }

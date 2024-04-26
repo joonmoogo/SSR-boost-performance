@@ -1,7 +1,7 @@
-import TechBox from "../components/TechBox"
-import config from "../config/config"
+import TechBox from "../../_components/TechBox"
+import config from "../../_config/config"
 import { techDTO } from "@/types/DTO"
-import { getAllTech } from "../util/customFetch"
+import { getAllTech } from "../../_util/customFetch"
 import { useMemo } from "react"
 export default async function Tech() {
     const data = await getAllTech();

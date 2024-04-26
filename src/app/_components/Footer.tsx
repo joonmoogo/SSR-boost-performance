@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import "../styles/footer.scss";
-import config from "../config/config";
+import "../_styles/footer.scss";
+import config from "../_config/config";
 import { useRouter } from "next/router";
 import { useParams, usePathname } from "next/navigation";
 

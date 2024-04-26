@@ -1,8 +1,8 @@
 "use client"
 
 import { useRef } from "react"
-import config from "../config/config"
-import "../styles/reelsWriteForm.scss"
+import config from "../_config/config"
+import "../_styles/reelsWriteForm.scss"
 
 export default function ReelsWriteForm() {
 

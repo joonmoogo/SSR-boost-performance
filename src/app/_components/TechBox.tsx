@@ -1,7 +1,7 @@
 import React from "react";
-import '../styles/techBox.scss'
+import '../_styles/techBox.scss'
 import { techDTO } from "@/types/DTO";
-import config from "../config/config";
+import config from "../_config/config";
 import jsdom from "jsdom";
 import Link from "next/link";
 
