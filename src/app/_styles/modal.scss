@@ -7,19 +7,37 @@
     left: 0%;
     display: flex;
     z-index: 999;
-    backdrop-filter: blur(2px);
-    transition: all 1s;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.4s ease-in-out;
 
     .images {
         display: flex;
         justify-content: center;
         align-items: center;
-        
         img {
-            max-width: 50%;
+            max-width: 40%;
             height: auto;
             transition: transform 0.5s;
-            border: 1px solid white
+            border-radius: 30px;
         }
+
+        button{
+            position: absolute;
+        }
+        .left-button{
+            right:60vh
+        }
+        .right-button{
+            left:60vh
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
     }
 }

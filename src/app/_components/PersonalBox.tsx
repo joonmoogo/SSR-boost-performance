@@ -42,6 +42,10 @@ export default function PersonalBox(props: { item: personalDTO, viewport: any })
     const onClick = (e: MouseEvent) => {
         setSelectedImageArray(imageArray);
     }
+
+    const onClickBackground = () =>{
+        setSelectedImageArray(null);
+    }
     
     useEffect(() => {
         if (currentSlide === slideCount + 1) {

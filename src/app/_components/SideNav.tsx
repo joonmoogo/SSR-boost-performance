@@ -1,25 +1,26 @@
+"use client"
+
 import Link from "next/link";
-import { useRef } from "react"
+import { useEffect, useState } from "react"
 import config from "../_config/config";
+import "@/app/_styles/sideNav.scss"
 
 export default function SideNav() {
 
-    const navRef = useRef(null);
+    const [value,setValue]=useState(0)
+    const offset = 1.1;
 
-    const openNav = () => {
+    useEffect(()=>{
+        window.addEventListener('scroll',()=>{
+            setValue(window.scrollY / offset)
+        })
+    },[])
 
-    }
-
-    const closeNav = () => {
-
-    }
-    
     return (
         <>
-            <div className="openButton">&#9776; open</div>
-            <div className="sidenav" ref={navRef}>
+            <div className="sidenav" style={{marginTop:`${value}px`}}>
                 {config.navItem.map((item) => {
-                    <Link href="javascript:void(0)" className="closeButton" onClick={closeNav}>&times;</Link>
+                    <Link href="javascript:void(0)" className="closeButton">close</Link>
                     return (
                         <Link key={item.icon_class} href={item.href}>{item.label}</Link>
                     )

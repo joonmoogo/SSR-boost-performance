@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import config from "../_config/config";
 import "../_styles/appbar.scss"
@@ -11,7 +9,6 @@ export default function Appbar() {
     
     return (
         <div className="appbar">
-            <SideNav/>
             <div className="appbar-content">
                 {config.name}
             </div>
