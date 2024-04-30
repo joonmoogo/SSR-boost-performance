@@ -1,4 +1,4 @@
-import TechBox from "../../_components/TechBox"
+import TechBox from "../../_components/TechBox-server"
 import config from "../../_config/config"
 import { techDTO } from "@/types/DTO"
 import { getAllTech } from "../../_util/customFetch"

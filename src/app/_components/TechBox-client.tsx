@@ -1,46 +1,35 @@
 "use client"
-import React from "react";
+import React, { useEffect, useState } from "react";
 import '../_styles/techBox.scss'
 import { techDTO } from "@/types/DTO";
 import config from "../_config/config";
 import jsdom from "jsdom";
 import Link from "next/link";
 
-export default function TechBox(props: { item: techDTO, viewport: any }) {
-    console.log(props.viewport)
+export default function ClientTechBox(props: { item: techDTO, viewport: any }) {
 
-    const firstImgSrc = getFirstImg(props.item.content);
-    const firstDivContent = getFirstDiv(props.item.content);
+    const [firstImgSrc, setFirstImgSrc] = useState<string|null>(null);
+    const [firstDivContent, setFirstDivContent] = useState<string|null>(null);
 
-    function getFirstImg(content: string): string | null {
-
-        // const doc = new jsdom.JSDOM(content);
-        // const firstImg = doc.window.document.querySelector('img');
+    useEffect(() => {
         const parser = new DOMParser();
-        const doc = parser.parseFromString(content, 'text/html')
+        const doc = parser.parseFromString(props.item.content, 'text/html');
+
         const firstImg = doc.querySelector('img');
         if (firstImg)
-            return firstImg.src;
-        else
-            return null;
-    }
+            setFirstImgSrc(firstImg.src);
 
-    function getFirstDiv(content: string) {
-        // const doc = new jsdom.JSDOM(content);
-        // const firstDiv = doc.window.document.querySelector('div');
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(content, 'text/html')
         const firstDiv = doc.querySelector('div');
-
-        if (firstDiv)
+        if (firstDiv) {
             if (firstDiv.innerHTML.length > 30) {
-                return firstDiv.innerHTML.slice(0, 40) + '...';
+                setFirstDivContent(firstDiv.innerHTML.slice(0, 40) + '...');
             } else {
-                return firstDiv.innerHTML;
+                setFirstDivContent(firstDiv.innerHTML);
             }
-        else
-            return null;
-    }
+        }
+    }, [props.item.content]);
+
+
     return (
         <>
             <div className="container">

@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { techDTO, personalDTO } from "@/types/DTO";
 import { getDatasByCount } from "@/app/_util/customFetch";
-import TechBox from "@/app/_components/TechBox";
-import PersonalBox from "@/app/_components/PersonalBox";
+import ClientTechBox from "@/app/_components/TechBox-client";
 
 export default function TechClientComponents({ children, viewport }: { children: React.ReactNode; viewport: string }) {
     const [ref, inView] = useInView({
@@ -36,7 +35,7 @@ export default function TechClientComponents({ children, viewport }: { children:
             {children}
             {addedDocuments ?
                 addedDocuments.map((post: any) =>
-                    <PersonalBox key={post.id} item={post} viewport={viewport} />
+                    <ClientTechBox key={post.id} item={post} viewport={viewport} />
                 )
                 : null}
             <div id="loading" ref={ref}>.</div>

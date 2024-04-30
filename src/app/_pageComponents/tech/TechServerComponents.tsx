@@ -1,4 +1,4 @@
-import TechBox from "@/app/_components/TechBox";
+import ServerTechBox from "@/app/_components/TechBox-server";
 import { getDatasByCount } from "@/app/_util/customFetch";
 import { techDTO } from "@/types/DTO";
 
@@ -9,7 +9,7 @@ export default async function TechServerComponents(props: { viewport: any }) {
         <>
             {data.map((post: techDTO) => {
                 return (
-                    <TechBox key={post.id} item={post} viewport={viewport} />
+                    <ServerTechBox key={post.id} item={post} viewport={viewport} />
                 )
             })}
         </>
