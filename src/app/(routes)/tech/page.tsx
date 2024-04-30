@@ -3,17 +3,17 @@ import config from "../../_config/config"
 import { techDTO } from "@/types/DTO"
 import { getAllTech } from "../../_util/customFetch"
 import { useMemo } from "react"
-export default async function Tech() {
-    const data = await getAllTech();
+import TechClientComponents from "@/app/_pageComponents/tech/TechClientComponents"
+import TechServerComponents from "@/app/_pageComponents/tech/TechServerComponents"
+export default async function Tech(request: any) {
+
+    const { viewport } = request.searchParams;
+
     return (
-        <div className="main-page">
-            {
-                data.map((e, index) => {
-                    return (
-                        <TechBox item={e} key={index} />
-                    )
-                })
-            }
+        <div className="main-tech-page">
+            <TechClientComponents viewport={viewport}>
+                <TechServerComponents viewport={viewport} />
+            </TechClientComponents>
         </div>
     )
 }

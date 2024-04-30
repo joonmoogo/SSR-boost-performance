@@ -58,7 +58,6 @@ export default function PersonalBox(props: { item: personalDTO, viewport: any })
         slideshow.current.style.transform = `translate(${-45 * currentSlide + 1}vw)`
     }, [currentSlide])
 
-
     return (
         <>
             {isMobile ?

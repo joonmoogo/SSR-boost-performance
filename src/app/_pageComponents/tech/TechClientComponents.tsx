@@ -1,24 +1,25 @@
 "use client"
+
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useRef, useState } from "react";
+import { techDTO, personalDTO } from "@/types/DTO";
 import { getDatasByCount } from "@/app/_util/customFetch";
-import { personalDTO } from "@/types/DTO";
+import TechBox from "@/app/_components/TechBox";
 import PersonalBox from "@/app/_components/PersonalBox";
 
-export default function PersonalClientComponents({ children, viewport }: { children: React.ReactNode; viewport: string }) {
+export default function TechClientComponents({ children, viewport }: { children: React.ReactNode; viewport: string }) {
     const [ref, inView] = useInView({
         threshold: 1
     })
     const [count, setCount] = useState<number>(9);
     const [addedDocuments, setAddedDocument] = useState<personalDTO[]>([]);
     const [isDocumentsEnd, setIsDocumentsEnd] = useState<boolean>(false);
-
     useEffect(() => {
 
         /* infinitescroll api fetch */
 
         if (inView && isDocumentsEnd === false) {
-            getDatasByCount('personal', count+1, count + 10).then((data) => {
+            getDatasByCount('tech', count + 1, count + 10).then((data) => {
                 console.log(data);
                 setAddedDocument((prevDocuments) => [...prevDocuments, ...data]);
                 if (data.length != 0) {
@@ -34,7 +35,7 @@ export default function PersonalClientComponents({ children, viewport }: { child
         <>
             {children}
             {addedDocuments ?
-                addedDocuments.map((post: personalDTO, i: number) =>
+                addedDocuments.map((post: any) =>
                     <PersonalBox key={post.id} item={post} viewport={viewport} />
                 )
                 : null}

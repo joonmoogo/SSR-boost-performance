@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react"
 import config from "../_config/config";
 import "@/app/_styles/sideNav.scss"
+import { usePathname } from "next/navigation";
+
 
 export default function SideNav() {
-
+    const path = usePathname();
     const [value,setValue]=useState(0)
-    const offset = 1.1;
+    const offset = 0.999;
 
     useEffect(()=>{
         window.addEventListener('scroll',()=>{
@@ -20,9 +22,8 @@ export default function SideNav() {
         <>
             <div className="sidenav" style={{marginTop:`${value}px`}}>
                 {config.navItem.map((item) => {
-                    <Link href="javascript:void(0)" className="closeButton">close</Link>
                     return (
-                        <Link key={item.icon_class} href={item.href}>{item.label}</Link>
+                        <Link style={path==`${item.href}`?{textDecoration:'underline'}:{}} key={item.icon_class} href={item.href}>{item.label}</Link>
                     )
                 })}
             </div>

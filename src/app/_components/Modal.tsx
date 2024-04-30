@@ -12,9 +12,9 @@ export default function Modal(props: { imageArray: string[] }) {
     return (
         <div className="modal-container">
             <div className="images">
-                    <img src={`static/personal_images/${props.imageArray[imageIndex]}`} />
-                    <button className='left-button' onClick={rightButtonClick}>&#x1F8A5;</button>
-                    <button className='right-button' onClick={leftButtonClick}>&#x1F8A6;</button>
+                <img src={`static/personal_images/${props.imageArray[imageIndex]}`} />
+                <button className='left-button' onClick={rightButtonClick}>&#x1F8A5;</button>
+                <button className='right-button' onClick={leftButtonClick}>&#x1F8A6;</button>
             </div>
         </div>
     )
