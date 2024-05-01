@@ -14,9 +14,19 @@ export const techSQL = {
 
     getTechsByCount() {
         return `
-        SELECT * 
+        SELECT 
+            tech.id,
+            tech.title,
+            tech.first_div,
+            tech.created_at,
+            tech.content,
+            tech_images.tech_id,
+            GROUP_CONCAT(tech_images.image_url) AS image_url
         FROM tech 
+        INNER JOIN tech_images
+        on tech.id = tech_images.tech_id
         WHERE tech.id BETWEEN ? AND ?
+        GROUP BY tech.id
         ORDER BY tech.id DESC;`;
     },
     

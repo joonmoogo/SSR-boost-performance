@@ -2,7 +2,9 @@ export type techDTO = {
     content: string,
     created_at: string,
     id: number,
-    title: string
+    title: string,
+    image_url:string,
+    first_div:string,
 }
 
 export type personalDTO = {

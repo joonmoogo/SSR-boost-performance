@@ -30,7 +30,7 @@ const getDatasByCount = async (type: string, startIndex: number, endIndex: numbe
             cache: 'no-store'
         }
     )
-    const data: personalDTO[] = await serverData.json();
+    const data: any = await serverData.json();
     return data;
 }
 

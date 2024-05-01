@@ -1,37 +1,17 @@
 "use client"
+
 import React, { useEffect, useState } from "react";
 import '../_styles/techBox.scss'
 import { techDTO } from "@/types/DTO";
 import config from "../_config/config";
+import jsdom from "jsdom";
 import Link from "next/link";
 
-export default function ClientTechBox(props: { item: techDTO, viewport: any }) {
+export default function TechBox(props: { item: techDTO, viewport: any }) {
 
-    const [firstImgSrc, setFirstImgSrc] = useState<string | null>(null);
-    const [firstDivContent, setFirstDivContent] = useState<string | null>(null);
     const isMobile = props.viewport === 'mobile' ? true : false
+    const imageArray = props.item.image_url.split(',');
 
-    useEffect(() => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(props.item.content, 'text/html');
-
-        const firstImg = doc.querySelector('img');
-        if (firstImg)
-            setFirstImgSrc(firstImg.src);
-
-        const firstDiv = doc.querySelector('div');
-        if (firstDiv) {
-            if (firstDiv.innerHTML.length > 30) {
-                setFirstDivContent(firstDiv.innerHTML.slice(0, 40) + '...');
-            } else {
-                setFirstDivContent(firstDiv.innerHTML);
-            }
-        }
-    }, [props.item.content]);
-
-    const onClick = () =>{
-        console.log('button was clicked')
-    }
 
 
     return (
@@ -56,24 +36,25 @@ export default function ClientTechBox(props: { item: techDTO, viewport: any }) {
                             </div>
                             <div className="box-content">
                                 <div className="box-description">
-                                    {firstDivContent}
+                                    {props.item.first_div}
                                 </div>
                             </div>
                         </div>
                         <div className="box-image">
-                            {firstImgSrc && <img src={firstImgSrc} alt="First Image" />}
+                            <img src={imageArray[0]}/>
                         </div>
                     </Link>
                 </div>
                 :
                 /* Desktop UI */
-                <div className="container" onClick={onClick}>
+
+                <div className="container">
                     <div className="tech-image-box">
-                        {firstImgSrc && <img src={firstImgSrc} alt="First Image" />}
+                        {imageArray && <img src={`static/tech_images/${imageArray[0]}`} alt="First Image" />}
                     </div>
                     <div className="tech-text-box">
                         <div id="title">{props.item.title}</div>
-                        <div id="description">{firstDivContent}</div>
+                        <div id="description">{props.item.first_div}</div>
                         <div>{props.item.created_at}</div>
                     </div>
                     <div className="author">
@@ -82,7 +63,6 @@ export default function ClientTechBox(props: { item: techDTO, viewport: any }) {
                 </div>
 
             }
-
         </>
     )
 }
