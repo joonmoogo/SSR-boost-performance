@@ -30,4 +30,34 @@
     }
 }
 
-@media(pointer:fine) {}
+@media(pointer:fine) {
+    .author {
+        display: flex;
+    }
+
+    .author img {
+        display: flex;
+        border-radius: 100px;
+        margin-right: 15px;
+        width: 35px;
+        height: 35px;
+        margin-top: 5px;
+    }
+
+    .tech-form {
+        margin-top: 30px;
+        width: 100vw;
+    }
+
+    .form-content {
+        max-width: 95%;
+        min-height: 60%;
+        background-color: black;
+        color: white;
+        border: 1px solid white;
+    }
+
+    .form-content img {
+        max-width: 95%;
+    }
+}

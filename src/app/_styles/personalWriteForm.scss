@@ -50,4 +50,55 @@
 
 }
 
-@media(pointer:fine) {}
+@media(pointer:fine) {
+
+    .personal-form {
+        margin-top: 30px;
+        width: 100vw;
+    }
+
+    .personal-images-preview img {
+        width: 80%;
+        height: 80%;
+        /* border:1px solid white; */
+        border-radius: 70px;
+    }
+
+    .personal-images-preview {
+        display: flex;
+    }
+
+    .personal-title input {
+        width: 100%;
+        height: 35px;
+        background-color: black;
+        color: white;
+    }
+
+    .personal-caption input {
+        margin-top: 10px;
+        height: 35px;
+        width: 100%;
+        background-color: black;
+        color: white;
+    }
+
+    .personal-images {
+        margin-top: 10px;
+    }
+
+
+    .author {
+        display: flex;
+    }
+
+    .author img {
+        display: flex;
+        border-radius: 100px;
+        margin-right: 15px;
+        width: 35px;
+        height: 35px;
+        margin-top: 5px;
+    }
+
+}
