@@ -23,8 +23,8 @@ export const techSQL = {
     postOneTech(){
         return `
         INSERT INTO 
-        tech (title, content)
-        VALUES (@title, @content);`
+        tech (title, content, first_div)
+        VALUES (@title, @content, @first_div);`
     },
 
     postOneTechImage(){

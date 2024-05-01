@@ -41,6 +41,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 for (let i = 0; i < postdata.files.images?.length; i++) {
                     const oldPath = postdata.files.images[i].filepath;
                     const newPath = `${imageStoragePath}/${postdata.files.images[i].originalFilename}`
+                    console.log(oldPath)
+                    console.log(newPath);
                     await fs.rename(oldPath, newPath);
                 }
                 if (postdata.fields.title && postdata.fields.content) {

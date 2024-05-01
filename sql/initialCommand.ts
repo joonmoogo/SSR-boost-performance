@@ -36,6 +36,7 @@ export const createTechTable = `
     CREATE TABLE IF NOT EXISTS tech (
     id INTEGER PRIMARY KEY,
     title VARCHAR(255),
+    first_div VARCHAR(255),
     created_at DATETIME DEFAULT (DATETIME('now', 'localtime')),
     content TEXT
 );`
