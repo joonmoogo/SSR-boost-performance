@@ -11,6 +11,11 @@
         margin-left: 3%;
         margin-right: 3%;
     }
+
+    .main-tech-page {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
     
     .video-page {
         overflow: hidden;
@@ -64,6 +69,10 @@
         margin-bottom: 100px;
         margin-left: 10%;
         margin-right: 10%;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-column-gap:10px;
+        grid-row-gap:10px;
     }
     
     .video-page {

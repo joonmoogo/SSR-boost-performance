@@ -1,3 +1,5 @@
+"use client"
+
 import { useRef } from 'react'
 import config from '../_config/config'
 import '../_styles/techWriteForm.scss'
@@ -17,7 +19,6 @@ export default function TechWriteForm() {
         });
         const data: any = await serverData.json();
         console.log(data);
-
     }
 
     function stringToHTML(str: string) {
@@ -52,7 +53,11 @@ export default function TechWriteForm() {
                     <p>{config.username}</p>
                 </div>
                 <div className="form-content" ref={textareaRef} contentEditable='true'></div>
-                <button onClick={onClick}>submit</button>
+                <button onClick={onClick}>submitd</button>
+                <button onClick={onClick}>submitd</button>
+                <button onClick={onClick}>submitd</button>
+                <button onClick={onClick}>submitd</button>
+                <button onClick={onClick}>submitd</button>
             </div>
         </>
     )

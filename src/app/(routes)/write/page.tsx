@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from 'react'
 import ButtonGroup from '../../_components/ButtonGroup'
-import '../globals.css'
+import '@/app/globals.css'
 import PersonalWriteForm from '../../_components/PersonalWriteForm';
 import ReelsWriteForm from '../../_components/ReelsWriteForm';
 import TechWriteForm from '../../_components/TechWriteForm';
