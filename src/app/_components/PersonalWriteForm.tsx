@@ -105,9 +105,6 @@ export default function PersonalWriteForm() {
                     })}
                 </div>
                 <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
             </div >
         </>
     )

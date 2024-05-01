@@ -54,10 +54,7 @@ export default function TechWriteForm() {
                 </div>
                 <div className="form-content" ref={textareaRef} contentEditable='true'></div>
                 <button onClick={onClick}>submitd</button>
-                <button onClick={onClick}>submitd</button>
-                <button onClick={onClick}>submitd</button>
-                <button onClick={onClick}>submitd</button>
-                <button onClick={onClick}>submitd</button>
+
             </div>
         </>
     )
