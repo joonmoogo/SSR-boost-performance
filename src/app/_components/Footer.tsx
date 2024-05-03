@@ -1,20 +1,19 @@
-"use client"
 import React, { useEffect, useState } from "react";
 import "../_styles/footer.scss";
 import config from "../_config/config";
 import { useRouter } from "next/router";
 import { useParams, usePathname } from "next/navigation";
-
+import Link from "next/link";
+import { headers } from "next/headers";
 export default function Footer() {
-    const path = usePathname();
+    const headerList = headers();
+    const path = headerList.get('x-pathname');
     return (
         <div className="footer">
             {config.navItem.map((item, index) => {
                 return (
                     <div className="footer-item" key={index}>
-                        <div className="footer-icon" onClick={() => {
-                            window.location.href=item.href;
-                        }}>
+                        <Link className="footer-icon" href={item.href}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="22"
@@ -28,9 +27,9 @@ export default function Footer() {
                                     )
                                 })}
                             </svg>
-                        </div>
-                        <div  className="footer-content">
-                            <p style={path==`${item.href}`?{borderBottom:'2px solid white'}:{}}>{item.label}</p>
+                        </Link>
+                        <div className="footer-content">
+                            <p style={path == `${item.href}` ? { borderBottom: '2px solid white' } : {}}>{item.label}</p>
                         </div>
                     </div>
                 )
