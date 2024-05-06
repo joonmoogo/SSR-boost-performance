@@ -8,7 +8,7 @@ export function timeTune(time: string) {
     if (differenceDays === 0) {
         if (differenceHours === 0) {
           const differenceMinutes = Math.floor((differenceMs % (1000 * 60 * 60)) / (1000 * 60));
-          result = `${differenceMinutes}분 전`;
+          result = `${differenceMinutes}m`;
         } else {
           result = `${differenceHours}h`;
         }

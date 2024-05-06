@@ -1,4 +1,4 @@
-import '../../globals.css'
+import '../../globals.scss'
 import config from '../../_config/config';
 import PersonalBox from '../../_components/PersonalBox';
 import { personalDTO } from '@/types/DTO';

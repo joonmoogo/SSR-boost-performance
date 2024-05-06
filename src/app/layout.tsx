@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.scss";
 import React from "react";
 import Appbar from "./_components/Appbar";
 import config from "./_config/config";

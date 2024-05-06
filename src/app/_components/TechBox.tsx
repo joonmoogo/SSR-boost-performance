@@ -6,6 +6,7 @@ import { techDTO } from "@/types/DTO";
 import config from "../_config/config";
 import jsdom from "jsdom";
 import Link from "next/link";
+import { timeTune } from "../_util/util";
 
 export default function TechBox(props: { item: techDTO, viewport: any }) {
 
@@ -41,7 +42,7 @@ export default function TechBox(props: { item: techDTO, viewport: any }) {
                             </div>
                         </div>
                         <div className="box-image">
-                            <img src={imageArray[0]}/>
+                            {imageArray && <img src={`static/tech_images/${imageArray[0]}`} alt="First Image" />}
                         </div>
                     </Link>
                 </div>
@@ -58,7 +59,7 @@ export default function TechBox(props: { item: techDTO, viewport: any }) {
                         <div>{props.item.created_at}</div>
                     </div>
                     <div className="author">
-                        <div>{config.username}</div>
+                        <div>by {config.username}</div>
                     </div>
                 </div>
 
