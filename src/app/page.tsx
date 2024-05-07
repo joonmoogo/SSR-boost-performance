@@ -10,11 +10,15 @@ import { useInView } from 'react-intersection-observer';
 export default function Home(request: any) {
 
   const [oneIsVisible,setOneIsVisible] = useState<boolean>(false);
-
+  const [twoIsVisible,setTwoIsVisible] = useState<boolean>(false);
   useEffect(()=>{
     window.addEventListener('scroll',()=>{
+      console.log(window.scrollY)
       if(window.scrollY >=300){
         setOneIsVisible(true);
+      }
+      if(window.scrollY >=900){
+        setTwoIsVisible(true);
       }
     })
   },[])
@@ -66,12 +70,24 @@ export default function Home(request: any) {
       </section>
 
       <section id='three' className='scroll-area'>
-        <div className="introduce-page">
-          section3
-          <div className="left-side"></div>
-          <div className="mid-side"></div>
-          <div className="right-side"></div>
-        </div>
+      <div className="introduce-page">
+          <div className="left-side" style={twoIsVisible?{animation:'slideUp 1s'}:{}}>
+            <div className="left-header">
+            </div>
+            <div className="left-content">
+              Indiana jones<br /> web development<br />
+              Service<br />freelancer <br />
+            </div>
+            <div className="left-description">
+              My mission is to design and develop<br />
+              a website that you and your audience love
+            </div>
+          </div>
+          <div className="right-side">
+            <div className="right-image">
+            </div>
+          </div>
+        </div >
       </section>
     </div >
 
