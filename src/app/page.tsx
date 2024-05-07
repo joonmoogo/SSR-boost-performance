@@ -12,19 +12,22 @@ export default function Home(request: any) {
   const [oneIsVisible, setOneIsVisible] = useState<boolean>(false);
   const [twoIsVisible, setTwoIsVisible] = useState<boolean>(false);
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      console.log(window.scrollY)
+    const scrollHandler = () => {
+      console.log(window.scrollY);
       if (window.scrollY >= 300) {
         setOneIsVisible(true);
       }
       if (window.scrollY >= 900) {
         setTwoIsVisible(true);
       }
-    })
-    return () =>{
-      
-    }
-  }, [])
+    };
+  
+    window.addEventListener('scroll', scrollHandler);
+  
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
 
 
   const { viewport } = request.searchParams
