@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import ButtonGroup from '../../_components/ButtonGroup'
 import '@/app/globals.scss'
-import PersonalWriteForm from '../../_components/PersonalWriteForm';
+import PersonalWriteForm from '../../_components/FeedWriteForm';
 import ReelsWriteForm from '../../_components/ReelsWriteForm';
 import TechWriteForm from '../../_components/TechWriteForm';
 import { WriteStateProvider, useWriteState } from '../../_util/writeContext';

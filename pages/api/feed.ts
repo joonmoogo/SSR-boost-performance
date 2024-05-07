@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import db from "@/app/_util/db";
-import { personalSQL } from "../../sql/personal";
+import { feedSQL } from "../../sql/feed";
 import formidable, { IncomingForm } from 'formidable';
 import fs from "fs/promises";
 import path from "path";
@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const method = req.method;
     switch (method) {
         case "GET":
-            const selectedData = db.prepare(personalSQL.getAllPersonals());
+            const selectedData = db.prepare(feedSQL.getAllFeeds());
             const data = selectedData.all();
             res.json(data);
             break;
@@ -49,14 +49,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     const title = postdata.fields.title[0];
                     const content = postdata.fields.content[0];
                     // console.log(typeof title,typeof content,typeof image_url);
-                    const onePersonalSQL = db.prepare(personalSQL.postOnePersonal());
-                    const onePersonalImageSQL = db.prepare(personalSQL.postOnePersonalImage());
-                    const lastidSQL = db.prepare(personalSQL.getLastInsertedId());
-                    onePersonalSQL.run({ title: title, content: content });
+                    const oneFeedSQL = db.prepare(feedSQL.postOneFeed());
+                    const oneFeedImageSQL = db.prepare(feedSQL.postOneFeed());
+                    const lastidSQL = db.prepare(feedSQL.getLastInsertedId());
+                    oneFeedSQL.run({ title: title, content: content });
                     const lastRowId = lastidSQL.run().lastInsertRowid;
                     for (let i = 0; i < postdata.files.images?.length; i++) {
                         const image_url = postdata.files.images[i].originalFilename;
-                        onePersonalImageSQL.run({ personal_id: lastRowId, image_url: image_url });
+                        oneFeedImageSQL.run({ personal_id: lastRowId, image_url: image_url });
                     }
                 }
                 // const stmt = db.prepare(`INSERT INTO personal (title, content) VALUES (?, ?)`);

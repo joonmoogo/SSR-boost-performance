@@ -2,15 +2,15 @@
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState } from "react";
 import { getDatasByCount } from "@/app/_util/customFetch";
-import { personalDTO } from "@/types/DTO";
-import PersonalBox from "@/app/_components/PersonalBox";
+import { feedDTO } from "@/types/DTO";
+import FeedBox from "@/app/_components/FeedBox";
 
-export default function PersonalClientComponents({ children, viewport }: { children: React.ReactNode; viewport: string }) {
+export default function FeedClientComponents({ children, viewport }: { children: React.ReactNode; viewport: string }) {
     const [ref, inView] = useInView({
         threshold: 1
     })
     const [count, setCount] = useState<number>(9);
-    const [addedDocuments, setAddedDocument] = useState<personalDTO[]>([]);
+    const [addedDocuments, setAddedDocument] = useState<feedDTO[]>([]);
     const [isDocumentsEnd, setIsDocumentsEnd] = useState<boolean>(false);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function PersonalClientComponents({ children, viewport }: { child
         /* infinitescroll api fetch */
 
         if (inView && isDocumentsEnd === false) {
-            getDatasByCount('personal', count+1, count + 10).then((data) => {
+            getDatasByCount('feed', count+1, count + 10).then((data) => {
                 console.log(data);
                 setAddedDocument((prevDocuments) => [...prevDocuments, ...data]);
                 if (data.length != 0) {
@@ -34,8 +34,8 @@ export default function PersonalClientComponents({ children, viewport }: { child
         <>
             {children}
             {addedDocuments ?
-                addedDocuments.map((post: personalDTO, i: number) =>
-                    <PersonalBox key={post.id} item={post} viewport={viewport} />
+                addedDocuments.map((post: feedDTO, i: number) =>
+                    <FeedBox key={post.id} item={post} viewport={viewport} />
                 )
                 : null}
             <div id="loading" ref={ref}>.</div>

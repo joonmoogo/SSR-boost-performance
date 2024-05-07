@@ -1,29 +1,32 @@
 "use client"
 import './globals.scss'
 import Link from 'next/link';
-import ImageBox from './_components/PersonalBox';
+import ImageBox from './_components/FeedBox';
 import config from './_config/config';
-import { techDTO, personalDTO, reelsDTO } from "@/types/DTO";
-import { getAllPersonal } from "@/app/_util/customFetch"
+import { techDTO, feedDTO, reelsDTO } from "@/types/DTO";
+import { getAllFeeds } from "@/app/_util/customFetch"
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 export default function Home(request: any) {
 
-  const [oneIsVisible,setOneIsVisible] = useState<boolean>(false);
-  const [twoIsVisible,setTwoIsVisible] = useState<boolean>(false);
-  useEffect(()=>{
-    window.addEventListener('scroll',()=>{
+  const [oneIsVisible, setOneIsVisible] = useState<boolean>(false);
+  const [twoIsVisible, setTwoIsVisible] = useState<boolean>(false);
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
       console.log(window.scrollY)
-      if(window.scrollY >=300){
+      if (window.scrollY >= 300) {
         setOneIsVisible(true);
       }
-      if(window.scrollY >=900){
+      if (window.scrollY >= 900) {
         setTwoIsVisible(true);
       }
     })
-  },[])
+    return () =>{
+      
+    }
+  }, [])
 
-  
+
   const { viewport } = request.searchParams
   return (
 
@@ -34,8 +37,8 @@ export default function Home(request: any) {
             <div className="left-header">
             </div>
             <div className="left-content">
-              Agenecy-level<br /> web development
-              services at <br />freelancer rates
+              Enthusiastic <br /> web developer<br />
+              Thrive on <br />problem-solving <br />and teamwork.
             </div>
             <div className="left-description">
               My mission is to design and develop<br />
@@ -55,10 +58,12 @@ export default function Home(request: any) {
             <div className="card">
             </div>
           </div>
-          <div className="right-side" style={oneIsVisible?{animation:'slideUp 1s'}:{}}>
+          <div className="right-side" style={oneIsVisible ? { animation: 'slideUp 1s' } : {}}>
             <div className="right-content" >
-              Motorcycle<br /> Service<br />
-              Honda<br />SuperCub<br />
+              As<br/>
+              Honda SuperCub<br />
+               Motorcycle rider<br />
+              Provides<br/>
               Quick Web Delivery
             </div>
             <div className="right-description">
@@ -70,13 +75,13 @@ export default function Home(request: any) {
       </section>
 
       <section id='three' className='scroll-area'>
-      <div className="introduce-page">
-          <div className="left-side" style={twoIsVisible?{animation:'slideUp 1s'}:{}}>
+        <div className="introduce-page">
+          <div className="left-side" style={twoIsVisible ? { animation: 'slideUp 1s' } : {}}>
             <div className="left-header">
             </div>
             <div className="left-content">
-              Indiana jones<br /> web development<br />
-              Service<br />freelancer <br />
+              I Am<br/>Joonmook<br />who Enjoys Explore <br />
+              Nature and Github<br />and<br/> Loves Socializing<br />
             </div>
             <div className="left-description">
               My mission is to design and develop<br />

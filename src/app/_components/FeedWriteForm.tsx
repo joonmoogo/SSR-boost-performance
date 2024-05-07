@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, TouchEvent, useEffect, useRef, useState } from "react";
 import config from "../_config/config"
-import '../_styles/personalWriteForm.scss'
+import '../_styles/feedWriteForm.scss'
 import { useMutation } from "react-query";
-export default function PersonalWriteForm() {
+export default function FeedWriteForm() {
 
     const [current, setCurrent] = useState<number>(0);
     const [imagesArray, setImagesArray] = useState<any[]>([])

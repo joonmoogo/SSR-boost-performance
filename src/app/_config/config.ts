@@ -37,8 +37,8 @@ const config = {
                 ]
         },
         {
-            label: "Personal",
-            href: "/personal",
+            label: "Feed",
+            href: "/feed",
             icon_class: "bi bi-bicycle",
             icon_path:
                 [

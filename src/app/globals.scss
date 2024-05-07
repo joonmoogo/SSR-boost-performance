@@ -89,6 +89,7 @@
     body {
         background: black;
         color: white;
+        transition: 1s;
         height: calc(300vh - (60px ) - (100px * 3));
     }
 
@@ -127,7 +128,7 @@
                 }
 
                 .left-content {
-                    font-size: 5rem;
+                    font-size: 4rem;
                     margin-bottom: 50px;
                 }
 
@@ -188,7 +189,6 @@
 
         .left-side {
             height: 80%;
-            background-color: black;
             transform: skew(-5deg);
             overflow: hidden;
             box-shadow: 5px 5px 5px gray;
@@ -211,7 +211,6 @@
         
         .right-side {
             height: 80%;
-            background-color: black;
             overflow: hidden;
             margin-left: 30px;
             .right-content{

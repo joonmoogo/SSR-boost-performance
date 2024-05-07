@@ -7,7 +7,7 @@ export type techDTO = {
     first_div:string,
 }
 
-export type personalDTO = {
+export type feedDTO = {
     id: number,
     title: string,
     content: string,

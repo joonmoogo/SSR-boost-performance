@@ -1,15 +1,15 @@
 "use client"
 import { ChangeEvent, FormEvent, MouseEvent, MouseEventHandler, TouchEvent, useEffect, useRef, useState } from "react";
 import config from "../_config/config";
-import { personalDTO } from "@/types/DTO";
-import '../_styles/personalBox.scss'
-import { deleteOnerPersonal } from "../_util/customFetch";
+import { feedDTO } from "@/types/DTO";
+import '../_styles/feedBox.scss'
+import { deleteOnerFeed } from "../_util/customFetch";
 import { timeTune } from "../_util/util";
 import Modal from "./Modal";
 import SideNav from "./SideNav";
 
 
-export default function PersonalBox(props: { item: personalDTO, viewport: any }) {
+export default function FeedBox(props: { item: feedDTO, viewport: any }) {
 
     const slideshow = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState<number>(0);

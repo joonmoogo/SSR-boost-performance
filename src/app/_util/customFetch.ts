@@ -1,5 +1,5 @@
 import config from "../_config/config";
-import { techDTO, personalDTO, reelsDTO } from "@/types/DTO";
+import { techDTO, feedDTO, reelsDTO } from "@/types/DTO";
 
 const getAllTech = async () => {
     const serverData = await fetch(`${config.localUrl}/api/tech`,
@@ -13,14 +13,14 @@ const getAllTech = async () => {
 
 
 
-const getAllPersonal = async () => {
-    const serverData = await fetch(`${config.localUrl}/api/personal`,
+const getAllFeeds = async () => {
+    const serverData = await fetch(`${config.localUrl}/api/feed`,
         {
             // cache: 'no-store',
             next: { revalidate: 60 }
         }
     );
-    const data: personalDTO[] = await serverData.json();
+    const data: feedDTO[] = await serverData.json();
     return data;
 }
 
@@ -45,8 +45,8 @@ const getAllReels = async () => {
     return data;
 }
 
-const deleteOnerPersonal = async () => {
-    const serverData = await fetch(`${config.localUrl}/api/personal`,
+const deleteOnerFeed = async () => {
+    const serverData = await fetch(`${config.localUrl}/api/feed`,
         {
             cache: 'no-store',
             method: 'DELETE',
@@ -69,10 +69,10 @@ const getOneTech = async (id: any) => {
 
 
 export {
-    getAllPersonal,
+    getAllFeeds,
     getAllTech,
     getAllReels,
-    deleteOnerPersonal,
+    deleteOnerFeed,
     getOneTech,
     getDatasByCount,
 }

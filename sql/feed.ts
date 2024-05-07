@@ -1,5 +1,5 @@
-export const personalSQL = {
-    getAllPersonals() {
+export const feedSQL = {
+    getAllFeeds() {
         return `
         SELECT 
             personal.id,
@@ -15,7 +15,7 @@ export const personalSQL = {
         ORDER BY personal.id DESC;`
     },
 
-    getPersonalsByCount() {
+    getFeedsByCount() {
         return `
         SELECT 
             personal.id,
@@ -32,14 +32,14 @@ export const personalSQL = {
         ORDER BY personal.id DESC;`;
     },
 
-    postOnePersonal() {
+    postOneFeed() {
         return `
         INSERT INTO 
         personal (title, content)
         VALUES (@title, @content);`
     },
 
-    postOnePersonalImage() {
+    postOneFeedImage() {
         return `
         INSERT INTO 
         personal_images (personal_id, image_url) 
@@ -49,10 +49,10 @@ export const personalSQL = {
     getLastInsertedId() {
         return `SELECT last_insert_rowid();`
     },
-    deleteOnePersonalById() {
+    deleteOneFeedById() {
         return `DELETE FROM personal WHERE id = (@id)`
     },
-    deletePersonalImagesById() {
+    deleteFeedImagesById() {
         return `DELETE FROM personal WHERE personal_id = (@personal_id)`
     }
 }
