@@ -1,0 +1,28 @@
+@media(pointer:coarse) {
+    .video-form video {
+        margin-top: 10px;
+    }
+
+    video {
+        width: 100vw;
+        height: 200vw;
+    }
+
+    .video-option {
+        margin-left: 20px;
+        position: relative;
+        top: 30rem;
+    }
+
+    .video-name {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .video-description {
+        margin-bottom: 10px;
+    }
+
+}
+
+@media(pointer:fine) {}
