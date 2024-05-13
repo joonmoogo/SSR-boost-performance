@@ -23,4 +23,4 @@ jobs:
         commit-message: 'Auto generate pull request'
         title: 'Auto generate pull request'
         branch: 'main'
-        base: 'main'
+        base: 'dev'
