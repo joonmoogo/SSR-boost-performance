@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { techDTO, personalDTO } from "@/types/DTO";
+import { techDTO } from "@/types/DTO";
 import { getDatasByCount } from "@/app/_util/customFetch";
 import TechBox from "@/app/_components/TechBox";
 export default function TechClientComponents({ children, viewport }: { children: React.ReactNode; viewport: string }) {
@@ -10,7 +10,7 @@ export default function TechClientComponents({ children, viewport }: { children:
         threshold: 1
     })
     const [count, setCount] = useState<number>(9);
-    const [addedDocuments, setAddedDocument] = useState<personalDTO[]>([]);
+    const [addedDocuments, setAddedDocument] = useState<techDTO[]>([]);
     const [isDocumentsEnd, setIsDocumentsEnd] = useState<boolean>(false);
     useEffect(() => {
 
