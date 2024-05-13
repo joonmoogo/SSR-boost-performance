@@ -62,7 +62,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
         <>
             {isMobile ?
                 /* Mobile UI */
-                <div className="image-box">
+                <div className="image-box" role="feed-box">
                     <div className="box-header">
                         <div className="author">
                             <img src="ssepcat.png"></img>
@@ -92,7 +92,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                 :
                 /* Desktop UI */
                 <>
-                    <div className="image-box">
+                    <div className="image-box" role="feed-box">
                         <div className="box-image"
                             onClick={onClick}
                         >

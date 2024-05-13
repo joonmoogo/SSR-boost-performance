@@ -9,7 +9,7 @@ export default function Appbar() {
     
     return (
         <div className="appbar">
-            <div className="appbar-content">
+            <div className="appbar-content" role="appbar-content">
                 {config.name}
             </div>
             <Link className="appbar-icon" href={'/write'}>

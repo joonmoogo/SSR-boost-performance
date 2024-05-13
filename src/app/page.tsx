@@ -29,7 +29,7 @@ export default function Home(request: any) {
   }, []);
 
 
-  const { viewport } = request.searchParams
+  // const { viewport } = request.searchParams
   return (
 
     <div className='class-container'>
