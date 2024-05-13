@@ -30,4 +30,4 @@ jobs:
         title: '[Auto] Merge dev into main'
         body: 'This is an automatically generated pull request to merge dev into main.'
         labels: 'auto-merge'
-        branch: main
+        branch: origin/main
