@@ -1,6 +1,5 @@
 "use client"
 import './globals.scss'
-import Link from 'next/link';
 import ImageBox from './_components/FeedBox';
 import config from './_config/config';
 import { techDTO, feedDTO, reelsDTO } from "@/types/DTO";
