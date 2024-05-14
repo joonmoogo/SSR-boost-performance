@@ -8,7 +8,8 @@ export default function Reels() {
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [maxIndex, setMaxIndex] = useState<number>(0);
-    const [reelsData, setReelsData] = useState<reelsDTO[]>()
+    const [reelsData, setReelsData] = useState<reelsDTO[]>();
+    
     useEffect(() => {
         const fetchData = async () => {
             const data: reelsDTO[] = await getAllReels();
@@ -64,8 +65,7 @@ export default function Reels() {
 
 
     return (
-        <div className="video-page"
-        >
+        <div className="video-page">
             <div className="carousel"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}

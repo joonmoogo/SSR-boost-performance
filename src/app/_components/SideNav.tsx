@@ -9,23 +9,26 @@ import { usePathname } from "next/navigation";
 
 export default function SideNav() {
     const path = usePathname();
-    const [value,setValue]=useState(0)
+    const [value, setValue] = useState(0)
     const offset = 0.999;
 
-    useEffect(()=>{
-        window.addEventListener('scroll',()=>{
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
             setValue(window.scrollY / offset)
         })
-    },[])
+    }, [])
 
     return (
         <>
-            <div className="sidenav" style={{marginTop:`${value}px`}}>
+            <div className="sidenav" style={{ marginTop: `${value}px` }}>
                 {config.navItem.map((item) => {
                     return (
-                        <Link style={path==`${item.href}`?{textDecoration:'underline'}:{}} key={item.icon_class} href={item.href}>{item.label}</Link>
+                        <Link style={path == `${item.href}` ? { textDecoration: 'underline' } : {}} key={item.icon_class} href={item.href}>{item.label}</Link>
                     )
                 })}
+
+                {/* When token is ready */}
+                <Link style={path == `/write}` ? { textDecoration: 'underline' } : {}} key={'write'} href={'/write'}>{'admin'}</Link>
             </div>
         </>
     )
