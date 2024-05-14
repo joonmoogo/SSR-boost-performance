@@ -48,6 +48,21 @@
         color: inherit;
         text-decoration: none;
     }
+
+    .class-container {
+        display: none;
+    }
+
+    .mobile-container {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        margin-left: 3%;
+        margin-right: 3%;
+        font-size: 2rem;
+        animation: slideUp 1s;
+    }
+
+
 }
 
 @keyframes slideRight {
@@ -74,15 +89,11 @@
     0% {
         transform: translateY(20%);
         filter: blur(5px);
-        /* 시작 시 흐림 정도 */
-
     }
 
     100% {
         transform: translateY(0);
         filter: blur(0);
-        /* 시작 시 흐림 정도 */
-
     }
 }
 
@@ -98,6 +109,7 @@
         color: white;
         transition: 1s;
         height: calc(300vh - (60px) - (100px * 3));
+
     }
 
     .scroll-container {
@@ -108,6 +120,10 @@
         .scroll-area {
             // scroll-snap-align: start;
         }
+    }
+
+    .mobile-container {
+        display: none;
     }
 
 
