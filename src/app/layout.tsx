@@ -6,6 +6,7 @@ import config from "./_config/config";
 import Footer from "./_components/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SideNav from "./_components/SideNav";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: config.name,
@@ -13,11 +14,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+  const headerList = headers();
+  const viewport = headerList.get('x-viewport') as string;
   return (
     <>
       <html>
         <body>
-          <SideNav/>
+          {viewport === 'desktop' ? <SideNav /> : null}
           <Appbar />
           {children}
           <Footer />
