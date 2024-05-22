@@ -2,36 +2,37 @@ import config from "../_config/config";
 import { WriteStateProvider, useWriteState } from "../_util/writeContext";
 import '../_styles/buttonGroup.scss'
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { writeState } from "../_util/globalState";
 
 export default function ButtonGroup() {
-    const { writeState, changeWriteState } = useWriteState();
-    const [currentState, setCurrentState] = useState<string>('');
+    const [state,setState] = useRecoilState(writeState);
     useEffect(() => {
-        setCurrentState(writeState);
-    }, [writeState])
+        setState(state)
+    }, [state])
 
     return (
         <>
             <div className="button-group">
                 <button
                     type="button"
-                    style={currentState === 'tech' ? { borderBottom: '1px solid white' } : {}}
+                    style={state === 'tech' ? { borderBottom: '1px solid white' } : {}}
                     id="tech-button"
-                    onClick={() => { changeWriteState('tech') }}>
+                    onClick={() => { setState('tech') }}>
                     tech
                 </button>
                 <button
                     type="button"
-                    style={currentState === 'reels' ? { borderBottom: '1px solid white' } : {}}
+                    style={state === 'reels' ? { borderBottom: '1px solid white' } : {}}
                     id="reels-button"
-                    onClick={() => { changeWriteState('reels') }}>
+                    onClick={() => { setState('reels') }}>
                     reels
                 </button>
                 <button
                     type="button"
-                    style={currentState === 'personal' ? { borderBottom: '1px solid white' } : {}}
+                    style={state === 'personal' ? { borderBottom: '1px solid white' } : {}}
                     id="personal-button"
-                    onClick={() => { changeWriteState('personal') }}>
+                    onClick={() => { setState('personal') }}>
                     personal
                 </button>
             </div>
