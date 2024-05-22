@@ -33,6 +33,7 @@ export default function FeedClientComponents({ children, viewport }: { children:
     return (
         <>
             <Suspense fallback={<div style={{ backgroundColor: 'red' }}>loading...</div>}>
+
                 {children} {/* Server Components */}
                 {addedDocuments ?
                     addedDocuments.map((post: feedDTO, i: number) =>

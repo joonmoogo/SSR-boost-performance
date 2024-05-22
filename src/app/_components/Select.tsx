@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import './select.css'
+import '@/app/_styles/select.scss'
 
 type Options = Array<{ value: string; label: string }>;
 
@@ -182,7 +182,7 @@ function Select(props: SelectProps) {
 
   return (
     <React.Fragment>
-      <div className="container" ref={containerRef}>
+      <div className="container" ref={containerRef} style={{width:"100%"}}>
         <div className="select-wrapper" role="select-wrapper" ref={selectWrapperRef}
           onFocus={onFocus}
           onBlur={onBlur}

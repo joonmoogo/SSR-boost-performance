@@ -1,4 +1,5 @@
 import FeedBox from "@/app/_components/FeedBox";
+import { Select } from "@/app/_components/Select";
 import { getAllFeeds, getDatasByCount } from "@/app/_util/customFetch";
 import { feedDTO } from "@/types/DTO";
 

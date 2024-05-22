@@ -27,8 +27,11 @@ export default function SideNav() {
                     )
                 })}
 
-                {/* When token is ready */}
-                <Link style={path == `/write}` ? { textDecoration: 'underline' } : {}} key={'write'} href={'/write'}>{'admin'}</Link>
+                {/* It appear When token is ready */}
+                <div >
+                    <Link href={''}>{'write'}</Link>
+                    <Link style={path == `/admin` ? { textDecoration: 'underline' } : {}} key={'write'} href={'/admin'}>{'admin'}</Link>
+                </div>
             </div>
         </>
     )
