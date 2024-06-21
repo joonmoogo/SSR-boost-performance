@@ -48,10 +48,12 @@
         color: inherit;
         text-decoration: none;
     }
-    .class-container{
+
+    .class-container {
         display: none;
     }
-    .mobile-container{
+
+    .mobile-container {
         margin-top: 100px;
         margin-bottom: 100px;
         margin-left: 3%;
@@ -60,7 +62,7 @@
         animation: slideUp 1s;
     }
 
-    
+
 }
 
 @keyframes slideRight {
@@ -106,20 +108,36 @@
         background: black;
         color: white;
         transition: 1s;
-        height: calc(300vh - (60px) - (100px * 3));
+        margin: 0;
     }
+
 
     .scroll-container {
         scroll-behavior: smooth;
         // scroll-snap-type: y mandatory;
         transition: 1s;
+        // height: calc(300vh - (60px) - (100px * 3));
+        height: 300vh;
+        overflow: hidden;
 
-        .scroll-area {
+        .scroll-area1 {
+            height: calc(100vh);
+            background-color: red;
+            // scroll-snap-align: start;
+        }
+        .scroll-area2 {
+            height: calc(100vh);
+            background-color: blue;
+            // scroll-snap-align: start;
+        }
+        .scroll-area3 {
+            height: calc(100vh);
+            background-color: green;
             // scroll-snap-align: start;
         }
     }
 
-    .mobile-container{
+    .mobile-container {
         display: none;
     }
 
@@ -149,7 +167,7 @@
 
                 .left-content {
                     font-size: 4rem;
-                    margin-bottom: 50px;
+                    margin-top: 20%;
                 }
 
                 .left-description {
