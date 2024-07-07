@@ -8,9 +8,19 @@ import FeedClientComponents from '../../_pageComponents/feed/FeedClientComponent
 import FeedServerComponents from '../../_pageComponents/feed/FeedServerComponents';
 import { Metadata } from "next"
 
+
 export const metadata: Metadata = {
     title: `${config.name} : 준무고의 개인 블로그`,
+    openGraph: {
+        type: 'website',
+        url: config.websiteUrl,
+        title: `${config.name} : 준무고의 개인 블로그`,
+        description: config.description,
+        siteName: '',
+        locale: 'ko_KR'
+    }
 }
+
 
 export default function wrapper(request: any) {
     const headerList = headers();

@@ -22,7 +22,16 @@ export async function generateMetadata({ params, searchParams }: MetaProps, pare
     const post: techDTO = await getOneTech(id);
     console.log('generateMetadata', post);
     return {
-        title: `${config.name} : ${post.title}`
+        title: `${config.name} : ${post.title}`,
+        description: `${config.name} : ${post.title}`,
+        openGraph: {
+            type: 'website',
+            url: config.websiteUrl,
+            title: `${config.name} : ${post.title}`,
+            description: `${config.name} : ${post.title}`,
+            siteName: config.name,
+            locale: 'ko_KR'
+        }
     }
 }
 
