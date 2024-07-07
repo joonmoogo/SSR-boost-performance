@@ -7,11 +7,17 @@ import TechClientComponents from "@/app/_pageComponents/tech/TechClientComponent
 import TechServerComponents from "@/app/_pageComponents/tech/TechServerComponents"
 import { headers } from "next/headers"
 import WriteForm from "@/app/_components/WriteForm"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: `${config.name} : 준무고의 기술 블로그`,
+}
 
 export default async function Tech(request: any) {
     const headerList = headers();
     const viewport = headerList.get('x-viewport') as string;
     return (
+
         <div className="main-tech-page">
             <TechClientComponents viewport={viewport}>
                 <TechServerComponents viewport={viewport} />

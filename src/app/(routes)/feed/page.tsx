@@ -6,6 +6,11 @@ import { ReactNode, useMemo } from 'react';
 import { headers } from 'next/headers';
 import FeedClientComponents from '../../_pageComponents/feed/FeedClientComponents';
 import FeedServerComponents from '../../_pageComponents/feed/FeedServerComponents';
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: `${config.name} : 준무고의 개인 블로그`,
+}
 
 export default function wrapper(request: any) {
     const headerList = headers();

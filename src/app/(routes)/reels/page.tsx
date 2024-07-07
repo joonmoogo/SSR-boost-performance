@@ -4,12 +4,19 @@ import ReelsBox from "../../_components/ReelsBox";
 import '../../globals.scss'
 import { getAllReels } from "../../_util/customFetch";
 import { reelsDTO } from "@/types/DTO";
+import config from "@/app/_config/config";
+import { Metadata } from "next"
+
+// export const metadata: Metadata = {
+//     title: `${config.name} : 준무고의 영상 기록집`,
+// }
+
 export default function Reels() {
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [maxIndex, setMaxIndex] = useState<number>(0);
     const [reelsData, setReelsData] = useState<reelsDTO[]>();
-    
+
     useEffect(() => {
         const fetchData = async () => {
             const data: reelsDTO[] = await getAllReels();
@@ -53,7 +60,7 @@ export default function Reels() {
         }
         else {
             if (currentIndex - 1 == -1) {
-                setCurrentIndex(maxIndex-1);
+                setCurrentIndex(maxIndex - 1);
             }
             else {
                 setCurrentIndex(currentIndex - 1);

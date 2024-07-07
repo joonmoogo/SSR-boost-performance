@@ -109,32 +109,26 @@
         color: white;
         transition: 1s;
         margin: 0;
+        height: calc(100vh);
+        // overflow: hidden;
     }
 
 
     .scroll-container {
         scroll-behavior: smooth;
-        // scroll-snap-type: y mandatory;
         transition: 1s;
-        // height: calc(300vh - (60px) - (100px * 3));
-        height: 300vh;
-        overflow: hidden;
 
-        .scroll-area1 {
+        .scroll-area {
             height: calc(100vh);
-            background-color: red;
-            // scroll-snap-align: start;
+            background-color: black;
+
+            .flex-container {
+                display: flex;
+                margin-top: 70px;
+                margin-left: 95px;
+            }
         }
-        .scroll-area2 {
-            height: calc(100vh);
-            background-color: blue;
-            // scroll-snap-align: start;
-        }
-        .scroll-area3 {
-            height: calc(100vh);
-            background-color: green;
-            // scroll-snap-align: start;
-        }
+
     }
 
     .mobile-container {
