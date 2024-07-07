@@ -32,16 +32,13 @@ export default function FeedClientComponents({ children, viewport }: { children:
 
     return (
         <>
-            <Suspense fallback={<div style={{ backgroundColor: 'red' }}>loading...</div>}>
-
-                {children} {/* Server Components */}
-                {addedDocuments ?
-                    addedDocuments.map((post: feedDTO, i: number) =>
-                        <FeedBox key={post.id} item={post} viewport={viewport} />
-                    )
-                    : null}
-                <div id="loading" ref={ref}>.</div>
-            </Suspense>
+            {children} {/* Server Components */}
+            {addedDocuments ?
+                addedDocuments.map((post: feedDTO, i: number) =>
+                    <FeedBox key={post.id} item={post} viewport={viewport} />
+                )
+                : null}
+            <div id="loading" style={{ opacity: 0 }} ref={ref}>fetch here</div>
         </>
     )
 }

@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 export default function SideNav() {
     const path = usePathname();
     const [value, setValue] = useState(0)
-    const offset = 0.999;
+    const offset = 1;
 
     useEffect(() => {
         window.addEventListener('scroll', () => {

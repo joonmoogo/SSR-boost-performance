@@ -37,7 +37,7 @@ export default function TechClientComponents({ children, viewport }: { children:
                     <TechBox key={post.id} item={post} viewport={viewport} />
                 )
                 : null}
-            <div id="loading" ref={ref}>.</div>
+            <div id="loading" style={{ opacity: 0 }} ref={ref}>fetch here</div>
         </>
     )
 }

@@ -16,21 +16,10 @@ export default function Home(request: any) {
 
   return (
     <>
-      <div className="scroll-container"  >
-        <section className="scroll-area">
-          <div className="flex-container">
-            <div>asd</div>
-            <div>asd</div>
-            <div>asd</div>
-          </div>
-        </section>
-        <section className="scroll-area">
-          <div className="flex-container">me</div>
-        </section>
-        <section className="scroll-area">
-          <div className="flex-container">good</div>
-        </section>
+      <div className="main-page">
+        asd
       </div>
+
 
 
       <div className="mobile-container">
