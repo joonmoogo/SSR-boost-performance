@@ -13,11 +13,11 @@ export async function generateStaticParams() {
 
 type MetaProps = {
     params: { id: string }
-    searchParams: { [key: string]: string | string[] | undefined }
+    searchParams?: { [key: string]: string | string[] | undefined }
 }
 
 
-export async function generateMetadata({ params, searchParams }: MetaProps, parent: ResolvedMetadata): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: MetaProps,): Promise<Metadata> {
     const id = params.id;
     const post: techDTO = await getOneTech(id);
     console.log('generateMetadata', post);
