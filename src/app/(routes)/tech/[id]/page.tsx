@@ -4,12 +4,12 @@ import { techDTO } from "@/types/DTO";
 import { Metadata, ResolvedMetadata } from "next";
 import { headers } from "next/headers";
 
-export async function generateStaticParams() {
-    const posts = await getAllTech();
-    return posts.map((post) => ({
-        id: post.id.toString()
-    }))
-}
+// export async function generateStaticParams() {
+//     const posts = await getAllTech();
+//     return posts.map((post) => ({
+//         id: post.id.toString()
+//     }))
+// }
 
 type MetaProps = {
     params: { id: string }
