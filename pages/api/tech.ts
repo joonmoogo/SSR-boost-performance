@@ -5,45 +5,53 @@ import formidable, { IncomingForm } from 'formidable';
 import fs from "fs/promises";
 import path from "path";
 import jsdom from 'jsdom';
+import { sql } from '@vercel/postgres'
+import { initialCommands } from "sql/initialCommand";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const method = req.method;
     switch (method) {
         case "GET":
-            const getTechSQL = db.prepare(techSQL.getAllTechs());
-            const data = getTechSQL.all();
-            res.json(data);
+            // const getTechSQL = db.prepare(techSQL.getAllTechs());
+            // const data = getTechSQL.all();
+            // res.json(data);
+            const response = await sql`
+            SELECT * 
+            FROM tech
+            ORDER BY tech.id DESC;`
+            console.log(response.rows)
+            res.status(200).json({response:response.rows})
             break;
 
         case "POST":
-            const body = JSON.parse(req.body);
-            console.log(body);
-            const doc = new jsdom.JSDOM(body.content);
-            const images = doc.window.document.querySelectorAll('img');
-            const imageStoragePath = path.join(process.cwd() + "/public/static/tech_images");
-            const oneTechSQL = db.prepare(techSQL.postOneTech())
-            oneTechSQL.run({ title: body.title, content: body.content, first_div: getFirstDiv(body.content) });
-            const lastidSQL = db.prepare(techSQL.getLastInsertedId());
-            const lastRowId = lastidSQL.run().lastInsertRowid;
-            if (images) {
-                try {
-                    await fs.readdir(imageStoragePath);
-                } catch {
-                    await fs.mkdir(imageStoragePath, { recursive: true });
-                }
-                images.forEach((img, index) => {
-                    const base64Data = img.src.replace(/^data:image\/\w+;base64,/, '');
-                    const filename = `${body.title}${index}.png`;
-                    const newPath = `${imageStoragePath}/${filename}`
-                    fs.writeFile(newPath, base64Data, 'base64');
-                    const oneTechImage = db.prepare(techSQL.postOneTechImage());
-                    oneTechImage.run({ tech_id: lastRowId, image_url: filename });
-                })
-            }
+            // const body = JSON.parse(req.body);
+            // console.log(body);
+            // const doc = new jsdom.JSDOM(body.content);
+            // const images = doc.window.document.querySelectorAll('img');
+            // const imageStoragePath = path.join(process.cwd() + "/public/static/tech_images");
+            // const oneTechSQL = db.prepare(techSQL.postOneTech())
+            // oneTechSQL.run({ title: body.title, content: body.content, first_div: getFirstDiv(body.content) });
+            // const lastidSQL = db.prepare(techSQL.getLastInsertedId());
+            // const lastRowId = lastidSQL.run().lastInsertRowid;
+            // if (images) {
+            //     try {
+            //         await fs.readdir(imageStoragePath);
+            //     } catch {
+            //         await fs.mkdir(imageStoragePath, { recursive: true });
+            //     }
+            //     images.forEach((img, index) => {
+            //         const base64Data = img.src.replace(/^data:image\/\w+;base64,/, '');
+            //         const filename = `${body.title}${index}.png`;
+            //         const newPath = `${imageStoragePath}/${filename}`
+            //         fs.writeFile(newPath, base64Data, 'base64');
+            //         const oneTechImage = db.prepare(techSQL.postOneTechImage());
+            //         oneTechImage.run({ tech_id: lastRowId, image_url: filename });
+            //     })
+            // }
 
-            res.status(200).json('good');
+            // res.status(200).json('good');
 
-
+            res.json('POST')
             break;
 
         case "DELETE":

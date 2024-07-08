@@ -1,23 +1,14 @@
 import { sql } from '@vercel/postgres'
 import { NextApiRequest, NextApiResponse } from "next";
+import { initialCommands } from 'sql/initialCommand';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-
-        // CREATE TABLE IF NOT EXISTS tech (
-        //     id SERIAL PRIMARY KEY,
-        //     title VARCHAR(255),
-        //     first_div VARCHAR(255),
-        //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        //     content TEXT
-        // );
-        const result = await sql`CREATE TABLE IF NOT EXISTS tech (
-            id SERIAL PRIMARY KEY,
-            title VARCHAR(255),
-            first_div VARCHAR(255),
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            content TEXT
-        );`
-        console.log(result)
+        // const queries = initialCommands;
+        // console.log(Object.keys(queries))
+        // Object.keys(queries).forEach(async (e) => {
+        //     await sql`${e}`
+        // })
+        const result = ""
         return res.status(200).json({ result })
     }
     catch (error) {
