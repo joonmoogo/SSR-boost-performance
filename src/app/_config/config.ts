@@ -3,7 +3,10 @@ const config = {
     username: 'joonmoogo',
     description: 'Let\'s make Next.js blog from scratch?',
     localPort: '3000',
-    localUrl: 'http://localhost:3000',
+    localUrl: process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://my-app-git-dev-joonmoogos-projects.vercel.app/',
+    
     websiteUrl: 'joonmoogo.com',
     navItem: [
         {
