@@ -14,6 +14,8 @@ export const metadata: Metadata = {
 }
 export default function Home(request: any) {
 
+  console.log(process.env.NODE_ENV);
+
   return (
     <>
       <div className="main-page">
