@@ -8,7 +8,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // Object.keys(queries).forEach(async (e) => {
         //     await sql`${e}`
         // })
-        const result = ""
+        await Promise.all([
+            initialCommands.createPersonalImages(),
+            initialCommands.createPersonalTable(),
+            initialCommands.createReelsTable(),
+            initialCommands.createReelsVideo(),
+            initialCommands.createTechImages(),
+            initialCommands.createTechTable()
+        ]);
+        const result = "All tables are created! "
         return res.status(200).json({ result })
     }
     catch (error) {

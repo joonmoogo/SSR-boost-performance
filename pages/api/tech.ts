@@ -15,12 +15,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             // const getTechSQL = db.prepare(techSQL.getAllTechs());
             // const data = getTechSQL.all();
             // res.json(data);
-            const response = await sql`
-            SELECT * 
-            FROM tech
-            ORDER BY tech.id DESC;`
+            const response = await techSQL.getAllTechs();
             console.log(response.rows)
-            res.status(200).json({response:response.rows})
+            res.status(200).json(response.rows)
             break;
 
         case "POST":

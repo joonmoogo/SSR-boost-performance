@@ -61,7 +61,7 @@ export const createTechImages = `
 export const initialCommands = {
     // foreignKeyOn: `SET session_replication_role = 'origin';`,
 
-    createReelsTable: `
+    createReelsTable: () => sql`
         CREATE TABLE IF NOT EXISTS reels (
         id SERIAL PRIMARY KEY,
         title VARCHAR(255),
@@ -69,7 +69,7 @@ export const initialCommands = {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );`,
 
-    createReelsVideo: `
+    createReelsVideo: () => sql`
         CREATE TABLE IF NOT EXISTS reels_videos(
         id SERIAL PRIMARY KEY,
         reels_id INTEGER,
@@ -77,7 +77,7 @@ export const initialCommands = {
         CONSTRAINT fk_reels FOREIGN KEY (reels_id) REFERENCES reels(id) ON DELETE CASCADE
     );`,
 
-    createPersonalTable: `
+    createPersonalTable: () => sql`
         CREATE TABLE IF NOT EXISTS personal(
         id SERIAL PRIMARY KEY,
         title VARCHAR(255),
@@ -85,7 +85,7 @@ export const initialCommands = {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );`,
 
-    createPersonalImages: `
+    createPersonalImages: () => sql`
         CREATE TABLE IF NOT EXISTS personal_images(
         id SERIAL PRIMARY KEY,
         personal_id INTEGER,
@@ -93,7 +93,7 @@ export const initialCommands = {
         CONSTRAINT fk_personal FOREIGN KEY (personal_id) REFERENCES personal(id) ON DELETE CASCADE
     );`,
 
-    createTechTable: `
+    createTechTable: () => sql`
         CREATE TABLE IF NOT EXISTS tech (
         id SERIAL PRIMARY KEY,
         title VARCHAR(255),
@@ -102,7 +102,7 @@ export const initialCommands = {
         content TEXT
     );`,
 
-    createTechImages: `
+    createTechImages: () => sql`
         CREATE TABLE IF NOT EXISTS tech_images(
         id SERIAL PRIMARY KEY,
         tech_id INTEGER,

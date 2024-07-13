@@ -65,7 +65,7 @@ export const feedSQL = {
 }
 */
 export const feedSQL = {
-    getAllFeeds:`
+    getAllFeeds: () => sql`
         SELECT 
             personal.id,
             personal.title,
@@ -79,38 +79,36 @@ export const feedSQL = {
         GROUP BY personal.id
         ORDER BY personal.id DESC;`,
 
-    getFeedsByCount:`
+    getFeedsByCount: (startIndex: any, endIndex: any) => sql`
         SELECT 
             personal.id,
             personal.title,
             personal.content,
             personal.created_at,
-            personal_images.personal_id,
             STRING_AGG(personal_images.image_url, ',') AS image_url
         FROM personal 
         INNER JOIN personal_images
         ON personal.id = personal_images.personal_id 
-        WHERE personal.id BETWEEN $1 AND $2
+        WHERE personal.id BETWEEN ${startIndex} AND ${endIndex}
         GROUP BY personal.id
-        ORDER BY personal.id DESC;`,
+        ORDER BY personal.id DESC;
+        `,
 
-    postOneFeed:`
-        INSERT INTO 
-        personal (title, content)
-        VALUES ($1, $2)
+    postOneFeed: (title:any, content:any) => sql`
+        INSERT INTO personal (title, content)
+        VALUES (${title}, ${content})
         RETURNING id;`,
 
-    postOneFeedImage:`
-        INSERT INTO 
-        personal_images (personal_id, image_url) 
-        VALUES ($1, $2);`,
+    postOneFeedImage: (personalId: any, imageURL: any) => sql`
+        INSERT INTO personal_images (personal_id, image_url) 
+        VALUES (${personalId}, ${imageURL});`,
 
-    getLastInsertedId:`
+    getLastInsertedId: () => sql`
         SELECT currval(pg_get_serial_sequence('personal', 'id')) AS last_inserted_id;`,
 
-    deleteOneFeedById:`
+    deleteOneFeedById: () => sql`
         DELETE FROM personal WHERE id = $1;`,
 
-    deleteFeedImagesById:`
+    deleteFeedImagesById: () => sql`
         DELETE FROM personal_images WHERE personal_id = $1;`
 }

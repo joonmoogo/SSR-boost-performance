@@ -56,7 +56,7 @@ export default function FeedWriteForm() {
             formdata.append('images',image[i]);
         }
 
-        const serverData = await fetch(`${config.localUrl}/api/personal`, {
+        const serverData = await fetch(`${config.localUrl}/api/feed`, {
             cache: 'no-store',
             method: 'POST',
             body:formdata,

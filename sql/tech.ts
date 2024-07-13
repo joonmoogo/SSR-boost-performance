@@ -52,43 +52,43 @@ import { sql } from '@vercel/postgres'
 // }
 
 export const techSQL = {
-    getAllTechs: `
+    getAllTechs: () => sql`
         SELECT * 
         FROM tech
         ORDER BY tech.id DESC;`,
 
-    getOneTech: `
+    getOneTech: () => sql`
         SELECT *
         FROM tech;`
-        ,
+    ,
 
-    getTechsByCount: `
+    getTechsByCount: (startIndex: any, endIndex: any) => sql`
         SELECT 
             tech.id,
             tech.title,
             tech.first_div,
             tech.created_at,
             tech.content,
-            tech_images.tech_id,
             STRING_AGG(tech_images.image_url, ',') AS image_url
         FROM tech 
         INNER JOIN tech_images
         ON tech.id = tech_images.tech_id
-        WHERE tech.id BETWEEN $1 AND $2
+        WHERE tech.id BETWEEN ${startIndex} AND ${endIndex}
         GROUP BY tech.id
-        ORDER BY tech.id DESC;`,
+        ORDER BY tech.id DESC;
+        `,
 
-    postOneTech: `
+    postOneTech: () => sql`
         INSERT INTO 
         tech (title, content, first_div)
         VALUES ($1, $2, $3)
         RETURNING id;`,
 
-    postOneTechImage: `
+    postOneTechImage: () => sql`
         INSERT INTO 
         tech_images (tech_id, image_url) 
         VALUES ($1, $2);`,
 
-    getLastInsertedId: `
+    getLastInsertedId: () => sql`
         SELECT currval(pg_get_serial_sequence('tech', 'id')) AS last_inserted_id;`
 }
