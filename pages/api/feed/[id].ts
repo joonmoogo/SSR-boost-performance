@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import db from "@/app/_util/db";
+// import db from "@/app/_util/db";
 import { feedSQL } from "../../../sql/feed";
 import formidable, { IncomingForm } from 'formidable';
 import fs from "fs/promises";

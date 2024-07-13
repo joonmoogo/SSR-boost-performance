@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import db from "@/app/_util/db";
+// import db from "@/app/_util/db";
 import { feedSQL } from "../../../../../sql/feed";
-import { reelsSQL } from "../../../../../sql/reels";
+// import { reelsSQL } from "../../../../../sql/reels";
 import { techSQL } from "../../../../../sql/tech";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

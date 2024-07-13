@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import db from "@/app/_util/db";
+// import db from "@/app/_util/db";
 import { techSQL } from "../../../sql/tech";
 import formidable, { IncomingForm } from 'formidable';
 import fs from "fs/promises";
@@ -15,20 +15,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const method = req.method;
     switch (method) {
         case "GET":
-            const id = req.query.id
-            const oneTechSQL = db.prepare(techSQL.getOneTech());
-            const data = oneTechSQL.get(id)
-            res.json(data);
+            // const id = req.query.id
+            // const oneTechSQL = db.prepare(techSQL.getOneTech());
+            // const data = oneTechSQL.get(id)
+            // res.json(data);
             break;
 
         case "POST":
             // res.json('POST');
-            const imageStoragePath = path.join(process.cwd() + "/public/static/tech_images");
-            try {
-                await fs.readdir(imageStoragePath);
-            } catch {
-                await fs.mkdir(imageStoragePath, { recursive: true });
-            }
+            // const imageStoragePath = path.join(process.cwd() + "/public/static/tech_images");
+            // try {
+            //     await fs.readdir(imageStoragePath);
+            // } catch {
+            //     await fs.mkdir(imageStoragePath, { recursive: true });
+            // }
 
             break;
 
