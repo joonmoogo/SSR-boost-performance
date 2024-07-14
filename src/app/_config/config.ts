@@ -6,8 +6,8 @@ const config = {
     // localUrl: process.env.NODE_ENV === 'development'
     // ? 'http://localhost:3000'
     // : 'https://my-app-git-dev-joonmoogos-projects.vercel.app/',
-    localUrl:'https://www.19980310.xyz',
-    // localUrl:'http://localhost:3000',
+    // localUrl:'https://my-app-git-dev-joonmoogos-projects.vercel.app',
+    localUrl:'http://localhost:3000',
     websiteUrl: 'https://www.19980310.xyz',
     navItem: [
         {
