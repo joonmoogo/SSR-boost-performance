@@ -49,17 +49,17 @@ export default function FeedWriteForm() {
         const content = contentRef.current.value;
         const image = serverImagesArray;
         
-        const formdata = new FormData();
-        formdata.append('title',title);
-        formdata.append('content',content);
-        for(let i=0; i<image.length; i++){
-            formdata.append('images',image[i]);
-        }
+        // const formdata = new FormData();
+        // formdata.append('title',title);
+        // formdata.append('content',content);
+        // for(let i=0; i<image.length; i++){
+        //     formdata.append('images',image[i]);
+        // }
 
         const serverData = await fetch(`${config.localUrl}/api/feed`, {
             cache: 'no-store',
             method: 'POST',
-            body:formdata,
+            body:image[0],
         });
         const data: any = await serverData.json();
         console.log(data);
