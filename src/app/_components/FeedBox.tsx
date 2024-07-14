@@ -7,6 +7,7 @@ import { deleteOnerFeed } from "../_util/customFetch";
 import { timeTune } from "../_util/util";
 import Modal from "./Modal";
 import SideNav from "./SideNav";
+import Image from "next/image";
 
 
 export default function FeedBox(props: { item: feedDTO, viewport: any }) {
@@ -48,7 +49,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                 <div className="image-box" role="feed-box">
                     <div className="box-header">
                         <div className="author">
-                            <img src="ssepcat.png"></img>
+                            <Image loading="lazy" src='/ssepcat.png' width={10} height={10} alt="ssepcat"/>
                             <p>{config.username}</p>
                             <p>{timeTune(props.item.created_at)}</p>
                         </div>

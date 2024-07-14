@@ -26,17 +26,14 @@ export default function Home(request: any) {
 
   return (
     <>
-      <div className="main-page">
-        asd
+      <div className="pc-container">
+         pc임
       </div>
 
 
 
       <div className="mobile-container">
-        Enthusiastic <br /> web developer<br /><br />
-        Thrive on <br />problem-solving <br />and teamwork.<br /><br />
-        My mission is to design and develop
-        a website that you and your audience love
+          모바일임
       </div >
     </>
   );

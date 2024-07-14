@@ -12,10 +12,10 @@ export default function Appbar() {
             <Link className="appbar-content" role="appbar-content" href={'/'}>
                 {config.name}
             </Link>
-            
+{/*             
             <Link className="appbar-icon" href={'/write'}>
                 <img src="/ssepcat.png" />
-            </Link>
+            </Link> */}
         </div>
     )
 }

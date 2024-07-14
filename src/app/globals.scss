@@ -1,13 +1,21 @@
 /* Mobile UI */
 @media(pointer:coarse) {
+
+
     body {
         background-color: black;
         color: white;
+        // margin: 0;
+    }
+
+
+    .pc-container {
+        display: none;
     }
 
     .main-page {
-        margin-top: 80px;
-        margin-bottom: 100px;
+        margin-top: 60px;
+        margin-bottom: 50px;
         // margin-left: 3%;
         margin-right: 3%;
     }
@@ -55,11 +63,12 @@
 
     .mobile-container {
         margin-top: 100px;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
         margin-left: 3%;
         margin-right: 3%;
-        font-size: 2rem;
-        animation: slideUp 1s;
+        font-size: medium;
+        animation: slideRight 1s;
+        // writing-mode: vertical-lr;
     }
 
 
@@ -100,6 +109,15 @@
 /* Desktop UI */
 @media(pointer:fine) {
 
+
+    .pc-container {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        margin-left: 10%;
+        margin-right: 10%;
+
+    }
+
     .slideUp {
         animation: slideUp 1s;
     }
@@ -136,193 +154,193 @@
     }
 
 
-    #one {
-        height: calc(100vh - 60px - 100px);
+    // #one {
+    //     height: calc(100vh - 60px - 100px);
 
-        .introduce-page {
-            height: 100%;
-            margin-top: 100px;
-            margin-bottom: 100px;
-            margin-left: 10%;
-            margin-right: 10%;
-            display: grid;
-            grid-template-columns: 50% 50%;
-
-
-
-            .left-side {
-                animation: slideUp 1s;
-
-                .left-header {
-
-                    font-size: 2rem;
-                    margin-bottom: 30px;
-                }
-
-                .left-content {
-                    font-size: 4rem;
-                    margin-top: 20%;
-                }
-
-                .left-description {
-                    font-size: 1rem;
-
-                }
-            }
-
-            .right-side {
-                // background-color: #393939;
-                // background-image: url('/motor.jpg');
-                background-color: white;
-                transform: skew(10deg);
-                overflow: hidden;
-                position: relative;
-                height: 85%;
-                box-shadow: 5px 5px 5px gray;
-
-                .right-image {
-                    transform: skew(-10deg);
-                    width: 100%;
-                    height: 100%;
-                    scale: 1.3;
-                    background-image: url('/mount.jpg');
-                    background-size: cover;
-                    background-position: -200px 20px;
-                    background-repeat: no-repeat;
-                    transition: 1s;
+    //     .introduce-page {
+    //         height: 100%;
+    //         margin-top: 100px;
+    //         margin-bottom: 100px;
+    //         margin-left: 10%;
+    //         margin-right: 10%;
+    //         display: grid;
+    //         grid-template-columns: 50% 50%;
 
 
 
-                    &:hover {
-                        scale: 1.4;
+    //         .left-side {
+    //             animation: slideUp 1s;
 
-                    }
-                }
-            }
+    //             .left-header {
 
-        }
+    //                 font-size: 2rem;
+    //                 margin-bottom: 30px;
+    //             }
 
+    //             .left-content {
+    //                 font-size: 4rem;
+    //                 margin-top: 20%;
+    //             }
 
-    }
+    //             .left-description {
+    //                 font-size: 1rem;
 
-    #two {
-        height: calc(100vh - 60px - (100px));
+    //             }
+    //         }
 
-        .introduce-page {
-            height: 100%;
-            margin-top: 100px;
-            margin-bottom: 100px;
-            margin-left: 10%;
-            margin-right: 10%;
-            display: grid;
-            grid-template-columns: 70% 30%;
-            grid-column-gap: 30px;
-        }
+    //         .right-side {
+    //             // background-color: #393939;
+    //             // background-image: url('/motor.jpg');
+    //             background-color: white;
+    //             transform: skew(10deg);
+    //             overflow: hidden;
+    //             position: relative;
+    //             height: 85%;
+    //             box-shadow: 5px 5px 5px gray;
 
-        .left-side {
-            height: 80%;
-            transform: skew(-5deg);
-            overflow: hidden;
-            box-shadow: 5px 5px 5px gray;
-
-            .card {
-                height: 100%;
-                background-image: url('/motor.jpg');
-                background-color: white;
-                background-size: cover;
-                transform: skew(5deg);
-                scale: 1.3;
-                transition: 1s;
-
-                &:hover {
-                    scale: 1.4;
-
-                }
-            }
-        }
-
-        .right-side {
-            height: 80%;
-            overflow: hidden;
-            margin-left: 30px;
-
-            .right-content {
-                font-size: 2.5rem;
-            }
-
-            .right-description {
-                margin-top: 30px
-            }
-
-        }
-    }
-
-    #three {
-
-        height: calc(100vh - 60px - 100px);
-
-        .introduce-page {
-            height: 100%;
-            margin-top: 100px;
-            margin-bottom: 100px;
-            margin-left: 10%;
-            margin-right: 10%;
-            display: grid;
-            grid-template-columns: 30% 70%;
+    //             .right-image {
+    //                 transform: skew(-10deg);
+    //                 width: 100%;
+    //                 height: 100%;
+    //                 scale: 1.3;
+    //                 background-image: url('/mount.jpg');
+    //                 background-size: cover;
+    //                 background-position: -200px 20px;
+    //                 background-repeat: no-repeat;
+    //                 transition: 1s;
 
 
 
-            .left-side {
+    //                 &:hover {
+    //                     scale: 1.4;
 
-                .left-header {
+    //                 }
+    //             }
+    //         }
 
-                    font-size: 1rem;
-                    margin-bottom: 30px;
-                }
-
-                .left-content {
-                    font-size: 2.5rem;
-                    margin-bottom: 50px;
-                }
-
-                .left-description {
-                    font-size: 1rem;
-
-                }
-            }
-
-            .right-side {
-                // background-color: #393939;
-                // background-image: url('/motor.jpg');
-                background-color: white;
-                transform: skew(10deg);
-                overflow: hidden;
-                position: relative;
-                height: 85%;
-                box-shadow: 5px 5px 5px gray;
-                transition: 1s;
-
-                .right-image {
-                    transform: skew(-10deg);
-                    width: 100%;
-                    height: 100%;
-                    scale: 1.3;
-                    background-image: url('/friend.jpg');
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    transition: 1s;
-
-                    &:hover {
-                        scale: 1.4;
-
-                    }
-                }
-            }
-
-        }
+    //     }
 
 
-    }
+    // }
+
+    // #two {
+    //     height: calc(100vh - 60px - (100px));
+
+    //     .introduce-page {
+    //         height: 100%;
+    //         margin-top: 100px;
+    //         margin-bottom: 100px;
+    //         margin-left: 10%;
+    //         margin-right: 10%;
+    //         display: grid;
+    //         grid-template-columns: 70% 30%;
+    //         grid-column-gap: 30px;
+    //     }
+
+    //     .left-side {
+    //         height: 80%;
+    //         transform: skew(-5deg);
+    //         overflow: hidden;
+    //         box-shadow: 5px 5px 5px gray;
+
+    //         .card {
+    //             height: 100%;
+    //             background-image: url('/motor.jpg');
+    //             background-color: white;
+    //             background-size: cover;
+    //             transform: skew(5deg);
+    //             scale: 1.3;
+    //             transition: 1s;
+
+    //             &:hover {
+    //                 scale: 1.4;
+
+    //             }
+    //         }
+    //     }
+
+    //     .right-side {
+    //         height: 80%;
+    //         overflow: hidden;
+    //         margin-left: 30px;
+
+    //         .right-content {
+    //             font-size: 2.5rem;
+    //         }
+
+    //         .right-description {
+    //             margin-top: 30px
+    //         }
+
+    //     }
+    // }
+
+    // #three {
+
+    //     height: calc(100vh - 60px - 100px);
+
+    //     .introduce-page {
+    //         height: 100%;
+    //         margin-top: 100px;
+    //         margin-bottom: 100px;
+    //         margin-left: 10%;
+    //         margin-right: 10%;
+    //         display: grid;
+    //         grid-template-columns: 30% 70%;
+
+
+
+    //         .left-side {
+
+    //             .left-header {
+
+    //                 font-size: 1rem;
+    //                 margin-bottom: 30px;
+    //             }
+
+    //             .left-content {
+    //                 font-size: 2.5rem;
+    //                 margin-bottom: 50px;
+    //             }
+
+    //             .left-description {
+    //                 font-size: 1rem;
+
+    //             }
+    //         }
+
+    //         .right-side {
+    //             // background-color: #393939;
+    //             // background-image: url('/motor.jpg');
+    //             background-color: white;
+    //             transform: skew(10deg);
+    //             overflow: hidden;
+    //             position: relative;
+    //             height: 85%;
+    //             box-shadow: 5px 5px 5px gray;
+    //             transition: 1s;
+
+    //             .right-image {
+    //                 transform: skew(-10deg);
+    //                 width: 100%;
+    //                 height: 100%;
+    //                 scale: 1.3;
+    //                 background-image: url('/friend.jpg');
+    //                 background-size: cover;
+    //                 background-repeat: no-repeat;
+    //                 transition: 1s;
+
+    //                 &:hover {
+    //                     scale: 1.4;
+
+    //                 }
+    //             }
+    //         }
+
+    //     }
+
+
+    // }
 
     .main-page {
         margin-top: 100px;
