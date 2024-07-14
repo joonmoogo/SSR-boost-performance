@@ -13,7 +13,6 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
 
     const slideshow = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState<number>(0);
-    const [currentValue, setCurrentValue] = useState<number>(0);
     const [selectedImageArray, setSelectedImageArray] = useState<string[] | null>(null);
     const slideCount = props.item.image_urls.length
     const isMobile = props.viewport === 'mobile' ? true : false
@@ -22,22 +21,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
     // ex) slideCount == 2 ? max = -90 
     // ex) slideCount == 3 ? max = -130
 
-    const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
-        console.log(e.touches[0].clientX)
-        setCurrentValue(e.touches[0].clientX);
-    }
-    const onTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
-        console.log(e.changedTouches[0].clientX)
-        if (currentValue > e.changedTouches[0].clientX) {
-            setCurrentSlide(currentSlide + 1);
-        } else {
-            setCurrentSlide(currentSlide - 1);
-        }
-    }
-    const onTouchMove = (e: TouchEvent<HTMLDivElement>) => {
-        // console.log(e.touches[0].clientX)
-        // slideshow.current.style.transform = `translate(${0}vw)`;
-    }
+
     const onClick = (e: MouseEvent) => {
         setSelectedImageArray(props.item.image_urls);
     }
@@ -74,9 +58,6 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                     </div>
                     <div className="box-image"
                         ref={slideshow}
-                        onTouchStart={onTouchStart}
-                        onTouchEnd={onTouchEnd}
-                        onTouchMove={onTouchMove}
                         style={{
                             transition: 'transform 0.5s'
                         }}

@@ -6,7 +6,7 @@ import { feedDTO } from "@/types/DTO";
 export default async function FeedServerComponents(props: { viewport: any }) {
     const viewport = props.viewport;
     // const data: feedDTO[] = await getDatasByCount('feed', 1, 9);
-    const data: feedDTO[] = await getAllFeeds();
+    const data: feedDTO[] = await getDatasByCount('feed', 1, 9);
     console.log(data)
     return (
         <>
