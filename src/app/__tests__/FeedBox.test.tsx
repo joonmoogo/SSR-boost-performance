@@ -14,7 +14,7 @@ describe('FeedBox', () => {
             content:'test',
             created_at:'test',
             personal_id:0,
-            image_url:'test'
+            image_urls:['test','test']
         }
         const role = 'feed-box'
         const feedBoxMobileComponent = render(<FeedBox viewport={'mobile'} item={item} />)
@@ -35,7 +35,7 @@ describe('FeedBox', () => {
             content:'test',
             created_at:'test',
             personal_id:0,
-            image_url:'test'
+            image_urls:['test','test']
         }
         const role = 'feed-box'
         // const feedBoxMobileComponent = render(<FeedBox viewport={'mobile'} item={item} />)
