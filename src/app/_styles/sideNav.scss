@@ -1,30 +1,39 @@
-.sidenav {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    z-index: 999;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    user-select: none;
+@media (pointer: coarse) {
+    .sidenav {
+        display: none;
+    }
+}
 
-    a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
+@media (pointer:fine) {
+    .sidenav {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        z-index: 999;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        user-select: none;
 
-        /* 크기 작아지면*/
-        @media(width< 1000px){
-            font-size: 13px;
-        }
-        font-size: 22px;
+        a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
 
-        color: #818181;
-        display: block;
-        transition: 0.2s;
+            /* 크기 작아지면*/
+            @media(width< 1000px) {
+                font-size: 13px;
+            }
 
-        &:hover {
-            color: #f1f1f1;
-            text-decoration: underline; 
+            font-size: 22px;
+
+            color: #818181;
+            display: block;
+            transition: 0.2s;
+
+            &:hover {
+                color: #f1f1f1;
+                text-decoration: underline;
+            }
         }
     }
 }
