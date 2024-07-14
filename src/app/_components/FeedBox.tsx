@@ -14,9 +14,8 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
     const slideshow = useRef<any>(null);
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const [currentValue, setCurrentValue] = useState<number>(0);
-    const [selectedImageArray, setSelectedImageArray] = useState<string[]|null>(null);
-    const imageArray = props.item.image_url.split(',');
-    const slideCount = imageArray.length
+    const [selectedImageArray, setSelectedImageArray] = useState<string[] | null>(null);
+    const slideCount = props.item.image_urls.length
     const isMobile = props.viewport === 'mobile' ? true : false
 
     // IMAGE SLIDESHOW : n * -45
@@ -40,13 +39,13 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
         // slideshow.current.style.transform = `translate(${0}vw)`;
     }
     const onClick = (e: MouseEvent) => {
-        setSelectedImageArray(imageArray);
+        setSelectedImageArray(props.item.image_urls);
     }
 
-    const onClickBackground = () =>{
+    const onClickBackground = () => {
         setSelectedImageArray(null);
     }
-    
+
     useEffect(() => {
         if (currentSlide === slideCount + 1) {
             setCurrentSlide(0);
@@ -82,11 +81,11 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                             transition: 'transform 0.5s'
                         }}
                     >
-                        {isMobile ? imageArray.map((e, index) => {
+                        {isMobile ? props.item.image_urls.map((e, index) => {
                             return (
-                                <img key={index} src={`static/personal_images/${e}`} alt="" />
+                                <img key={index} src={`${e}`} alt="" />
                             )
-                        }) : <img src={`static/personal_images/${imageArray[0]}`}></img>}
+                        }) : <img src={`${props.item.image_urls[0]}`}></img>}
                     </div>
                 </div>
                 :
@@ -96,7 +95,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                         <div className="box-image"
                             onClick={onClick}
                         >
-                            <img src={`static/personal_images/${imageArray[0]}`} />
+                            <img src={`${props.item.image_urls[0]}`} />
                         </div>
                         <div className="box-header">
                             <div className="author">
@@ -109,7 +108,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                             {props.item.content}
                         </div>
                     </div>
-                    {selectedImageArray!=null?<Modal imageArray={selectedImageArray}/>:null}
+                    {selectedImageArray != null ? <Modal imageArray={selectedImageArray} /> : null}
                 </>
             }
 

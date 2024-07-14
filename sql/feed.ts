@@ -71,8 +71,7 @@ export const feedSQL = {
             personal.title,
             personal.content,
             personal.created_at,
-            personal_images.personal_id,
-            STRING_AGG(personal_images.image_url, ',') AS image_url
+            ARRAY_AGG(personal_images.image_url) AS image_urls
         FROM personal 
         INNER JOIN personal_images 
         ON personal.id = personal_images.personal_id
@@ -85,7 +84,7 @@ export const feedSQL = {
             personal.title,
             personal.content,
             personal.created_at,
-            STRING_AGG(personal_images.image_url, ',') AS image_url
+            ARRAY_AGG(personal_images.image_url) AS image_urls
         FROM personal 
         INNER JOIN personal_images
         ON personal.id = personal_images.personal_id 

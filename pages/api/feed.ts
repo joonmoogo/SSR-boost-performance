@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse,PageConfig } from "next";
+import { NextApiRequest, NextApiResponse, PageConfig } from "next";
 // import db from "@/app/_util/db";
 import { feedSQL } from "../../sql/feed";
 import formidable, { IncomingForm } from 'formidable';
@@ -9,16 +9,16 @@ import { put } from "@vercel/blob";
 
 export const config: PageConfig = {
     api: {
-      bodyParser: false,
+        bodyParser: false,
     },
-  };
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const method = req.method;
     switch (method) {
         case "GET":
             const response = await feedSQL.getAllFeeds();
-            res.status(200).json({ response: response.rows });
+            res.status(200).json(response.rows);
             break;
         // case "POST":
         //     const imageStoragePath = path.join(process.cwd() + "/public/static/personal_images");
@@ -101,9 +101,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             //     }
             //     res.status(200).json('Server Image uploaded');
             // }
-            const blob = await put('test2.jpg', req, { access: 'public', addRandomSuffix: false });
-            console.log(blob)
-            res.json(blob)
+            const { fileName, title, content, imageArray } = req.query
+
+            if (fileName === undefined) {
+                if (title && content && imageArray) {
+                    console.log('title', title)
+                    console.log('content', content)
+                    const parsedImageArray = JSON.parse(imageArray as string)
+                    console.log('imageArray', parsedImageArray)
+                    // console.log('imageArray', decodeURIComponent(JSON.parse(imageArray as string)))
+                    await feedSQL.postOneFeed(title, content);
+                    const lastId = await feedSQL.getLastInsertedId();
+                    for (const img of parsedImageArray) {
+                        await feedSQL.postOneFeedImage(lastId.rows[0].last_inserted_id, img.url)
+                    }
+                    res.status(200).json('good');
+                }
+            }
+            else {
+                const blob = await put(fileName as string, req, { access: 'public', addRandomSuffix: false });
+                console.log(blob)
+                res.json(blob)
+            }
             break;
 
 

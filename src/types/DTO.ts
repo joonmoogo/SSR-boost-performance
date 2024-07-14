@@ -3,8 +3,8 @@ export type techDTO = {
     created_at: string,
     id: number,
     title: string,
-    image_url:string,
-    first_div:string,
+    image_url: string,
+    first_div: string,
 }
 
 export type feedDTO = {
@@ -13,7 +13,7 @@ export type feedDTO = {
     content: string,
     created_at: string,
     personal_id: number,
-    image_url: string
+    image_urls: Array<string>
 }
 
 export type reelsDTO = {

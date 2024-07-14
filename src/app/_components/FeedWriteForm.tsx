@@ -6,13 +6,13 @@ export default function FeedWriteForm() {
 
     const [current, setCurrent] = useState<number>(0);
     const [imagesArray, setImagesArray] = useState<any[]>([])
-    const [serverImagesArray,setServerImagesArray] = useState<File[]>([]);
-    
+    const [serverImagesArray, setServerImagesArray] = useState<File[]>([]);
+
     const slideshow = useRef<any>(null);
     const imgRef = useRef<any>(null);
     const titleRef = useRef<any>(null);
     const contentRef = useRef<any>(null);
-    
+
 
     const encodeFileToBase64 = (fileBlob: any): Promise<string> | undefined => {
         if (!fileBlob) return undefined
@@ -48,7 +48,7 @@ export default function FeedWriteForm() {
         const title = titleRef.current.value;
         const content = contentRef.current.value;
         const image = serverImagesArray;
-        
+
         // const formdata = new FormData();
         // formdata.append('title',title);
         // formdata.append('content',content);
@@ -56,20 +56,29 @@ export default function FeedWriteForm() {
         //     formdata.append('images',image[i]);
         // }
 
-        const serverData = await fetch(`${config.localUrl}/api/feed`, {
+        // const serverData = await fetch(`${config.localUrl}/api/feed?fileName=${'test3.jpg'}`, {
+        //     cache: 'no-store',
+        //     method: 'POST',
+        //     body: image[0],
+        // });
+
+        const fetchPromises = image.map(img =>
+            fetch(`${config.localUrl}/api/feed?fileName=feed/${title}/${img.name}`, {
+                cache: 'no-store',
+                method: 'POST',
+                body: img,
+            }).then(imgServerData => imgServerData.json())
+        );
+
+        const results = await Promise.all(fetchPromises);
+        console.log(results);
+
+        const serverData = await fetch(`${config.localUrl}/api/feed?title=${title}&content=${content}&imageArray=${encodeURIComponent(JSON.stringify(results))}`, {
             cache: 'no-store',
             method: 'POST',
-            body:image[0],
-        });
-        const data: any = await serverData.json();
-        console.log(data);
-        alert('good')
-        
-        console.log({
-            title,
-            content,
-            image,
-        });
+        }).then((data) => { return data.json() });
+        console.log(serverData);
+
     }
 
 
@@ -106,14 +115,14 @@ export default function FeedWriteForm() {
                         )
                     })}
                 </div>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
-                <button  onClick={onSubmit}>submit</button>
+                <button onClick={onSubmit}>submit</button>
+                <button onClick={onSubmit}>submit</button>
+                <button onClick={onSubmit}>submit</button>
+                <button onClick={onSubmit}>submit</button>
+                <button onClick={onSubmit}>submit</button>
+                <button onClick={onSubmit}>submit</button>
+                <button onClick={onSubmit}>submit</button>
+                <button onClick={onSubmit}>submit</button>
             </div >
         </>
     )
