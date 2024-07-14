@@ -7,9 +7,9 @@ const config = {
     // ? 'http://localhost:3000'
     // : 'https://my-app-git-dev-joonmoogos-projects.vercel.app/',
     // localUrl:'https://my-app-git-dev-joonmoogos-projects.vercel.app',
-    
+
     // localUrl:'http://localhost:3000',
-    localUrl: 'https://www.19980310.xyz',
+    localUrl: process.env.NODE_ENV === 'production' ? 'https://www.19980310.xyz' : 'http://localhost:3000', /* api url에 사용됨 */
     websiteUrl: 'https://www.19980310.xyz',
     navItem: [
         {
