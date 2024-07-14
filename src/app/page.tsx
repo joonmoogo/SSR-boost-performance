@@ -11,6 +11,14 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `${config.name} : 준무고 잡다구리 보관함`,
+  openGraph: {
+    type: 'website',
+    url: config.websiteUrl,
+    // title: `${config.name} : ${}`,
+    description: `${config.name} : 준무고 잡다구리 보관함`,
+    siteName: config.name,
+    locale: 'ko_KR'
+  }
 }
 export default function Home(request: any) {
 
