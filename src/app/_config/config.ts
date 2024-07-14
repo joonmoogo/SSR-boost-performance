@@ -7,8 +7,8 @@ const config = {
     // ? 'http://localhost:3000'
     // : 'https://my-app-git-dev-joonmoogos-projects.vercel.app/',
     // localUrl:'https://my-app-git-dev-joonmoogos-projects.vercel.app',
+    
     // localUrl:'http://localhost:3000',
-
     localUrl: 'https://www.19980310.xyz',
     websiteUrl: 'https://www.19980310.xyz',
     navItem: [

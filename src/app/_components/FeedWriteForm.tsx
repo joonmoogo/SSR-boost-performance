@@ -63,6 +63,8 @@ export default function FeedWriteForm() {
         });
         const data: any = await serverData.json();
         console.log(data);
+        alert('good')
+        
         console.log({
             title,
             content,
