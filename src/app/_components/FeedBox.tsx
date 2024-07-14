@@ -60,7 +60,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
     return (
         <>
             {isMobile ?
-                /* Mobile UI */
+                /* Mobile UI t*/
                 <div className="image-box" role="feed-box">
                     <div className="box-header">
                         <div className="author">
