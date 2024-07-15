@@ -12,6 +12,7 @@ export default function TechWriteForm() {
         const html = stringToHTML(textareaRef.current.innerHTML)
         console.log(html);
         const serverData = await fetch(`${config.localUrl}/api/tech`, {
+            // headers: { "Content-Type": "application/json" },
             cache: 'no-store',
             method: 'POST',
             body:JSON.stringify({title:title,content:html})

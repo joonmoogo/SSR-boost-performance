@@ -78,7 +78,6 @@ export default function FeedWriteForm() {
             method: 'POST',
         }).then((data) => { return data.json() });
         console.log(serverData);
-
     }
 
 

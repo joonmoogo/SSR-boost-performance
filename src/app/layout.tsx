@@ -7,6 +7,7 @@ import Footer from "./_components/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SideNav from "./_components/SideNav";
 import { headers } from "next/headers";
+import WriteButton from "./_components/WriteButton";
 
 export const metadata: Metadata = {
   title: config.name,
@@ -20,7 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <>
       <html>
         <body>
-          {viewport === 'desktop' ? <SideNav /> : null}
+          <SideNav/>
           <Appbar />
           {children}
           <Footer />

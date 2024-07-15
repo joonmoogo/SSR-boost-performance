@@ -78,10 +78,10 @@ export const techSQL = {
         ORDER BY tech.id DESC;
         `,
 
-    postOneTech: () => sql`
+    postOneTech: (title: any, content: any, first_div: any) => sql`
         INSERT INTO 
         tech (title, content, first_div)
-        VALUES ($1, $2, $3)
+        VALUES (${title}, ${content}, ${first_div})
         RETURNING id;`,
 
     postOneTechImage: () => sql`

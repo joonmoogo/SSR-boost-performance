@@ -4,6 +4,8 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { getDatasByCount } from "@/app/_util/customFetch";
 import { feedDTO } from "@/types/DTO";
 import FeedBox from "@/app/_components/FeedBox";
+import WriteButton from "@/app/_components/WriteButton";
+import FeedWriteModal from "@/app/_components/FeedWriteModal";
 
 export default function FeedClientComponents({ children, viewport }: { children: React.ReactNode; viewport: string }) {
     const [ref, inView] = useInView({
@@ -13,6 +15,7 @@ export default function FeedClientComponents({ children, viewport }: { children:
     const [addedDocuments, setAddedDocument] = useState<feedDTO[]>([]);
     const [isDocumentsEnd, setIsDocumentsEnd] = useState<boolean>(false);
 
+    const [showModal, setShowModal] = useState<boolean>(false);
     useEffect(() => {
 
         /* infinitescroll api fetch */
@@ -32,6 +35,7 @@ export default function FeedClientComponents({ children, viewport }: { children:
 
     return (
         <>
+
             {children} {/* Server Components */}
             {addedDocuments ?
                 addedDocuments.map((post: feedDTO, i: number) =>
@@ -39,6 +43,8 @@ export default function FeedClientComponents({ children, viewport }: { children:
                 )
                 : null}
             <div id="loading" style={{ opacity: 0 }} ref={ref}>fetch here</div>
+            <WriteButton modalOpen={() => setShowModal(true)} />
+            {showModal ? <FeedWriteModal modalClose={()=>setShowModal(false)}/> : null}
         </>
     )
 }
