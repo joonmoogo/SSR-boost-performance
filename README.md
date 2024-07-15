@@ -2,7 +2,6 @@
 
 # 아키텍처 구성
 
-1. **Cloudflare를 통해 트래픽 라우팅**
    - **DNS 관리**: Cloudflare의 DNS 서비스를 사용하여 도메인을 관리하고, 트래픽을 Vercel로 라우팅합니다.
    - **역방향 프록시**: Cloudflare의 프록시를 사용하여 Vercel 서버의 IP 주소를 숨기고, 트래픽을 보호합니다.
 
