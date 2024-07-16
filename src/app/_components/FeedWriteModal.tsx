@@ -93,11 +93,13 @@ export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
                             encodeFileToBase64(e.target.files[0]);
                         }
                     }} style={{ display: 'none' }}></input>
-                    {imagesArray.map((e, i) => {
-                        return (
-                            <Image width={20} height={20} alt={e} key={i} src={e}></Image>
-                        )
-                    })}
+                    <div className="write-image-array">
+                        {imagesArray.map((e, i) => {
+                            return (
+                                <Image width={20} height={20} alt={e} key={e+i} src={e}></Image>
+                            )
+                        })}
+                    </div>
                 </div>
                 <div className="modal-footer">
                     <div>

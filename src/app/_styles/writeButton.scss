@@ -19,7 +19,9 @@
     z-index: 99;
 
     @media(pointer:coarse) {
-        display: none;
+        // display: none;
+        bottom: 100px;
+        right: 30px;
     }
 
     

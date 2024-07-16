@@ -7,7 +7,6 @@ import Footer from "./_components/Footer";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SideNav from "./_components/SideNav";
 import { headers } from "next/headers";
-import WriteButton from "./_components/WriteButton";
 
 export const metadata: Metadata = {
   title: config.name,
