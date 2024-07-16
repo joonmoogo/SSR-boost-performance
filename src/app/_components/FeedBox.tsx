@@ -42,6 +42,13 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
         slideshow.current.style.transform = `translate(${-45 * currentSlide + 1}vw)`
     }, [currentSlide])
 
+
+    const icons: any = {
+        1: '1️⃣',
+        2: '2️⃣',
+        3: '3️⃣',
+        4: '4️⃣',
+    }
     return (
         <>
             {isMobile ?
@@ -63,11 +70,19 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                             transition: 'transform 0.5s'
                         }}
                     >
-                        {isMobile ? props.item.image_urls.map((e, index) => {
-                            return (
-                                <img key={index} src={`${e}`} alt="" />
-                            )
-                        }) : <img src={`${props.item.image_urls[0]}`}></img>}
+                        {
+                            props.item.image_urls.map((e, index) => {
+                                return (
+                                    <img
+                                        className={
+                                            props.item.image_urls.length <= 1 ? "singleImg" : "multiImg"
+                                        }
+                                        key={index}
+                                        src={e}
+                                        alt="" />
+                                )
+                            })
+                        }
                     </div>
                 </div>
                 :
@@ -84,6 +99,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                                 <img src="ssepcat.png"></img>
                                 <p>{config.username}</p>
                                 <p>{timeTune(props.item.created_at)}</p>
+                                <p>{props.item.image_urls.length > 1 && icons[props.item.image_urls.length]}</p>
                             </div>
                         </div>
                         <div className="box-content" ref={slideshow}>
