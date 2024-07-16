@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import "../_styles/feedWriteModal.scss"
 import Image from "next/image";
 import config from "../_config/config";
+import Loader from "./Loading";
 
 interface FeedWriteModal {
     modalClose: () => void
@@ -12,6 +13,8 @@ export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
 
     const [imagesArray, setImagesArray] = useState<any[]>([])
     const [serverImagesArray, setServerImagesArray] = useState<File[]>([]);
+
+    const [loading, isLoading] = useState<boolean>(false);
 
     const imgRef = useRef<HTMLInputElement>(null)
     const titleRef = useRef<HTMLInputElement>(null);
@@ -47,6 +50,7 @@ export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
 
     const onSubmit = async () => {
         if (titleRef.current && descriptionRef.current) {
+            isLoading(true);
             const title = titleRef.current.value;
             const content = descriptionRef.current.value;
             const image = serverImagesArray;
@@ -66,11 +70,10 @@ export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
                 cache: 'no-store',
                 method: 'POST',
             }).then((data) => {
+                isLoading(false);
                 props.modalClose()
-                alert('등록 됐음')
                 return (data.json())
             }).catch((err) => {
-                alert('에러 났음')
                 return err
             })
             console.log(serverData)
@@ -80,34 +83,37 @@ export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
 
 
     return (
-        <div className="write-modal-container" onClick={props.modalClose}>
-            <div>Write your feed</div>
-            <div className="write-modal-box" onClick={modalBoxClick}>
-                <div className="username">joonmoogo</div>
-                <input className="title" ref={titleRef} maxLength={10} type="text" placeholder="title" autoFocus></input>
-                <input className="description" ref={descriptionRef} maxLength={20} type="text" placeholder="description" ></input>
-                <div className="button-group">
-                    <div className="write-photos" onClick={photoButtonClick}>Photos</div>
-                    <input ref={imgRef} type="file" onChange={(e) => {
-                        if (e.target.files) {
-                            encodeFileToBase64(e.target.files[0]);
-                        }
-                    }} style={{ display: 'none' }}></input>
-                    <div className="write-image-array">
-                        {imagesArray.map((e, i) => {
-                            return (
-                                <Image width={20} height={20} alt={e} key={e+i} src={e}></Image>
-                            )
-                        })}
+        <>
+            {loading ? <Loader /> : null}
+            <div className="write-modal-container" onClick={props.modalClose}>
+                <div>Write your feed</div>
+                <div className="write-modal-box" onClick={modalBoxClick}>
+                    <div className="username">joonmoogo</div>
+                    <input className="title" ref={titleRef} maxLength={10} type="text" placeholder="title" autoFocus></input>
+                    <input className="description" ref={descriptionRef} maxLength={20} type="text" placeholder="description" ></input>
+                    <div className="button-group">
+                        <div className="write-photos" onClick={photoButtonClick}>Photos</div>
+                        <input ref={imgRef} type="file" onChange={(e) => {
+                            if (e.target.files) {
+                                encodeFileToBase64(e.target.files[0]);
+                            }
+                        }} style={{ display: 'none' }}></input>
+                        <div className="write-image-array">
+                            {imagesArray.map((e, i) => {
+                                return (
+                                    <Image width={20} height={20} alt={e} key={e + i} src={e}></Image>
+                                )
+                            })}
+                        </div>
                     </div>
-                </div>
-                <div className="modal-footer">
-                    <div>
-                        choose at least one photo
+                    <div className="modal-footer">
+                        <div>
+                            choose at least one photo
+                        </div>
+                        <div className="write-submit" onClick={onSubmit}>Post</div>
                     </div>
-                    <div className="write-submit" onClick={onSubmit}>Post</div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

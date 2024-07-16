@@ -1,7 +1,10 @@
-export default function Loading(){
-    return(
+import Loader from "./_components/Loading";
+
+export default function Loading() {
+    return (
         <div className="main-page">
-            <h3>loading...</h3>
+            <Loader />
         </div>
+
     )
 }
