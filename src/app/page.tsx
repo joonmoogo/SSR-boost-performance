@@ -8,6 +8,7 @@ import { useInView } from 'react-intersection-observer';
 import { headers } from 'next/headers';
 import { delay } from './_util/util';
 import { Metadata } from 'next';
+import Cube from './_components/Cube';
 
 export const metadata: Metadata = {
   title: `${config.name} : 준무고 잡다구리 보관함`,
@@ -28,12 +29,15 @@ export default function Home(request: any) {
     <>
       <div className="pc-container">
          pc임
+         {/* <Cube/> */}
       </div>
 
 
 
       <div className="mobile-container">
-          모바일임
+          {/* 모바일임 */}
+          <Cube/>
+
       </div >
     </>
   );
