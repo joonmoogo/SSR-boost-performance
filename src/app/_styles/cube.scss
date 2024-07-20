@@ -25,7 +25,7 @@
     height: 150px;
     position: relative;
     transform-style: preserve-3d;
-    animation: rotate 5s infinite linear;
+    animation: rotate 5s infinite ease-in-out;
     transform: rotateY(100deg) rotateY(130deg) rotateZ(120deg);
 }
 
@@ -81,12 +81,17 @@
 
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotateY(0deg) rotateX(0deg);
+    @keyframes rotate {
+      0% {
+        transform: rotateY(#{random()}deg) rotateX(#{random(360)}deg) rotateZ(#{random(360)}deg);
+      }
+    
+      50% {
+        transform: rotateY(#{random(720) + 180}deg) rotateX(#{random(720) + 180}deg) rotateZ(#{random(720) + 180}deg);
+      }
+    
+      100% {
+        transform: rotateY(#{random(360)}deg) rotateX(#{random(360)}deg) rotateZ(#{random(360)}deg);
+      }
     }
-
-    100% {
-        transform: rotateY(360deg) rotateX(360deg);
-    }
-}
+  

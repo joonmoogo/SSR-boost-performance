@@ -5,11 +5,11 @@ import Image from "next/image";
 import config from "../_config/config";
 import Loader from "./Loading";
 
-interface FeedWriteModal {
+interface TechWriteModal {
     modalClose: () => void
 }
 
-export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
+export default function TechWriteModal(props: TechWriteModal): React.ReactNode {
 
     const [imagesArray, setImagesArray] = useState<any[]>([])
     const [serverImagesArray, setServerImagesArray] = useState<File[]>([]);
@@ -74,9 +74,6 @@ export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
                 props.modalClose()
                 return (data.json())
             }).catch((err) => {
-                isLoading(false);
-                props.modalClose()
-                alert(err)
                 return err
             })
             console.log(serverData)

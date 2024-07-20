@@ -6,6 +6,10 @@ interface WriteButtonProps {
     modalOpen: () => void
 }
 
+const renderButtonIcon = () =>{
+    
+}
+
 
 export default function WriteButton(props: WriteButtonProps) {
 
