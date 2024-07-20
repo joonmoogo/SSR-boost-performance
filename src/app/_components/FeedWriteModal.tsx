@@ -4,6 +4,7 @@ import "../_styles/feedWriteModal.scss"
 import Image from "next/image";
 import config from "../_config/config";
 import Loader from "./Loading";
+import { compressImage } from "../_util/compressImage";
 
 interface FeedWriteModal {
     modalClose: () => void
@@ -49,11 +50,16 @@ export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
     }
 
     const onSubmit = async () => {
+        // console.log()
+        // console.log(await compressImage(serverImagesArray[0]).then((data)=>data));
+        console.log(serverImagesArray)
+        const compressionPromises = serverImagesArray.map(file => compressImage(file, 0.7));  
+        const compressedImages = (await Promise.all(compressionPromises))
         if (titleRef.current && descriptionRef.current) {
             isLoading(true);
             const title = titleRef.current.value;
             const content = descriptionRef.current.value;
-            const image = serverImagesArray;
+            const image = compressedImages;
 
             const fetchPromises = image.map(img =>
                 fetch(`${config.localUrl}/api/feed?fileName=feed/${title}/${img.name}`, {
