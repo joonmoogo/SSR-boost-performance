@@ -79,18 +79,23 @@ export const feedSQL = {
         ORDER BY personal.id DESC;`,
 
     getFeedsByCount: (startIndex: any, endIndex: any) => sql`
-        SELECT 
-            personal.id,
-            personal.title,
-            personal.content,
-            personal.created_at,
-            ARRAY_AGG(personal_images.image_url) AS image_urls
-        FROM personal 
-        INNER JOIN personal_images
-        ON personal.id = personal_images.personal_id 
-        WHERE personal.id BETWEEN ${startIndex} AND ${endIndex}
-        GROUP BY personal.id
-        ORDER BY personal.id DESC;
+        WITH ordered_personal AS (
+            SELECT 
+                personal.id,
+                personal.title,
+                personal.content,
+                personal.created_at,
+                ARRAY_AGG(personal_images.image_url) AS image_urls,
+                ROW_NUMBER() OVER (ORDER BY personal.id DESC) AS row_num
+            FROM personal 
+            INNER JOIN personal_images
+            ON personal.id = personal_images.personal_id 
+            GROUP BY personal.id
+        )
+        SELECT *
+        FROM ordered_personal
+        WHERE row_num BETWEEN ${startIndex} AND ${endIndex}
+        ORDER BY row_num;
         `,
 
     postOneFeed: (title:any, content:any) => sql`
