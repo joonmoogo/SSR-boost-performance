@@ -1,6 +1,6 @@
 'use client'
 import { useRef, useState } from "react";
-import "../_styles/feedWriteModal.scss"
+import "../_styles/writeModal.scss"
 import Image from "next/image";
 import config from "../_config/config";
 import Loader from "./Loading";
@@ -96,7 +96,7 @@ export default function FeedWriteModal(props: FeedWriteModal): React.ReactNode {
             {loading ? <Loader /> : null}
             <div className="write-modal-container" onClick={props.modalClose}>
                 <div>Write your feed</div>
-                <div className="write-modal-box" onClick={modalBoxClick}>
+                <div className="write-modal-box" id="feed-modal-box" onClick={modalBoxClick}>
                     <div className="username">joonmoogo</div>
                     <input className="title" ref={titleRef} maxLength={10} type="text" placeholder="title" autoFocus></input>
                     <input className="description" ref={descriptionRef} maxLength={20} type="text" placeholder="description" ></input>

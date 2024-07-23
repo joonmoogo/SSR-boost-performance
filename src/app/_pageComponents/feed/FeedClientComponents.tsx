@@ -43,8 +43,8 @@ export default function FeedClientComponents({ children, viewport }: { children:
                 )
                 : null}
             <div id="loading" style={{ opacity: 0 }} ref={ref}>fetch here</div>
-            <WriteButton modalOpen={() => setShowModal(true)} />
-            {showModal ? <FeedWriteModal modalClose={()=>setShowModal(false)}/> : null}
+            {showModal ? <FeedWriteModal modalClose={() => setShowModal(false)} /> : null}
+            <WriteButton type="feed" modalOpen={() => setShowModal(true)} />
         </>
     )
 }
