@@ -39,7 +39,7 @@ export default function TechClientComponents({ children, viewport }: { children:
         <>
             {children}
             {addedDocuments && addedDocuments.map((post: any) => <TechBox key={post.id} item={post} viewport={viewport} />)}
-            <WriteButton type="tech" modalOpen={() => setShowModal(true)} />
+            <WriteButton type="tech" modalOpen={() => router.push('/tech/write')} />
             {showModal && <TechWrite />}
             <div id="loading" style={{ opacity: 0 }} ref={ref}>fetch here</div>
         </>

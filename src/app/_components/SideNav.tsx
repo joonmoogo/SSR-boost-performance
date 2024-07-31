@@ -29,7 +29,7 @@ export default function SideNav() {
 
                 {/* It appear When token is ready */}
                 <div >
-                    <Link href={''}>{'write'}</Link>
+                    {/* <Link href={''}>{'write'}</Link> */}
                     <Link style={path == `/admin` ? { textDecoration: 'underline' } : {}} key={'write'} href={'/admin'}>{'admin'}</Link>
                 </div>
             </div>
