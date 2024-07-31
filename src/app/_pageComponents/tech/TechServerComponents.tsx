@@ -8,11 +8,7 @@ export default async function TechServerComponents(props: { viewport: any }) {
     const data: techDTO[] = await getDatasByCount('tech', 1, 9);
     return (
         <>
-            {data.map((post: techDTO) => {
-                return (
-                    <TechBox key={post.id} item={post} viewport={viewport} />
-                )
-            })}
+            {data.map((post: techDTO) => <TechBox key={post.id} item={post} viewport={viewport} />)}
         </>
     )
 }
