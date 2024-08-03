@@ -78,6 +78,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                                             props.item.image_urls.length <= 1 ? "singleImg" : "multiImg"
                                         }
                                         key={index}
+                                        loading="lazy"
                                         src={e}
                                         alt="" />
                                 )
