@@ -27,7 +27,6 @@ export default function TechWrite() {
         const handleInput = () => {
             if (editor) {
                 setEditorValue(editor.innerHTML)
-                console.log(editor.childNodes)
             }
         };
 
@@ -37,24 +36,72 @@ export default function TechWrite() {
         };
     }, []);
 
+    const wrapHTML = () => {
+        const editor = editorRef.current;
+        const style = editorStyle
+        if (editor) {
+            const wrapper = document.createElement('div');
+            wrapper.className = "test";
+            for (let key in style) {
+                if (style.hasOwnProperty(key)) {
+                    wrapper.style[key as any] = style[key];
+                }
+            }
+            while (editor.firstChild) {
+                wrapper.appendChild(editor.firstChild);
+            }
 
-    const toggleRightButtons = (e: any) => {
+            editor.appendChild(wrapper);
+            console.log(editor);
+        }
+    }
+
+    const changeFont = (e: any): void => {
         const value = e.target.value;
 
-        if (value === 'B1') {
-            setEditorStyle({})
-            return;
+        const makeFont = (name: string) => {
+            const selection = window.getSelection();
+            if (selection) {
+                const range = selection.getRangeAt(0)
+                console.log(range);
+                const br = document.createElement('br')
+                const p = document.createElement(name);
+
+                p.appendChild(br);
+
+                range.deleteContents();
+                range.insertNode(p);
+
+                range.setStartAfter(br);
+                range.setEndAfter(br);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+        }
+        makeFont(value);
+    }
+
+
+
+    const changeLayout = (e: any): void => {
+        const value = e.target.value;
+
+        const normalLayout = {}
+
+        const centerLayout = {
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column'
         }
 
-        if (value === 'B2') {
-            setEditorStyle({
-                display: 'flex',
-                alignItems: 'center',
-                flexDirection: 'column'
-            })
-            return;
+        switch (value) {
+            case 'B1':
+                setEditorStyle(normalLayout)
+                break;
+            case 'B2':
+                setEditorStyle(centerLayout)
+                break;
         }
-
     }
 
 
@@ -67,16 +114,16 @@ export default function TechWrite() {
                 <input onChange={convertHashTag} type="text" placeholder='태그를 입력하세요. ex) #안녕 #반가워' className="tech-write-title title2" />
                 <div className="tech-write-button-group-wrapper">
                     <div className="tech-write-button-group-left">
-                        <button className='tech-write-button'>h1</button>
-                        <button className='tech-write-button'>h2</button>
-                        <button className='tech-write-button'>h3</button>
-                        <button className='tech-write-button'>h4</button>
-                        <button className='tech-write-button'>h5</button>
-                        <button className='tech-write-button'>h6</button>
+                        <button className='tech-write-button' value={'h1'} onClick={changeFont}>h1</button>
+                        <button className='tech-write-button' value={'h2'} onClick={changeFont}>h2</button>
+                        <button className='tech-write-button' value={'h3'} onClick={changeFont}>h3</button>
+                        <button className='tech-write-button' value={'h4'} onClick={changeFont}>h4</button>
+                        <button className='tech-write-button' value={'h5'} onClick={changeFont}>h5</button>
+                        <button className='tech-write-button' value={'h6'} onClick={changeFont}>h6</button>
                     </div>
                     <div className="tech-write-button-group-right">
-                        <button className='tech-write-button' value={'B1'} onClick={toggleRightButtons}>B1</button>
-                        <button className='tech-write-button' value={'B2'} onClick={toggleRightButtons}>B2</button>
+                        <button className='tech-write-button' value={'B1'} onClick={changeLayout}>B1</button>
+                        <button className='tech-write-button' value={'B2'} onClick={changeLayout}>B2</button>
                     </div>
                 </div>
 
@@ -84,7 +131,7 @@ export default function TechWrite() {
 
                 <div className="tech-write-bottom">
                     <div>Please use it correctly</div>
-                    <button className='tech-submit-button'>submit</button>
+                    <button className='tech-submit-button' onClick={wrapHTML}>submit</button>
                 </div>
 
             </div>
