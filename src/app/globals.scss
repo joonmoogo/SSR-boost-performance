@@ -13,6 +13,16 @@
         display: none;
     }
 
+    .tech-write-page {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        margin-left: 10%;
+        margin-right: 10%;
+        display: grid;
+        grid-template-rows: repeat(2, minmax(100px, 1fr));
+        box-sizing: border-box;
+    }
+
     .main-page {
         margin-top: 60px;
         margin-bottom: 50px;
@@ -342,6 +352,17 @@
 
 
     // }
+
+
+    .tech-write-page {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        margin-left: 10%;
+        margin-right: 10%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        box-sizing: border-box;
+    }
 
     .main-page {
         margin-top: 100px;
