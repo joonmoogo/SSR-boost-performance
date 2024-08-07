@@ -16,12 +16,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   const headerList = headers();
   const viewport = headerList.get('x-viewport') as string;
+  console.log(viewport)
   return (
     <>
       <html>
         <body>
           <SideNav/>
-          <Appbar />
+          <Appbar viewport={viewport}/>
           {children}
           <Footer />
         </body>
