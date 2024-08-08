@@ -10,19 +10,19 @@ export default function Appbar({ viewport }: any) {
 
     let lastScroll = 0;
     const isMobile = viewport === 'mobile'
-    const [showAppbar, setShowAppbar] = useState<boolean>(true);
+    const [scrollDown, setScrollDown] = useState<boolean | null>(null);
 
     useEffect(() => {
         const scrollHandler = () => {
 
             /* go down */
             if (window.scrollY > lastScroll) {
-                setShowAppbar(true)
+                setScrollDown(true)
             }
 
             /* go up */
             else {
-                setShowAppbar(false);
+                setScrollDown(false);
             }
             lastScroll = window.scrollY;
         }
@@ -33,7 +33,7 @@ export default function Appbar({ viewport }: any) {
 
 
     return (
-        <div className="appbar" style={ { transform: `translateY(${isMobile&&showAppbar ? "-100px" : "0"})`, transition: '0.5s ease' }}>
+        <div className="appbar" style={{ transform: `translateY(${isMobile && scrollDown ? "-150px" : "0"})`, transition: '0.5s ease' }}>
             <Link className="appbar-content" role="appbar-content" href={'/'}>
                 {config.name}
             </Link>
