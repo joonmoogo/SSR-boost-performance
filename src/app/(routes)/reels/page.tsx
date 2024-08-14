@@ -6,6 +6,7 @@ import { getAllReels } from "../../_util/customFetch";
 import { reelsDTO } from "@/types/DTO";
 import config from "@/app/_config/config";
 import { Metadata } from "next"
+import { delay } from "@/app/_util/util";
 
 // export const metadata: Metadata = {
 //     title: `${config.name} : 준무고의 영상 기록집`,
@@ -13,29 +14,18 @@ import { Metadata } from "next"
 
 export default function Reels() {
 
+    const testData: reelsDTO = {
+        id: 1,
+        title: 'test',
+        caption: 'test',
+        created_at: 'test',
+        reels_id: 1,
+        video_url: '/sample.mp4'
+    }
+
+    const [reelsData, setReelsData] = useState<reelsDTO[]>([testData, testData, testData]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [maxIndex, setMaxIndex] = useState<number>(0);
-    const [reelsData, setReelsData] = useState<reelsDTO[]>();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data: reelsDTO[] = await getAllReels();
-            return data;
-        }
-        fetchData().then((data) => {
-            setReelsData(data)
-            setMaxIndex(data.length);
-        }
-        )
-    }, [])
-
-    useEffect(() => {
-        console.log(currentIndex)
-        const OFFSET = -102;
-        carousel.current.style.transform = `translateY(${OFFSET * currentIndex}vh)`;
-    }, [currentIndex])
-
-    const carousel = useRef<any>(null);
     const [currentValue, setCurrentValue] = useState<number>(0);
 
     function handleTouchStart(event: any) {
@@ -43,53 +33,59 @@ export default function Reels() {
         setCurrentValue(event.touches[0].clientY);
     }
 
-    function handleTouchMove(event: any) {
-        const value = (event.touches[0].clientY);
-        console.log(value);
-    }
-
     function handleTouchEnd(event: any) {
         console.log(`touch End!${event.changedTouches[0].clientY}`);
-        if (currentValue > event.changedTouches[0].clientY) {
-            if (currentIndex + 1 == maxIndex) {
-                setCurrentIndex(0);
+        if (!isSliding) {
+            if (currentValue > event.changedTouches[0].clientY) {
+                // 위로 올릴 때
+                if (currentIndex + 1 == maxIndex) {
+                    setCurrentIndex(0);
+                }
+                else {
+                    setCurrentIndex(currentIndex + 1);
+                }
             }
             else {
-                setCurrentIndex(currentIndex + 1);
-            }
-        }
-        else {
-            if (currentIndex - 1 == -1) {
-                setCurrentIndex(maxIndex - 1);
-            }
-            else {
-                setCurrentIndex(currentIndex - 1);
+                // 아래로 내릴 때
+                if (currentIndex - 1 == -1) {
+                    setCurrentIndex(maxIndex - 1);
+                }
+                else {
+                    setCurrentIndex(currentIndex - 1);
+                }
             }
         }
     }
 
+    useEffect(() => {
+        const waitUntilVideoLoad = async () => {
+            setIsSliding(true);
+            await delay(1000);
+            setIsSliding(false);
+        }
 
+        const videoLoad = async () => {
+            /*(index-1, index, index+1)범위 까지의 데이터 불러오기 */
+        }
+        waitUntilVideoLoad();
+    }, [currentIndex])
 
+    const [isSliding, setIsSliding] = useState<boolean>(false);
 
     return (
-        <div className="video-page">
-            <div className="carousel"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                ref={carousel}
-                style={{
-                    height: '200vw',
-                    position: 'relative',
-                    transition: 'transform 0.5s',
-                    // transform:'translateY(-150vw)'
-                }}>
-                {reelsData && reelsData.map((e, i) => {
-                    return (
-                        <ReelsBox item={e} key={i}></ReelsBox>
-                    )
-                })}
+        <>
+            <div style={{ overflow: 'hidden' }}>
+                <div style={{
+                    height: '100dvh',
+                    transform: `translateY(-${currentIndex * 100}dvh)`,
+                    transition: '1s'
+                }}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                >
+                    {reelsData && reelsData.map((e, i) => <ReelsBox key={i} item={e} play={true} />)}
+                </div>
             </div>
-        </div>
+        </>
     )
 }
