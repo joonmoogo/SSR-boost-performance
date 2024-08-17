@@ -14,27 +14,45 @@ import { delay } from "@/app/_util/util";
 
 export default function Reels() {
 
-    const testData: reelsDTO = {
-        id: 1,
-        title: 'test',
-        caption: 'test',
-        created_at: 'test',
-        reels_id: 1,
-        video_url: '/sample.mp4'
-    }
+    const testData: reelsDTO[] = [
+        {
+            id: 1,
+            title: 'test',
+            caption: 'test',
+            created_at: 'test',
+            reels_id: 1,
+            video_url: '/LettuceEater.mp4'
+        },
+        {
+            id: 2,
+            title: 'test',
+            caption: 'test',
+            created_at: 'test',
+            reels_id: 1,
+            video_url: '/BeefKiller.mp4'
+        },
+        {
+            id: 3,
+            title: 'test',
+            caption: 'test',
+            created_at: 'test',
+            reels_id: 1,
+            video_url: '/SpyAction.mp4'
+        }
+    ]
 
-    const [reelsData, setReelsData] = useState<reelsDTO[]>([testData, testData, testData]);
+    const [reelsData, setReelsData] = useState<reelsDTO[]>(testData);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [maxIndex, setMaxIndex] = useState<number>(0);
     const [currentValue, setCurrentValue] = useState<number>(0);
 
     function handleTouchStart(event: any) {
-        console.log(`touch Start!${event.touches[0].clientY}`);
+        // console.log(`touch Start!${event.touches[0].clientY}`);
         setCurrentValue(event.touches[0].clientY);
     }
 
     function handleTouchEnd(event: any) {
-        console.log(`touch End!${event.changedTouches[0].clientY}`);
+        // console.log(`touch End!${event.changedTouches[0].clientY}`);
         if (!isSliding) {
             if (currentValue > event.changedTouches[0].clientY) {
                 // 위로 올릴 때
@@ -83,7 +101,7 @@ export default function Reels() {
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                 >
-                    {reelsData && reelsData.map((e, i) => <ReelsBox key={i} item={e} play={true} />)}
+                    {reelsData && reelsData.map((e, i) => <ReelsBox key={i} item={e} play={currentIndex === i} />)}
                 </div>
             </div>
         </>
