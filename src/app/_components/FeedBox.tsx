@@ -56,7 +56,7 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                 <div className="image-box" role="feed-box">
                     <div className="box-header">
                         <div className="author">
-                            <Image loading="lazy" src='/ssepcat.png' width={10} height={10} alt="ssepcat" />
+                            <Image src='/ssepcat.png' width={10} height={10} alt="ssepcat" />
                             <p>{config.username}</p>
                             <p>{timeTune(props.item.created_at)}</p>
                         </div>
@@ -78,7 +78,6 @@ export default function FeedBox(props: { item: feedDTO, viewport: any }) {
                                             props.item.image_urls.length <= 1 ? "singleImg" : "multiImg"
                                         }
                                         key={index}
-                                        loading="lazy"
                                         src={e}
                                         alt="" />
                                 )
