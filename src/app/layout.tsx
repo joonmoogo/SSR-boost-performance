@@ -11,6 +11,9 @@ import { headers } from "next/headers";
 export const metadata: Metadata = {
   title: config.name,
   description: config.description,
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
